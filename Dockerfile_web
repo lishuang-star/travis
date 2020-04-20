@@ -24,7 +24,7 @@ RUN sed -i "s|Listen 80|Listen 8000|g" /etc/apache2/ports.conf && \
 RUN pip3 install youtube-dl -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 RUN rm -rf /var/www/html/*
-COPY /Youphptube/.  /var/www/html
+COPY /YouPHPTube/.  /var/www/html
 
 # fix permissions
 RUN chown -R www-data. /var/www/html
