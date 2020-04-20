@@ -6,7 +6,7 @@ ADD File/wait-for-it.sh /wait-for-it.sh
 ADD File/requirements_config.txt /requirements_config.txt
 ADD File/datafill.py /datafill.py
 RUN mkdir /vedio
-COPY /video/.  /vedio
+COPY File/video/.  /vedio
 
 RUN chmod +x /config.sh 
 CMD ["bash", "-c", "echo 1 && bash /config.sh"]
