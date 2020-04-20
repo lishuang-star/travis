@@ -19,7 +19,7 @@ addons:
     hosts:
         - my.mail.666.com
 install:
-    - sed -i 's/[0-9]*[1-9][0-9]*:80/'${PORT}':80/g' docker-compose.yml
+    #- sed -i 's/[0-9]*[1-9][0-9]*:80/'${PORT}':80/g' docker-compose.yml
     - docker-compose up -d
     - sleep ${SLEEP_TIME}
 
