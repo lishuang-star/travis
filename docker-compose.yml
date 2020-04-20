@@ -1,42 +1,41 @@
 version: '3.1'
 
 services:
-
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile_web
-    container_name: web-app
-    ports:
-      - "8088:8000"
-    restart: always
-    stdin_open: true
-    tty: true
-    volumes:
+     build:
+       context: .
+       dockerfile: Dockerfile_web
+     container_name: web-app
+     ports:
+       - "8088:8000"
+     restart: always
+     stdin_open: true
+     tty: true
+     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /srv/youphptube/:/var/www/html/videos
 
   encoder:
-  build:
-      context: .
-      dockerfile: Dockerfile_encoder
-    container_name: encoder-app
-    ports:
-      - "8889:8000"
-    restart: always
-    stdin_open: true
-    tty: true
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /srv/youphptube-encoder/:/var/www/html/videos
+     build:
+       context: .
+       dockerfile: Dockerfile_encoder
+     container_name: encoder-app
+     ports:
+       - "8889:8000"
+     restart: always
+     stdin_open: true
+     tty: true
+     volumes:
+       - /etc/localtime:/etc/localtime:ro
+       - /srv/youphptube-encoder/:/var/www/html/videos
 
   mysql:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+     image: mysql:5.7
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: password
+       MYSQL_USER: user
+       MYSQL_PASSWORD: password
 
   config:
      build:
@@ -44,9 +43,9 @@ services:
        dockerfile: Dockerfile_config
      container_name: config-app
      depends_on:
-      - mysql
-      - web
-      - encoder
+       - mysql
+       - web
+       - encoder
  
   poc:
      build:
@@ -54,10 +53,10 @@ services:
        dockerfile: Dockerfile_poc
      container_name: poc-app
      depends_on:
-      - mysql
-      - web
-      - encoder
-      - config
+       - mysql
+       - web
+       - encoder
+       - config
 
 
 
