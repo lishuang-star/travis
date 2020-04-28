@@ -11,15 +11,11 @@ before_install:
     - sudo apt-get update
     - sudo apt-get install -y python3 python3-pip curl
     - pip3 install requests
-    - sudo mkdir /srv/youphptube
-    - sudo chmod ugo+rwx /srv/youphptube
-    - sudo mkdir /srv/youphptube-encoder
-    - sudo chmod ugo+rwx /srv/youphptube-encoder 
 addons:
     hosts:
         - my.mail.666.com
 install:
-    #- sed -i 's/[0-9]*[1-9][0-9]*:80/'${PORT}':80/g' docker-compose.yml
+    - sed -i 's/[0-9]*[1-9][0-9]*:80/'${PORT}':80/g' docker-compose.yml
     - docker-compose up -d
     - sleep ${SLEEP_TIME}
 
@@ -29,4 +25,4 @@ script:
     - cat docker-compose.yml
     - sudo cat /etc/hosts
     - curl -vv -L http://${DOMAIN_NAME}:${PORT}
-  #  - sudo bash del_install_file.sh
+    - sudo bash del_install_file.sh
