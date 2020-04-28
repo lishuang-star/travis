@@ -7,7 +7,7 @@ services:
        dockerfile: Dockerfile_web
      container_name: web-app
      ports:
-       - "80:8000"
+       - 80:8000
      restart: always
      stdin_open: true
      tty: true
@@ -21,7 +21,7 @@ services:
        dockerfile: Dockerfile_encoder
      container_name: encoder-app
      ports:
-       - "8889:8000"
+       - 8889:8000
      restart: always
      stdin_open: true
      tty: true
@@ -36,6 +36,10 @@ services:
        MYSQL_ROOT_PASSWORD: password
        MYSQL_USER: user
        MYSQL_PASSWORD: password
+     healthcheck:
+       test: ["CMD", "mysqladmin" ,"ping", "-h", "mysql"]
+       timeout: 20s
+       retries: 3
 
   config:
      build:

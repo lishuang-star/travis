@@ -7,7 +7,7 @@ FROM php:7.3-apache
 
 RUN rm /etc/apt/sources.list
  
-ADD  /File/sources.list /etc/apt/
+ADD sources.list /etc/apt/
 
 MAINTAINER TheAssassin <theassassin@assassinate-you.net>
 

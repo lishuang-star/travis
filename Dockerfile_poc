@@ -1,11 +1,9 @@
-FROM debian:jessie
-USER root
+FROM python:3.8-buster
 
-ADD File/poc.sh /poc.sh
 ADD File/poc.py /poc.py
 ADD File/requirements_poc.txt /requirements_poc.txt
-ADD File/wait-for-it.sh /wait-for-it.sh
 
 
-RUN chmod +x /poc.sh 
-CMD ["bash", "-c", "echo 1 && bash /poc.sh"]
+RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -r /requirements_poc.txt
+RUN chmod +x poc.py
+CMD python poc.py

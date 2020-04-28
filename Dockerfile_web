@@ -5,7 +5,7 @@
 
 FROM php:7.3-apache
 
-ADD /File/sources.list /etc/apt/
+ADD File/sources.list /etc/apt/
 
 MAINTAINER TheAssassin <theassassin@assassinate-you.net>
 
@@ -24,7 +24,7 @@ RUN sed -i "s|Listen 80|Listen 8000|g" /etc/apache2/ports.conf && \
 RUN pip3 install youtube-dl -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 RUN rm -rf /var/www/html/*
-COPY /YouPHPTube/.  /var/www/html
+COPY YouPHPTube/.  /var/www/html
 
 # fix permissions
 RUN chown -R www-data. /var/www/html
@@ -36,3 +36,5 @@ RUN install -d -m 0755 -o www-data -g www-data /var/www/html/videos
 USER www-data
 
 VOLUME ["/var/www/html/videos"]
+
+EXPOSE 8000
