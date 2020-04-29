@@ -18,7 +18,6 @@ def configyouphptube():
                   "databasePass": "password", "databaseName": "youPHPTube", "mainLanguage": "en",
                   "systemAdminPass": "cuccs123", "contactEmail": "894597649@qq.com", "createTables": "2"}
     res = requests.post(burp0_url, headers=burp0_headers, data=burp0_data)
-    print(res)
 
 
 def configencoder():
@@ -45,7 +44,6 @@ def configencoder():
                   "inputUser": "admin", "inputPassword": "cuccs123", "allowedStreamers": "http://web:8000/",
                   "defaultPriority": "1"}
     res = requests.post(burp0_url, headers=burp0_headers, cookies=cookies, data=burp0_data)
-    print(res)
 
 
 def login(hostip):
@@ -57,7 +55,6 @@ def login(hostip):
                      "Connection": "close", "Referer": "http://encoder:8000/"}
     burp0_data = {"user": "admin", "pass": "cuccs123", "siteURL": "http://web:8000/", "encodedPass": "false"}
     res = requests.post(hostip, headers=burp0_headers, cookies=cookies, data=burp0_data)
-    print(res)
 
 
 def queue(hostip):
@@ -69,7 +66,6 @@ def queue(hostip):
                      "Connection": "close", "Referer": "http://encoder:8000/"}
     data = {"current": "1", "rowCount": "10", "sort[created]": "desc", "searchPhrase": ''}
     res = requests.post(hostip, headers=burp0_headers, cookies=cookies, data=data)
-    print(res)
 
 
 
@@ -77,7 +73,6 @@ def upload(filePath, filename):
     url = 'http://encoder:8000/upload'
     files = {'upl': open(filePath + '/' + filename, 'rb')}
     res = requests.post(url, cookies=cookies, files=files)
-    print(res)
 
 
 
