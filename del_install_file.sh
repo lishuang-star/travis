@@ -2,7 +2,7 @@
 
 IF_DELETE_INSTALL_FILE=1
 
-INSTALL_FILE="install"
+INSTALL_FILE="/var/www/html/install"
 
 if [ ${IF_DELETE_INSTALL_FILE} == 1 ];
 then
