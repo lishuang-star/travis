@@ -34,7 +34,7 @@ if __name__ == "__main__":
     a = str(check())
     time.sleep(10)
 
-    if (('404' in a1) and ('200' in a)) :
+    if ('200' in a) :
         print('PoC success!')
     else :
         print('PoC fail!')
