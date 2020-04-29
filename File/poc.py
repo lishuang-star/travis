@@ -24,8 +24,6 @@ def poc():
     a = requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)
     return a
 
-
-
 if __name__ == "__main__":
     time.sleep(100)
     a1 = str(check())
