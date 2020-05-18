@@ -87,7 +87,7 @@ if (!User::canUpload() || !empty($advancedCustom->doNotShowImportMP4Button)) {
                     return false;
                 }
                 $.ajax({
-                    url: webSiteRootURL + 'objects/listFiles.json.php',
+                    url: 'objects/listFiles.json.php',
                     data: {"path": path},
                     type: 'post',
                     success: function (response) {
@@ -126,7 +126,7 @@ if (!User::canUpload() || !empty($advancedCustom->doNotShowImportMP4Button)) {
                             console.log("+ "+importing);
                             var id = $(this).attr('id');
                             $.ajax({
-                                url: webSiteRootURL + 'objects/import.json.php',
+                                url: 'objects/import.json.php',
                                 data: {
                                     "fileURI": $(this).attr('path'),
                                     "categories_id": $('#bulk_categories_id').val(),

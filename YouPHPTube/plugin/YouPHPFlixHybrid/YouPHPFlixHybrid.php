@@ -25,7 +25,7 @@ class YouPHPFlixHybrid extends PluginAbstract {
     public function getFirstPage(){
         global $global; 
         $url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        if((("http://".$url===$global['webSiteRootURL'])||("https://".$url===$global['webSiteRootURL'])||("http://".$url===$global['webSiteRootURL']."audioOnly")||("https://".$url===$global['webSiteRootURL']."audioOnly")||("http://".$url===$global['webSiteRootURL']."videoOnly")||("https://".$url===$global['webSiteRootURL']."videoOnly")||("https://".$url===$global['webSiteRootURL']."?type=all")||("http://".$url===$global['webSiteRootURL']."?type=all"))&&(empty($_GET['catName']))){
+        if((("http://".$url===$global['webSiteRootURL'])||("https://".$url===$global['webSiteRootURL'])||("http://".$url==="audioOnly")||("https://".$url==="audioOnly")||("http://".$url==="videoOnly")||("https://".$url==="videoOnly")||("https://".$url==="?type=all")||("http://".$url==="?type=all"))&&(empty($_GET['catName']))){
             return $global['systemRootPath'].'plugin/YouPHPFlix/view/firstPage.php';
         }
         else {
@@ -39,12 +39,12 @@ class YouPHPFlixHybrid extends PluginAbstract {
         $url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         // When first page at all
         if((("http://".$url===$global['webSiteRootURL'])||("https://".$url===$global['webSiteRootURL']))&&YouPHPTubePlugin::isEnabled("e2a568e6-ef61-4dcc-aad0-0109e9be8e36")===false){
-            $youphpflixTmp = "<link href=\"{$global['webSiteRootURL']}plugin/YouPHPFlix/view/css/style.css\" rel=\"stylesheet\" type=\"text/css\"/>";
+            $youphpflixTmp = "<link href=\"plugin/YouPHPFlix/view/css/style.css\" rel=\"stylesheet\" type=\"text/css\"/>";
             return $youphpflixTmp;
         } else if (YouPHPTubePlugin::isEnabled("a06505bf-3570-4b1f-977a-fd0e5cab205d")==false) {
         // When category or search or everything else is browsed
-            $galleryTmp = "<script>var img1 = new Image();img1.src=\"{$global['webSiteRootURL']}view/img/video-placeholder.png\";</script>";
-            $galleryTmp .= '<link href="' . $global['webSiteRootURL'] . 'plugin/Gallery/style.css" rel="stylesheet" type="text/css"/>';
+            $galleryTmp = "<script>var img1 = new Image();img1.src=\"view/img/video-placeholder.png\";</script>";
+            $galleryTmp .= '<link href="' .  'plugin/Gallery/style.css" rel="stylesheet" type="text/css"/>';
             return $galleryTmp;
         }
     }

@@ -6,7 +6,7 @@
             modal.showPleaseWait();
 
             $.ajax({
-                url: '<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/plugins/YPTWalletPayPal/requestPayment.json.php',
+                url: 'plugin/YPTWallet/plugins/YPTWalletPayPal/requestPayment.json.php',
                 data: {
                     "value": $('#value').val()
                 },

@@ -2,7 +2,7 @@
 require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::isAdmin()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not manage categories"));
+    header("Location: ?error=" . __("You can not manage categories"));
     exit;
 }
 require_once $global['systemRootPath'] . 'objects/category.php'; ?>
@@ -12,8 +12,8 @@ require_once $global['systemRootPath'] . 'objects/category.php'; ?>
         <title><?php echo $config->getWebSiteTitle(); ?>  :: <?php echo __("Category"); ?></title>
 
         <?php include $global['systemRootPath'] . 'view/include/head.php'; ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>css/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.min.js" type="text/javascript"></script>
-        <link href="<?php echo $global['webSiteRootURL']; ?>css/fontawesome-iconpicker/dist/css/fontawesome-iconpicker.min.css" rel="stylesheet" type="text/css"/>
+        <script src="css/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.min.js" type="text/javascript"></script>
+        <link href="css/fontawesome-iconpicker/dist/css/fontawesome-iconpicker.min.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -101,7 +101,7 @@ require_once $global['systemRootPath'] . 'objects/category.php'; ?>
                 });
 
                 function refreshSubCategoryList(){
-                    $.getJSON( "<?php echo $global['webSiteRootURL'] . "categories.json"; ?>", function( data ) {
+                    $.getJSON( "<?php echo  "categories.json"; ?>", function( data ) {
   		                var tmpHtml = "<option value='0' ><?php echo __("None (Parent)"); ?></option>";
                         fullCatList = data;
                         $.each( data.rows, function( key, val ) {
@@ -129,7 +129,7 @@ require_once $global['systemRootPath'] . 'objects/category.php'; ?>
                         search: "<?php echo __("Search"); ?>",
                     },
                     ajax: true,
-                    url: "<?php echo $global['webSiteRootURL'] . "categories.json"; ?>",
+                    url: "<?php echo  "categories.json"; ?>",
                     formatters: {
                         "nextVideoOrder": function(column, row){
                             if(row.nextVideoOrder==0){

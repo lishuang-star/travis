@@ -3,7 +3,7 @@ require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 //check if there is a update
 if (!User::isAdmin()) {
-    header("location: {$global['webSiteRootURL']}user");
+    header("location: user");
     exit;
 }
 

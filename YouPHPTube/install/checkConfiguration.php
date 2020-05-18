@@ -125,7 +125,6 @@ if(empty($_POST['salt'])){
 $content = "<?php
 \$global['disableAdvancedConfigurations'] = 0;
 \$global['videoStorageLimitMinutes'] = 0;
-\$global['webSiteRootURL'] = '{$_POST['webSiteRootURL']}';
 \$global['systemRootPath'] = '{$_POST['systemRootPath']}';
 \$global['salt'] = '{$_POST['salt']}';
 

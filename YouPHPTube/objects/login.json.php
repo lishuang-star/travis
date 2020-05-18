@@ -78,10 +78,10 @@ if (!empty($_GET['type'])) {
         $userObject = new User(0, $user, $pass);
         $userObject->login(true);
         $adapter->disconnect();
-        header("Location: {$global['webSiteRootURL']}");
+        header("Location: ");
 
     } catch (\Exception $e) {
-        header("Location: {$global['webSiteRootURL']}user?error=".urlencode($e->getMessage()));
+        header("Location: user?error=".urlencode($e->getMessage()));
         //echo $e->getMessage();
     }
     return;
@@ -108,7 +108,7 @@ if($resp === User::USER_NOT_VERIFIED){
     $object->error = __("Your user is not verified, we sent you a new e-mail");
     die(json_encode($object));
 }
-$object->siteLogo = $global['webSiteRootURL'].$config->getLogo();
+$object->siteLogo = $config->getLogo();
 $object->id = User::getId();
 $object->user = User::getUserName();
 $object->pass = User::getUserPass();
@@ -132,7 +132,7 @@ if($object->isLogged){
     }
     $p = YouPHPTubePlugin::loadPluginIfEnabled("MobileManager");
     if(!empty($p)){
-        $object->streamer = json_decode(url_get_contents($global['webSiteRootURL']."status"));
+        $object->streamer = json_decode(url_get_contents("status"));
         $object->plugin = $p->getDataObject();
         $object->encoder = $config->getEncoderURL();
     }

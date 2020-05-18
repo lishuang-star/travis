@@ -3,7 +3,7 @@ require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 
 if (!User::canUpload()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not notify"));
+    header("Location: ?error=" . __("You can not notify"));
     exit;
 }
 $user_id = User::getId();

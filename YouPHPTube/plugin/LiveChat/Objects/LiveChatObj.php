@@ -57,7 +57,7 @@ class LiveChatObj extends ObjectYPT {
         if ($res) {
             while ($row = $res->fetch_assoc()) {
                 if(empty($row['users_id'])){
-                    $row['photo'] = $global['webSiteRootURL'] . "img/userSilhouette.jpg";
+                    $row['photo'] = "img/userSilhouette.jpg";
                 }else{
                     $row['photo'] = User::getPhoto($row['users_id']);
                 }

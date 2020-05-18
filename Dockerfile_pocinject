@@ -1,0 +1,9 @@
+FROM python:3.8-buster
+
+ADD File/poc-inject.py /poc-inject.py
+ADD File/requirements_poc.txt /requirements_poc.txt
+
+
+RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -r /requirements_poc.txt
+RUN chmod +x poc-inject.py
+CMD python poc-inject.py

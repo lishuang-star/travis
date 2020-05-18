@@ -163,7 +163,7 @@ class UserGroups {
         $result = sqlDAL::num_rows($res);
         sqlDAL::close($res);
         if (empty($result)) {
-            $_GET['error'] = "You need to <a href='{$global['webSiteRootURL']}update'>update your system to ver 2.3</a>";
+            $_GET['error'] = "You need to <a href='update'>update your system to ver 2.3</a>";
             return array();
         }
         if (empty($users_id)) {
@@ -234,7 +234,7 @@ class UserGroups {
         sqlDAL::close($res);
         if (!$res) {
             if (User::isAdmin()) {
-                $_GET['error'] = "You need to Update YouPHPTube to version 2.3 <a href='{$global['webSiteRootURL']}update/'>Click here</a>";
+                $_GET['error'] = "You need to Update YouPHPTube to version 2.3 <a href='update/'>Click here</a>";
             }
             return array();
         }

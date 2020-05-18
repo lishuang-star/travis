@@ -912,7 +912,7 @@ function combineFiles($filesArray, $extension = "js") {
                     $content = url_get_contents($value);
                     if(empty($content)){
                         $allowed .= " - web-fallback 1 (add webSiteRootURL)";
-                        $content = url_get_contents($global['webSiteRootURL'] . $value);
+                        $content = url_get_contents( $value);
                     }
                     $str .= "\n/*{$value} created via web with own url ({$allowed}) */\n" . $content;
                 
@@ -924,7 +924,7 @@ function combineFiles($filesArray, $extension = "js") {
         }
         file_put_contents($cacheDir . $md5FileName, $str);
     }
-    return $global['webSiteRootURL'] . 'videos/cache/' . $md5FileName;
+    return  'videos/cache/' . $md5FileName;
 }
 
 

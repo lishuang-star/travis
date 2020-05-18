@@ -23,7 +23,7 @@ if(preg_match('/videos\/(.*)_thumbs.jpg$/', $_SERVER["REQUEST_URI"], $matches)){
 }
 
 if(empty($_GET['notFound'])){
-    header("Location: {$global['webSiteRootURL']}img/image404.php?notFound=1");
+    header("Location: img/image404.php?notFound=1");
     exit;
 }
 

@@ -4,7 +4,7 @@ require_once $global['systemRootPath'] . 'objects/user.php';
 require_once $global['systemRootPath'] . 'objects/functions.php';
 
 if (!User::isAdmin()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not manager wallets"));
+    header("Location: ?error=" . __("You can not manager wallets"));
     exit;
 }
 
@@ -87,11 +87,11 @@ $obj = $plugin->getDataObject();
                         search: "<?php echo __("Search"); ?>",
                     },
                     ajax: true,
-                    url: "<?php echo $global['webSiteRootURL'] . "plugin/YPTWallet/view/users.json.php"; ?>",
+                    url: "<?php echo  "plugin/YPTWallet/view/users.json.php"; ?>",
                     formatters: {
                         "commands": function (column, row) {
                             var editBtn = '<button type="button" class="btn btn-xs btn-default command-edit" data-toggle="tooltip" data-placement="left" title="Edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>'
-                            var history = '<a href="<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/history.php?users_id=' + row.users_id + '" class="btn btn-default btn-xs command-history"   data-toggle="tooltip" data-placement="left" title="History""><span class="fa fa-history" aria-hidden="true"></span></a>';
+                            var history = '<a href="plugin/YPTWallet/view/history.php?users_id=' + row.users_id + '" class="btn btn-default btn-xs command-history"   data-toggle="tooltip" data-placement="left" title="History""><span class="fa fa-history" aria-hidden="true"></span></a>';
                             //return editBtn + deleteBtn;
                             return editBtn + history;
                         },
@@ -125,7 +125,7 @@ $obj = $plugin->getDataObject();
                     modal.showPleaseWait();
 
                     $.ajax({
-                        url: '<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/saveBalance.php',
+                        url: 'plugin/YPTWallet/view/saveBalance.php',
                         data: {
                             "users_id": $('#inputUserId').val(),
                             "balance": $('#inputUserBalance').val()

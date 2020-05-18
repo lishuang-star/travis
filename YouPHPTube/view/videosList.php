@@ -80,7 +80,7 @@ foreach ($videos as $key => $value) {
     $value['creator'] = '<div class="pull-left"><img src="' . User::getPhoto($value['users_id']) . '" alt="" class="img img-responsive img-circle zoom" style="max-width: 20px;"/></div><div class="commentDetails" style="margin-left:25px;"><div class="commenterName text-muted"><strong>' . $name . '</strong> <small>' . humanTiming(strtotime($value['videoCreation'])) . '</small></div></div>';
     ?>
     <div class="col-lg-12 col-sm-12 col-xs-12 bottom-border" id="divVideo-<?php echo $value['id']; ?>" itemscope itemtype="http://schema.org/VideoObject">
-        <a href="<?php echo $global['webSiteRootURL'], $catLink; ?>video/<?php
+        <a href="<?php  $catLink; ?>video/<?php
         echo $value['clean_title'];
         if (!empty($_GET['page']) && $_GET['page'] > 1) {
             echo "/page/{$_GET['page']}";
@@ -102,7 +102,7 @@ foreach ($videos as $key => $value) {
                 <?php
                 if (!empty($imgGif)) {
                     ?>
-                    <img src="<?php echo $global['webSiteRootURL']; ?>img/loading-gif.png" data-src="<?php echo $imgGif; ?>" style="position: absolute; top: 0; display: none;" alt="<?php echo $value['title']; ?>" id="thumbsGIF<?php echo $value['id']; ?>" class="thumbsGIF img-responsive <?php echo $img_portrait; ?>  rotate<?php echo $value['rotation']; ?>" height="130" />
+                    <img src="img/loading-gif.png" data-src="<?php echo $imgGif; ?>" style="position: absolute; top: 0; display: none;" alt="<?php echo $value['title']; ?>" id="thumbsGIF<?php echo $value['id']; ?>" class="thumbsGIF img-responsive <?php echo $img_portrait; ?>  rotate<?php echo $value['rotation']; ?>" height="130" />
                 <?php } ?>
                 <meta itemprop="thumbnailUrl" content="<?php echo $img; ?>" />
                 <meta itemprop="uploadDate" content="<?php echo $value['created']; ?>" />
@@ -167,7 +167,7 @@ foreach ($videos as $key => $value) {
             page = '/page/' + num;
         }
 
-        history.pushState(null, null, '<?php echo $global['webSiteRootURL'], $catLink; ?>video/<?php echo $videoName; ?>' + page);
+        history.pushState(null, null, '<?php  $catLink; ?>video/<?php echo $videoName; ?>' + page);
                 $('.pages').slideUp();
                 $('#pageLoader').fadeIn();
                 rowCount = $('#rowCount').val();
@@ -187,7 +187,7 @@ foreach ($videos as $key => $value) {
                 }
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo $global['webSiteRootURL']; ?>videosList/<?php echo $catLink; ?>video/<?php echo $videoName; ?>" + page,
+                    url: "videosList/<?php echo $catLink; ?>video/<?php echo $videoName; ?>" + page,
                                 data: {
                                     rowCount: rowCount,
                                     sort: sortBy,

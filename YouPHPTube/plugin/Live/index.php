@@ -21,7 +21,7 @@ if (!empty($_GET['u']) && !empty($_GET['embedv2'])) {
     include $global['systemRootPath'].'plugin/Live/view/modeYoutubeLive.php';
     exit;
 } else if (!User::canStream()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not stream live videos"));
+    header("Location: ?error=" . __("You can not stream live videos"));
     exit;
 }
 
@@ -33,7 +33,7 @@ require_once $global['systemRootPath'] . 'plugin/Live/Objects/LiveTransmition.ph
 $trasnmition = LiveTransmition::createTransmitionIfNeed(User::getId());
 if(!empty($_GET['resetKey'])){
     LiveTransmition::resetTransmitionKey(User::getId());
-    header("Location: {$global['webSiteRootURL']}plugin/Live/");
+    header("Location: plugin/Live/");
     exit;
 }
 
@@ -60,11 +60,11 @@ if(empty($channelName)){
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/swfobject.js" type="text/javascript"></script>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>css/player.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/video.js/video.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/videojs-contrib-hls.min.js" type="text/javascript"></script>
+        <script src="plugin/Live/view/swfobject.js" type="text/javascript"></script>
+        <link href="js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/player.css" rel="stylesheet" type="text/css"/>
+        <script src="js/video.js/video.js" type="text/javascript"></script>
+        <script src="plugin/Live/view/videojs-contrib-hls.min.js" type="text/javascript"></script>
     </head>
     <body>
         <?php
@@ -106,11 +106,11 @@ if(empty($channelName)){
                         </div>       
                         <div class="form-group">
                             <label for="youphptubeURL"><i class="fa fa-circle"></i> <?php echo __("Live URL"); ?>:</label>
-                            <input type="text" class="form-control" id="youphptubeURL" value="<?php echo $global['webSiteRootURL']; ?>plugin/Live/?c=<?php echo urlencode($channelName); ?>"  readonly="readonly">
+                            <input type="text" class="form-control" id="youphptubeURL" value="plugin/Live/?c=<?php echo urlencode($channelName); ?>"  readonly="readonly">
                         </div>   
                         <div class="form-group">
                             <label for="embedStream"><i class="fa fa-code"></i> <?php echo __("Embed Stream"); ?>:</label>
-                            <input type="text" class="form-control" id="embedStream" value='<iframe width="640" height="480" style="max-width: 100%;max-height: 100%;" src="<?php echo $global['webSiteRootURL']; ?>plugin/Live/?c=<?php echo urlencode($channelName); ?>&embed=1" frameborder="0" allowfullscreen="allowfullscreen" class="YouPHPTubeIframe"></iframe>'  readonly="readonly">
+                            <input type="text" class="form-control" id="embedStream" value='<iframe width="640" height="480" style="max-width: 100%;max-height: 100%;" src="plugin/Live/?c=<?php echo urlencode($channelName); ?>&embed=1" frameborder="0" allowfullscreen="allowfullscreen" class="YouPHPTubeIframe"></iframe>'  readonly="readonly">
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@ if(empty($channelName)){
                             <div class="input-group">
                                 <input type="text" class="form-control" id="streamkey" value="<?php echo $trasnmition['key']; ?>" readonly="readonly">
                                 <span class="input-group-btn">
-                                    <a class="btn btn-default" href="<?php echo $global['webSiteRootURL']; ?>plugin/Live/?resetKey=1"><i class="fa fa-refresh"></i> <?php echo __("Reset Key"); ?></a>
+                                    <a class="btn btn-default" href="plugin/Live/?resetKey=1"><i class="fa fa-refresh"></i> <?php echo __("Reset Key"); ?></a>
                                 </span>
                             </div>
                             <span class="label label-warning"><i class="fa fa-warning"></i> <?php echo __("Anyone with this key can watch your live stream."); ?></span>
@@ -148,7 +148,7 @@ if(empty($channelName)){
                     </div>
                     <div class="panel-body">          
                         <div class="embed-responsive embed-responsive-16by9">
-                            <video poster="<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/OnAir.jpg" controls 
+                            <video poster="plugin/Live/view/OnAir.jpg" controls 
                                    class="embed-responsive-item video-js vjs-default-skin <?php echo $vjsClass; ?> vjs-big-play-centered" 
                                    id="mainVideo" data-setup='{ aspectRatio: "<?php echo $aspectRatio; ?>",  "techorder" : ["flash", "html5"] }'>
                                 <source src="<?php echo $p->getPlayerServer(); ?>/<?php echo $trasnmition['key']; ?>/index.m3u8" type='application/x-mpegURL'>
@@ -197,7 +197,7 @@ if(empty($channelName)){
                         }
                         ?>
                         <button type="button" class="btn btn-success" id="btnSaveStream"><?php echo __("Save Stream"); ?></button>
-                        <a href="<?php echo $global['webSiteRootURL']; ?>usersGroups" class="btn btn-primary"><span class="fa fa-users"></span> <?php echo __("Add more user Groups"); ?></a>
+                        <a href="usersGroups" class="btn btn-primary"><span class="fa fa-users"></span> <?php echo __("Add more user Groups"); ?></a>
                     </div>
                 </div>
 
@@ -215,7 +215,7 @@ if(empty($channelName)){
                 var attributes = {};
                 function amIOnline() {
                     $.ajax({
-                        url: '<?php echo $global['webSiteRootURL']; ?>plugin/Live/stats.json.php?checkIfYouOnline',
+                        url: 'plugin/Live/stats.json.php?checkIfYouOnline',
                         data: {"name": "<?php echo $streamName; ?>"},
                         type: 'post',
                         success: function (response) {
@@ -231,7 +231,7 @@ if(empty($channelName)){
                                 $('#webcam').find('.alert').text("<?php echo __("You are online now, web cam is disabled"); ?>");
                             } else {
                                 $('#webcam').find('.alert').text("<?php echo __("You are not online, loading webcam..."); ?>");
-                                swfobject.embedSWF("<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/webcam.swf", "webcam", "100%", "100%", "9.0.0", "expressInstall.swf", flashvars, params, attributes);
+                                swfobject.embedSWF("plugin/Live/view/webcam.swf", "webcam", "100%", "100%", "9.0.0", "expressInstall.swf", flashvars, params, attributes);
                             }
                         }
                     });

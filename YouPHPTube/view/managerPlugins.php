@@ -2,7 +2,7 @@
 require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::isAdmin()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not manage plugins"));
+    header("Location: ?error=" . __("You can not manage plugins"));
     exit;
 }
 require_once $global['systemRootPath'] . 'objects/plugin.php';
@@ -15,11 +15,11 @@ require_once $global['systemRootPath'] . 'objects/plugin.php';
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>view/bootstrap/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>        
-        <link href="<?php echo $global['webSiteRootURL']; ?>view/bootstrap/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>view/bootstrap/bootstrap-fileinput/themes/fa/theme.min.js" type="text/javascript"></script>
-        <link href="<?php echo $global['webSiteRootURL']; ?>view/bootstrap/bootstrap-fileinput/themes/explorer/theme.min.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>view/bootstrap/bootstrap-fileinput/themes/explorer/theme.min.js" type="text/javascript"></script>
+        <script src="view/bootstrap/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>        
+        <link href="view/bootstrap/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css"/>
+        <script src="view/bootstrap/bootstrap-fileinput/themes/fa/theme.min.js" type="text/javascript"></script>
+        <link href="view/bootstrap/bootstrap-fileinput/themes/explorer/theme.min.css" rel="stylesheet" type="text/css"/>
+        <script src="view/bootstrap/bootstrap-fileinput/themes/explorer/theme.min.js" type="text/javascript"></script>
         <style>
             .panel{
                 text-align: center;
@@ -380,7 +380,7 @@ require_once $global['systemRootPath'] . 'objects/plugin.php';
                     },
                     navigation: 0,
                     ajax: true,
-                    url: "<?php echo $global['webSiteRootURL'] . "pluginsAvailable.json"; ?>",
+                    url: "<?php echo  "pluginsAvailable.json"; ?>",
                     formatters: {
                         "commands": function (column, row) {
                             var editBtn = '';
@@ -484,7 +484,7 @@ require_once $global['systemRootPath'] . 'objects/plugin.php';
                     $('#pluginsImportFormModal').modal();
                 });
                 $('#input-b1').fileinput({
-                    uploadUrl: '<?php echo $global['webSiteRootURL']; ?>pluginImport.json',
+                    uploadUrl: 'pluginImport.json',
                     allowedFileExtensions: ['zip']
                 }).on('fileuploaded', function (event, data, id, index) {
                     $("#grid").bootgrid('reload');

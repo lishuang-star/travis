@@ -61,22 +61,22 @@ class ThemeSwitcherMenu extends PluginAbstract {
         
         $return = "";
         if(!empty($theme)){
-            $return = "<link href=\"{$global['webSiteRootURL']}css/custom/{$theme}.css\" rel=\"stylesheet\" type=\"text/css\" id=\"theme\"/>";
+            $return = "<link href=\"css/custom/{$theme}.css\" rel=\"stylesheet\" type=\"text/css\" id=\"theme\"/>";
         }
         
         if(!empty($page)){
             switch ($page) {
                 case "YouPHPFlix":
-                    $return .= "<link href=\"{$global['webSiteRootURL']}plugin/YouPHPFlix/view/css/style.css\" rel=\"stylesheet\" type=\"text/css\"/>";
+                    $return .= "<link href=\"plugin/YouPHPFlix/view/css/style.css\" rel=\"stylesheet\" type=\"text/css\"/>";
                     break;
                 case "FBTube":
-                    $return .= '<link href="'.$global['webSiteRootURL'].'plugin/FBTube/view/style.css" rel="stylesheet" type="text/css"/>';
+                    $return .= '<link href="plugin/FBTube/view/style.css" rel="stylesheet" type="text/css"/>';
                     break;
             }
             
         }
         
-        $return .= '<link href="'.$global['webSiteRootURL'].'css/main.css" rel="stylesheet" type="text/css"/>';
+        $return .= '<link href="css/main.css" rel="stylesheet" type="text/css"/>';
 
         $return .= '<style>
 

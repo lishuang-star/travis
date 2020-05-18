@@ -27,7 +27,7 @@ require_once '../objects/functions.php';
                     <span class="glyphicon glyphicon-ok-circle"></span>
                     Your system is installed, remove the <code><?php echo $global['systemRootPath']; ?>install</code> directory to continue
                     <hr>
-                    <a href="<?php echo $global['webSiteRootURL']; ?>" class="btn btn-success btn-lg center-block">Go to the main page</a>
+                    <a href="" class="btn btn-success btn-lg center-block">Go to the main page</a>
                 </h3>
             </div>
             <?php
@@ -277,7 +277,7 @@ require_once '../objects/functions.php';
                     var contactEmail = $('#contactEmail').val();
                     var createTables = $('#createTables').val();
                     $.ajax({
-                        url: webSiteRootURL + 'install/checkConfiguration.php',
+                        url: 'install/checkConfiguration.php',
                         data: {
                             webSiteRootURL: webSiteRootURL,
                             systemRootPath: systemRootPath,

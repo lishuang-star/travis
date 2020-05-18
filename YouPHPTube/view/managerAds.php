@@ -2,7 +2,7 @@
 require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::isAdmin()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not manage ads"));
+    header("Location: ?error=" . __("You can not manage ads"));
     exit;
 }
 require_once $global['systemRootPath'] . 'objects/category.php';
@@ -19,7 +19,7 @@ $userGroups = UserGroups::getAllUsersGroups();
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -32,14 +32,14 @@ $userGroups = UserGroups::getAllUsersGroups();
         include $global['systemRootPath'] . 'view/include/updateCheck.php';
         ?>
             <div class="btn-group" >
-                <a href="<?php echo $global['webSiteRootURL']; ?>usersGroups" class="btn btn-warning">
+                <a href="usersGroups" class="btn btn-warning">
                     <span class="fa fa-users"></span> <?php echo __("User Groups"); ?>
                 </a>
-                <a href="<?php echo $global['webSiteRootURL']; ?>users" class="btn btn-primary">
+                <a href="users" class="btn btn-primary">
                     <span class="fa fa-user"></span> <?php echo __("Users"); ?>
                 </a>
 
-                <a href="<?php echo $global['webSiteRootURL']; ?>mvideos" class="btn btn-success">
+                <a href="mvideos" class="btn btn-success">
                     <span class="fa fa-film"></span> <?php echo __("Videos"); ?>
                 </a>
             </div>
@@ -129,7 +129,7 @@ $userGroups = UserGroups::getAllUsersGroups();
         <?php
         include $global['systemRootPath'] . 'view/include/footer.php';
         ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
 
@@ -149,7 +149,7 @@ $userGroups = UserGroups::getAllUsersGroups();
                         search: "<?php echo __("Search"); ?>",
                     },
                     ajax: true,
-                    url: "<?php echo $global['webSiteRootURL'] . "ads.json"; ?>",
+                    url: "<?php echo  "ads.json"; ?>",
                     formatters: {
                         "commands": function (column, row)
                         {
@@ -176,9 +176,9 @@ $userGroups = UserGroups::getAllUsersGroups();
                                 }, 1000);
 
                                 if (row.type == "audio") {
-                                    tags += "<a href='<?php echo $global['webSiteRootURL']; ?>videos/" + row.filename + "_progress_mp3.txt' target='_blank' class='label label-danger' id='encodingmp3" + row.id + "' >MP3: 0%</a> <a href='<?php echo $global['webSiteRootURL']; ?>videos/" + row.filename + "_progress_ogg.txt' target='_blank' class='label label-danger' id='encodingogg" + row.id + "' >OGG: 0%</a>";
+                                    tags += "<a href='videos/" + row.filename + "_progress_mp3.txt' target='_blank' class='label label-danger' id='encodingmp3" + row.id + "' >MP3: 0%</a> <a href='videos/" + row.filename + "_progress_ogg.txt' target='_blank' class='label label-danger' id='encodingogg" + row.id + "' >OGG: 0%</a>";
                                 } else {
-                                    tags += "<a href='<?php echo $global['webSiteRootURL']; ?>videos/" + row.filename + "_progress_mp4.txt' target='_blank' class='label label-danger' id='encodingmp4" + row.id + "' >MP4: 0%</a> <a href='<?php echo $global['webSiteRootURL']; ?>videos/" + row.filename + "_progress_webm.txt' target='_blank' class='label label-danger' id='encodingwebm" + row.id + "' >WEBM: 0%</a>";
+                                    tags += "<a href='videos/" + row.filename + "_progress_mp4.txt' target='_blank' class='label label-danger' id='encodingmp4" + row.id + "' >MP4: 0%</a> <a href='videos/" + row.filename + "_progress_webm.txt' target='_blank' class='label label-danger' id='encodingwebm" + row.id + "' >WEBM: 0%</a>";
                                 }
 
                             } else if (row.status == 'd') {
@@ -192,10 +192,10 @@ $userGroups = UserGroups::getAllUsersGroups();
                             var type, img;
                             if (row.type === "audio") {
                                 type = "<span class='fa fa-headphones' style='font-size:14px;'></span> ";
-                                img = "<img class='img img-responsive img-thumbnail pull-left' src='<?php echo $global['webSiteRootURL']; ?>view/img/audio_wave.jpg' style='max-height:80px; margin-right: 5px;'> ";
+                                img = "<img class='img img-responsive img-thumbnail pull-left' src='view/img/audio_wave.jpg' style='max-height:80px; margin-right: 5px;'> ";
                             } else {
                                 type = "<span class='fa fa-film' style='font-size:14px;'></span> ";
-                                img = "<img class='img img-responsive img-thumbnail pull-left' src='<?php echo $global['webSiteRootURL']; ?>videos/" + row.filename + ".jpg'  style='max-height:80px; margin-right: 5px;'> ";
+                                img = "<img class='img img-responsive img-thumbnail pull-left' src='videos/" + row.filename + ".jpg'  style='max-height:80px; margin-right: 5px;'> ";
                             }
                             return img + type + row.title + "<br>" + tags;
                         }

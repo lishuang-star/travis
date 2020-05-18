@@ -285,7 +285,6 @@ class Configuration {
         $content = "<?php
 \$global['disableAdvancedConfigurations'] = 0;
 \$global['videoStorageLimitMinutes'] = 0;
-\$global['webSiteRootURL'] = '{$global['webSiteRootURL']}';
 \$global['systemRootPath'] = '{$global['systemRootPath']}';
 \$global['salt'] = '{$global['salt']}';
 

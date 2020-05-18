@@ -13,12 +13,12 @@ if (!empty($objSecure->disableEmbedMode)) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="img/favicon.ico">
         <title><?php echo $config->getWebSiteTitle(); ?></title>
-        <link href="<?php echo $global['webSiteRootURL']; ?>bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/videojs-contrib-ads/videojs.ads.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>css/player.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/videojs-contrib-ads/videojs.ads.css" rel="stylesheet" type="text/css"/>
+        <link href="css/player.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
         <style>
             body {
                 padding: 0 !important;
@@ -35,17 +35,17 @@ if (!empty($objSecure->disableEmbedMode)) {
 
     <body>
         <div class="embed-responsive  embed-responsive-16by9">
-            <video poster="<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/OnAir.jpg" controls 
+            <video poster="plugin/Live/view/OnAir.jpg" controls 
                    class="embed-responsive-item video-js vjs-default-skin vjs-big-play-centered" 
                    id="mainVideo" data-setup='{ "aspectRatio": "16:9",  "techorder" : ["flash", "html5"] }'>
                 <source src="<?php echo $t['link']; ?>" type='application/x-mpegURL'>
             </video>
         </div>
 
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/video.js/video.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/videojs-contrib-ads/videojs.ads.min.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/videojs-contrib-hls.min.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/videojs-persistvolume/videojs.persistvolume.js" type="text/javascript"></script>
+        <script src="js/video.js/video.js" type="text/javascript"></script>
+        <script src="js/videojs-contrib-ads/videojs.ads.min.js" type="text/javascript"></script>
+        <script src="plugin/Live/view/videojs-contrib-hls.min.js" type="text/javascript"></script>
+        <script src="js/videojs-persistvolume/videojs.persistvolume.js" type="text/javascript"></script>
         <script>
 
             $(document).ready(function () {
@@ -54,7 +54,7 @@ if (!empty($objSecure->disableEmbedMode)) {
                     var err = this.error();
                     if (err && err.code) {
                         $('.vjs-error-display').hide();
-                        $('#mainVideo').find('.vjs-poster').css({'background-image': 'url(<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/Offline.jpg)'});
+                        $('#mainVideo').find('.vjs-poster').css({'background-image': 'url(plugin/Live/view/Offline.jpg)'});
 <?php
 if (!empty($html)) {
     echo "showCountDown();";

@@ -15,18 +15,18 @@ require_once '../videos/configuration.php';
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <link href="<?php echo $global['webSiteRootURL']; ?>plugin/FBTube/view/style.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>plugin/FBTube/view/player.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>css/social.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/video.js/video.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/videojs-rotatezoom/videojs.zoomrotate.js" type="text/javascript"></script>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/videojs-persistvolume/videojs.persistvolume.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/webui-popover/jquery.webui-popover.min.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-list-filter/bootstrap-list-filter.min.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <link href="plugin/FBTube/view/style.css" rel="stylesheet" type="text/css"/>
+        <link href="view/js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
+        <link href="plugin/FBTube/view/player.css" rel="stylesheet" type="text/css"/>
+        <link href="view/css/social.css" rel="stylesheet" type="text/css"/>
+        <script src="view/js/video.js/video.js" type="text/javascript"></script>view/
+        <script src="view/js/videojs-rotatezoom/videojs.zoomrotate.js" type="text/javascript"></script>
+        <link href="view/js/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" type="text/css"/>
+        <link href="view/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <script src="view/js/videojs-persistvolume/videojs.persistvolume.js" type="text/javascript"></script>
+        <script src="view/js/webui-popover/jquery.webui-popover.min.js" type="text/javascript"></script>
+        <script src="view/js/bootstrap-list-filter/bootstrap-list-filter.min.js" type="text/javascript"></script>
+        <script src="view/js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
         <script>
                         /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
                         $.widget.bridge('uibutton', $.ui.button);
@@ -61,7 +61,7 @@ require_once '../videos/configuration.php';
 
         <script>
             function load(page) {
-                $('#result').append($('<div>').load('<?php echo $global['webSiteRootURL']; ?>plugin/FBTube/view/getVideos.php?page=' + page));
+                $('#result').append($('<div>').load('plugin/FBTube/view/getVideos.php?page=' + page));
             }
             $(document).ready(function () {
                 $(window).scroll(function () {

@@ -9,7 +9,7 @@ if (empty($_SESSION['language'])) {
     $lang = $_SESSION['language'];
 }
 
-$json_file = url_get_contents("{$global['webSiteRootURL']}plugin/CustomizeAdvanced/advancedCustom.json.php");
+$json_file = url_get_contents("plugin/CustomizeAdvanced/advancedCustom.json.php");
 // convert the string to a json object
 $advancedCustom = json_decode($json_file);
 
@@ -37,8 +37,8 @@ $updateFiles = getUpdatesFilesArray();
                     </script>
                 </li>
                 <li>
-                    <a class="navbar-brand" href="<?php echo $global['webSiteRootURL']; ?>" >
-                        <img src="<?php echo $global['webSiteRootURL'], $config->getLogo(); ?>" alt="<?php echo $config->getWebSiteTitle(); ?>" class="img-responsive ">
+                    <a class="navbar-brand" href="" >
+                        <img src="view/img/logo.png" alt="<?php echo $config->getWebSiteTitle(); ?>" class="img-responsive ">
                     </a>
                 </li>
             </ul>
@@ -52,7 +52,7 @@ $updateFiles = getUpdatesFilesArray();
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="right-menus">
                     <li class="">
-                        <form class="navbar-form navbar-left" id="searchForm"  action="<?php echo $global['webSiteRootURL']; ?>" >
+                        <form class="navbar-form navbar-left" id="searchForm"  action="" >
                             <div class="input-group" >
                                 <div class="form-inline">
                                     <input class="form-control" type="text" value="<?php if(!empty($_GET['search'])) { echo $_GET['search']; } ?>" name="search" placeholder="<?php echo __("Search"); ?>">
@@ -78,7 +78,7 @@ $updateFiles = getUpdatesFilesArray();
                                     if (!empty($advancedCustom->encoderNetwork)) {
                                         ?>
                                             <li>
-                                                <a href="<?php echo $advancedCustom->encoderNetwork, "?webSiteRootURL=", urlencode($global['webSiteRootURL']), "&user=", urlencode(User::getUserName()), "&pass=", urlencode(User::getUserPass()); ?>" target="encoder" >
+                                                <a href="<?php echo $advancedCustom->encoderNetwork, "?webSiteRootURL=", urlencode(), "&user=", urlencode(User::getUserName()), "&pass=", urlencode(User::getUserPass()); ?>" target="encoder" >
                                                     <span class="fa fa-cogs"></span> <?php echo __("Encoder Network"); ?>
                                                 </a>
                                             </li>
@@ -88,7 +88,7 @@ $updateFiles = getUpdatesFilesArray();
                                         if (!empty($config->getEncoderURL())) {
                                             ?>
                                             <li>
-                                                <a href="<?php echo $config->getEncoderURL(), "?webSiteRootURL=", urlencode($global['webSiteRootURL']), "&user=", urlencode(User::getUserName()), "&pass=", urlencode(User::getUserPass()); ?>" target="encoder" >
+                                                <a href="<?php echo $config->getEncoderURL(), "?webSiteRootURL=", urlencode(), "&user=", urlencode(User::getUserName()), "&pass=", urlencode(User::getUserPass()); ?>" target="encoder" >
                                                     <span class="fa fa-cog"></span> <?php echo __("Encode video and audio"); ?>
                                                 </a>
                                             </li>
@@ -96,7 +96,7 @@ $updateFiles = getUpdatesFilesArray();
                                         } else {
                                             ?>
                                             <li>
-                                                <a href="<?php echo $global['webSiteRootURL']; ?>siteConfigurations" ><span class="fa fa-cogs"></span> <?php echo __("Configure an Encoder URL"); ?></a>
+                                                <a href="siteConfigurations" ><span class="fa fa-cogs"></span> <?php echo __("Configure an Encoder URL"); ?></a>
                                             </li>
                                             <?php
                                         }
@@ -104,7 +104,7 @@ $updateFiles = getUpdatesFilesArray();
                                     if (empty($advancedCustom->doNotShowUploadMP4Button)) {
                                         ?>
                                         <li>
-                                            <a  href="<?php echo $global['webSiteRootURL']; ?>upload" >
+                                            <a  href="upload" >
                                                 <span class="fa fa-upload"></span> <?php echo __("Direct upload"); ?>
                                             </a>
                                         </li>
@@ -113,7 +113,7 @@ $updateFiles = getUpdatesFilesArray();
                                     if (empty($advancedCustom->doNotShowImportLocalVideosButton)) {
                                         ?>
                                         <li>
-                                            <a  href="<?php echo $global['webSiteRootURL']; ?>view/import.php" >
+                                            <a  href="view/import.php" >
                                                 <span class="fas fa-hdd"></span> <?php echo __("Direct Import Local Videos"); ?>
                                             </a>
                                         </li>
@@ -122,7 +122,7 @@ $updateFiles = getUpdatesFilesArray();
                                     if (empty($advancedCustom->doNotShowEmbedButton)) {
                                         ?>                                    
                                         <li>
-                                            <a  href="<?php echo $global['webSiteRootURL']; ?>mvideos?link=1" >
+                                            <a  href="mvideos?link=1" >
                                                 <span class="fa fa-link"></span> <?php echo __("Embed a video link"); ?>
                                             </a>
                                         </li>
@@ -161,7 +161,7 @@ $updateFiles = getUpdatesFilesArray();
                                     inputName: 'country',
                                     buttonType: "btn-default navbar-btn",
                                     onSelect: function (value, element) {
-                                        window.location.href = "<?php echo $global['webSiteRootURL']; ?>?lang=" + value;
+                                        window.location.href = "?lang=" + value;
                                     },
                                     placeholder: {
                                         value: "",
@@ -186,7 +186,7 @@ $updateFiles = getUpdatesFilesArray();
                     ?>
                     <li>
                         <div>
-                            <a href="<?php echo $global['webSiteRootURL']; ?>logoff" class="btn btn-default btn-block" >
+                            <a href="logoff" class="btn btn-default btn-block" >
                                 <span class="glyphicon glyphicon-log-out"></span>
                                 <?php echo __("Logoff"); ?>
                             </a>
@@ -205,7 +205,7 @@ $updateFiles = getUpdatesFilesArray();
                     <li>
 
                         <div>
-                            <a href="<?php echo $global['webSiteRootURL']; ?>user" class="btn btn-primary btn-block" style="border-radius: 4px 4px 0 0;">
+                            <a href="user" class="btn btn-primary btn-block" style="border-radius: 4px 4px 0 0;">
                                 <span class="fa fa-user-circle"></span>
                                 <?php echo __("My Account"); ?>
                             </a>
@@ -229,7 +229,7 @@ $updateFiles = getUpdatesFilesArray();
                         ?>
                         <li>
                             <div>
-                                <a href="<?php echo $global['webSiteRootURL']; ?>mvideos" class="btn btn-success btn-block" style="border-radius: 0;">
+                                <a href="mvideos" class="btn btn-success btn-block" style="border-radius: 0;">
                                     <span class="glyphicon glyphicon-film"></span>
                                     <span class="glyphicon glyphicon-headphones"></span>
                                     <?php echo __("My videos"); ?>
@@ -238,7 +238,7 @@ $updateFiles = getUpdatesFilesArray();
                         </li>
                         <li>
                             <div>
-                                <a href="<?php echo $global['webSiteRootURL']; ?>charts" class="btn btn-info btn-block" style="border-radius: 0;">
+                                <a href="charts" class="btn btn-info btn-block" style="border-radius: 0;">
                                     <span class="fas fa-tachometer-alt"></span>
                                     <?php echo __("Dashboard"); ?>
                                 </a>
@@ -246,7 +246,7 @@ $updateFiles = getUpdatesFilesArray();
                         </li>
                         <li>
                             <div>
-                                <a href="<?php echo $global['webSiteRootURL']; ?>subscribes" class="btn btn-warning btn-block" style="border-radius: 0">
+                                <a href="subscribes" class="btn btn-warning btn-block" style="border-radius: 0">
                                     <span class="fa fa-check"></span>
                                     <?php echo __("Subscriptions"); ?>
                                 </a>
@@ -254,7 +254,7 @@ $updateFiles = getUpdatesFilesArray();
                         </li>
                         <li>
                             <div>
-                                <a href="<?php echo $global['webSiteRootURL']; ?>comments" class="btn btn-default btn-block" style="border-radius: 0 0 4px 4px;">
+                                <a href="comments" class="btn btn-default btn-block" style="border-radius: 0 0 4px 4px;">
                                     <span class="fa fa-comment"></span>
                                     <?php echo __("Comments"); ?>
                                 </a>
@@ -272,31 +272,31 @@ $updateFiles = getUpdatesFilesArray();
                             <h2 class="text-danger"><?php echo __("Admin Menu"); ?></h2>
                             <ul  class="nav navbar" style="margin-bottom: 10px;">
                                 <li>
-                                    <a href="<?php echo $global['webSiteRootURL']; ?>users">
+                                    <a href="users">
                                         <span class="glyphicon glyphicon-user"></span>
                                         <?php echo __("Users"); ?>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $global['webSiteRootURL']; ?>usersGroups">
+                                    <a href="usersGroups">
                                         <span class="fa fa-users"></span>
                                         <?php echo __("Users Groups"); ?>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $global['webSiteRootURL']; ?>ads">
+                                    <a href="ads">
                                         <span class="far fa-money-bill-alt"></span>
                                         <?php echo __("Video Advertising"); ?>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $global['webSiteRootURL']; ?>categories">
+                                    <a href="categories">
                                         <span class="glyphicon glyphicon-list"></span>
                                         <?php echo __("Categories"); ?>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $global['webSiteRootURL']; ?>update">
+                                    <a href="update">
                                         <span class="glyphicon glyphicon-refresh"></span>
                                         <?php echo __("Update version"); ?>
                                         <?php
@@ -307,19 +307,19 @@ $updateFiles = getUpdatesFilesArray();
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $global['webSiteRootURL']; ?>siteConfigurations">
+                                    <a href="siteConfigurations">
                                         <span class="glyphicon glyphicon-cog"></span>
                                         <?php echo __("Site Configurations"); ?>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $global['webSiteRootURL']; ?>locale">
+                                    <a href="locale">
                                         <span class="glyphicon glyphicon-flag"></span>
                                         <?php echo __("Create more translations"); ?>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $global['webSiteRootURL']; ?>plugins">
+                                    <a href="plugins">
                                         <span class="fa fa-plug"></span> 
                                         <?php echo __("Plugins"); ?>
                                     </a>
@@ -335,7 +335,7 @@ $updateFiles = getUpdatesFilesArray();
                     ?>
                     <li>
                         <div>
-                            <a href="<?php echo $global['webSiteRootURL']; ?>user" class="btn btn-success btn-block">
+                            <a href="user" class="btn btn-success btn-block">
                                 <span class="glyphicon glyphicon-log-in"></span>
                                 <?php echo __("Login"); ?>
                             </a>
@@ -353,19 +353,19 @@ $updateFiles = getUpdatesFilesArray();
                     <hr>
                 </li>
                 <li class="nav-item <?php echo empty($_SESSION['type']) ? "active" : ""; ?>">
-                    <a class="nav-link " href="<?php echo $global['webSiteRootURL']; ?>?type=all">
+                    <a class="nav-link " href="?type=all">
                         <span class="glyphicon glyphicon-star"></span>
                         <?php echo __("Audios and Videos"); ?>
                     </a>
                 </li>
                 <li class="nav-item <?php echo (!empty($_SESSION['type']) && $_SESSION['type'] == 'video' && empty($_GET['catName'])) ? "active" : ""; ?>">
-                    <a class="nav-link " href="<?php echo $global['webSiteRootURL']; ?>videoOnly">
+                    <a class="nav-link " href="videoOnly">
                         <span class="glyphicon glyphicon-facetime-video"></span>
                         <?php echo __("Videos"); ?>
                     </a>
                 </li>
                 <li class="nav-item <?php echo (!empty($_SESSION['type']) && $_SESSION['type'] == 'audio' && empty($_GET['catName'])) ? "active" : ""; ?>">
-                    <a class="nav-link" href="<?php echo $global['webSiteRootURL']; ?>audioOnly">
+                    <a class="nav-link" href="audioOnly">
                         <span class="glyphicon glyphicon-headphones"></span>
                         <?php echo __("Audios"); ?>
                     </a>
@@ -383,7 +383,7 @@ $updateFiles = getUpdatesFilesArray();
                     <h3 class="text-danger"><?php echo __("Channels"); ?></h3>
                 </li>
                 <li>
-                    <a href="<?php echo $global['webSiteRootURL']; ?>channels">
+                    <a href="channels">
                         <i class="fa fa-search"></i>
                         <?php echo __("Browse Channels"); ?>
                     </a>
@@ -407,7 +407,7 @@ $updateFiles = getUpdatesFilesArray();
                         echo "<ul style='margin-bottom: 0px; list-style-type: none;'>";
                         foreach($subcats as $subcat){
                                 echo '<li class="' . ($subcat['clean_name'] == @$_GET['catName'] ? "active" : "") . '">'
-                                    . '<a href="' . $global['webSiteRootURL'] . 'cat/' . $subcat['clean_name'] . '" >'
+                                    . '<a href="' .  'cat/' . $subcat['clean_name'] . '" >'
                                     . '<span class="' . (empty($subcat['iconClass']) ? "fa fa-folder" : $subcat['iconClass']) . '"></span>  ' . $subcat['name'] . '</a></li>'; 
                             mkSub($subcat['id']);
                         }
@@ -419,7 +419,7 @@ $updateFiles = getUpdatesFilesArray();
                 foreach ($categories as $value) {
                     
                     echo '<li class="' . ($value['clean_name'] == @$_GET['catName'] ? "active" : "") . '">'
-                    . '<a href="' . $global['webSiteRootURL'] . 'cat/' . $value['clean_name'] . '" >'
+                    . '<a href="' .  'cat/' . $value['clean_name'] . '" >'
                     . '<span class="' . (empty($value['iconClass']) ? "fa fa-folder" : $value['iconClass']) . '"></span>  ' . $value['name'] . '</a>'; 
                     mkSub($value['id']);
                     echo '</li>';
@@ -436,19 +436,19 @@ $updateFiles = getUpdatesFilesArray();
                     <hr>
                 </li>
                 <li>
-                    <a href="<?php echo $global['webSiteRootURL']; ?>help">
+                    <a href="help">
                         <span class="glyphicon glyphicon-question-sign"></span>
                         <?php echo __("Help"); ?>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo $global['webSiteRootURL']; ?>about">
+                    <a href="about">
                         <span class="glyphicon glyphicon-info-sign"></span>
                         <?php echo __("About"); ?>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo $global['webSiteRootURL']; ?>contact">
+                    <a href="contact">
                         <span class="glyphicon glyphicon-comment"></span>
                         <?php echo __("Contact"); ?>
                     </a>

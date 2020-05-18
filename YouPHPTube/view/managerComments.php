@@ -2,7 +2,7 @@
 require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::isLogged()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not manage comments"));
+    header("Location: ?error=" . __("You can not manage comments"));
     exit;
 }
 require_once $global['systemRootPath'] . 'objects/comment.php';
@@ -15,8 +15,8 @@ require_once $global['systemRootPath'] . 'objects/comment.php';
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>css/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.min.js" type="text/javascript"></script>
-        <link href="<?php echo $global['webSiteRootURL']; ?>css/fontawesome-iconpicker/dist/css/fontawesome-iconpicker.min.css" rel="stylesheet" type="text/css"/>
+        <script src="css/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.min.js" type="text/javascript"></script>
+        <link href="css/fontawesome-iconpicker/dist/css/fontawesome-iconpicker.min.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>

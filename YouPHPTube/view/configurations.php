@@ -11,8 +11,8 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/Croppie/croppie.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/Croppie/croppie.min.js" type="text/javascript"></script>
+        <link href="js/Croppie/croppie.css" rel="stylesheet" type="text/css"/>
+        <script src="js/Croppie/croppie.min.js" type="text/javascript"></script>
         <style>
             .img-radio {
                 opacity: 0.5;
@@ -102,7 +102,7 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
                                                     }
                                                     ?>
                                                     <div class="col-xs-4" style="padding: 10px;">
-                                                        <img src="<?php echo $global['webSiteRootURL'], "view/css/custom/", $fileEx, ".png"; ?>" class="img-responsive img-radio">
+                                                        <img src="<?php  "view/css/custom/", $fileEx, ".png"; ?>" class="img-responsive img-radio">
                                                         <button type="button" class="btn btn-default btn-radio btn-block btn-xs" id="btn<?php echo ($fileEx); ?>"><?php echo ucfirst($fileEx); ?></button>
                                                         <input type="checkbox" value="<?php echo ($fileEx); ?>"  class="hidden left-item">
                                                     </div>
@@ -503,7 +503,7 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
                                                         <label class="col-md-4"><?php echo __("Test your email"); ?></label>
                                                         <div class="col-md-4 inputGroupContainer">
                                                             <div class="input-group">
-                                                                <span class="input-group-addon"><img src="<?php echo $global['webSiteRootURL']; ?>captcha" id="captcha"></span>
+                                                                <span class="input-group-addon"><img src="captcha" id="captcha"></span>
                                                                 <span class="input-group-addon"><span class="btn btn-xs btn-success" id="btnReloadCapcha"><span class="glyphicon glyphicon-refresh"></span></span></span>
                                                                 <input name="captcha" placeholder="<?php echo __("Type the code"); ?>" class="form-control" type="text" style="height: 60px;" maxlength="5" id="captchaText">
                                                             </div>
@@ -591,7 +591,7 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
                     $(document).ready(function () {
 
                         $('#btnReloadCapcha').click(function () {
-                            $('#captcha').attr('src', '<?php echo $global['webSiteRootURL']; ?>captcha?' + Math.random());
+                            $('#captcha').attr('src', 'captcha?' + Math.random());
                             $('#captchaText').val('');
                         });
 
@@ -599,7 +599,7 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
                             evt.preventDefault();
                             modal.showPleaseWait();
                             $.ajax({
-                                url: '<?php echo $global['webSiteRootURL']; ?>sendEmail',
+                                url: 'sendEmail',
                                 data: {
                                     captcha:$('#captchaText').val(),
                                     first_name: "Your Site test",
@@ -635,7 +635,7 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
                             ev.preventDefault();
                             modal.showPleaseWait();
                             $.ajax({
-                                url: '<?php echo $global['webSiteRootURL']; ?>objects/configurationClearCache.json.php',
+                                url: 'objects/configurationClearCache.json.php',
                                 success: function (response) {
                                     if (!response.error) {
                                         swal("<?php echo __("Congratulations!"); ?>", "<?php echo __("Your cache has been cleared!"); ?>", "success");
@@ -656,7 +656,7 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
                         });
 
                         logoCrop = $('#croppieLogo').croppie({
-                            url: '<?php echo $global['webSiteRootURL'], $config->getLogo(); ?>',
+                            url: '<?php  $config->getLogo(); ?>',
                             enableExif: true,
                             enforceBoundary: false,
                             mouseWheelZoom: false,
@@ -690,7 +690,7 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
                         });
 
                         logoSmallCrop = $('#croppieLogoSmall').croppie({
-                            url: '<?php echo $global['webSiteRootURL'], $config->getLogo_small(); ?>',
+                            url: '<?php  $config->getLogo_small(); ?>',
                             enableExif: true,
                             enforceBoundary: false,
                             mouseWheelZoom: false,
@@ -779,7 +779,7 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
                                     .siblings('input').prop('checked', true)
                                     .siblings('.img-radio').css('opacity', '1');
                             var cssName = $(this).addClass('active').siblings('input').val();
-                            $("#theme").attr("href", "<?php echo $global['webSiteRootURL'] ?>css/custom/" + cssName + ".css");
+                            $("#theme").attr("href", "css/custom/" + cssName + ".css");
                             $('.btn-radio').parent("div").removeClass('bg-success');
                             $(this).addClass('active').parent("div").addClass("bg-success");
                             theme = cssName;

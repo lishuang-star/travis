@@ -30,7 +30,7 @@ class SeekButton extends PluginAbstract {
         if (empty($_GET['videoName'])) {
             return "";
         }
-        $css = '<link href="' . $global['webSiteRootURL'] . 'plugin/SeekButton/videojs-seek-buttons/videojs-seek-buttons.css" rel="stylesheet" type="text/css"/>';
+        $css = '<link href="' .  'plugin/SeekButton/videojs-seek-buttons/videojs-seek-buttons.css" rel="stylesheet" type="text/css"/>';
         $css .= '<style></style>';
         return $css;
     }
@@ -39,7 +39,7 @@ class SeekButton extends PluginAbstract {
         global $global;
         if (!empty($_GET['videoName'])) {
             $obj = $this->getDataObject();
-            $js = '<script src="' . $global['webSiteRootURL'] . 'plugin/SeekButton/videojs-seek-buttons/videojs-seek-buttons.min.js" type="text/javascript"></script>';
+            $js = '<script src="' .  'plugin/SeekButton/videojs-seek-buttons/videojs-seek-buttons.min.js" type="text/javascript"></script>';
             if(!empty($_SESSION['type'])){
             if(($_SESSION['type']=="audio")||($_SESSION['type']=="linkAudio")){
                $js .= '<script>$(document).ready(function () {  setTimeout(function(){ if(typeof player == \'undefined\'){player = videojs(\'mainAudio\');} ';

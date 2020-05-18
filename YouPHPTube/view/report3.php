@@ -74,7 +74,7 @@
             },
             "ajax": {
                 'type': 'POST',
-                'url': "<?php echo $global['webSiteRootURL']; ?>view/report3.json.php",
+                'url': "view/report3.json.php",
                 'data': getData3,
             },
             "columns": [

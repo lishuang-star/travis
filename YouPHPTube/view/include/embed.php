@@ -152,7 +152,7 @@
                     ?>
                     <div style="<?php echo $style; ?>">
                         <a href="<?php echo $url; ?>">
-                            <img src="<?php echo $global['webSiteRootURL']; ?>videos/logoOverlay.png">
+                            <img src="videos/logoOverlay.png">
                         </a>
                     </div>
                     <?php

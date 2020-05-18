@@ -4,7 +4,7 @@ require_once $global['systemRootPath'] . 'objects/user.php';
 require_once $global['systemRootPath'] . 'objects/functions.php';
 
 if (!User::isAdmin()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not do this"));
+    header("Location: ?error=" . __("You can not do this"));
     exit;
 }
 ?>
@@ -62,7 +62,7 @@ if (!User::isAdmin()) {
                         search: "<?php echo __("Search"); ?>",
                     },
                     ajax: true,
-                    url: "<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/pendingRequests.json.php",
+                    url: "plugin/YPTWallet/view/pendingRequests.json.php",
                     formatters: {
                         "status": function (column, row) {
                             var status = "";
@@ -91,7 +91,7 @@ if (!User::isAdmin()) {
             function setStatus(status, wallet_log_id) {
                 modal.showPleaseWait();
                 $.ajax({
-                    url: '<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/changeLogStatus.json.php',
+                    url: 'plugin/YPTWallet/view/changeLogStatus.json.php',
                     type: "POST",
                     data: {
                         status: status,

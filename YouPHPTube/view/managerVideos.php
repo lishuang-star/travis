@@ -2,7 +2,7 @@
 require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::canUpload()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not manage videos"));
+    header("Location: ?error=" . __("You can not manage videos"));
     exit;
 }
 require_once $global['systemRootPath'] . 'objects/category.php';
@@ -25,11 +25,11 @@ if (!empty($_GET['video_id'])) {
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <link href="js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script>
+        <link href="js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
         <script>
             /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
             $.widget.bridge('uibutton', $.ui.button);
@@ -56,13 +56,13 @@ if (!empty($_GET['video_id'])) {
         <div class="container">
         <?php include $global['systemRootPath'] . 'view/include/updateCheck.php'; ?>
             <div class="btn-group" >
-                <a href="<?php echo $global['webSiteRootURL']; ?>usersGroups" class="btn btn-warning">
+                <a href="usersGroups" class="btn btn-warning">
                     <span class="fa fa-users"></span> <?php echo __("User Groups"); ?>
                 </a>
-                <a href="<?php echo $global['webSiteRootURL']; ?>users" class="btn btn-primary">
+                <a href="users" class="btn btn-primary">
                     <span class="fa fa-user"></span> <?php echo __("Users"); ?>
                 </a>
-                <a href="<?php echo $global['webSiteRootURL']; ?>charts" class="btn btn-info">
+                <a href="charts" class="btn btn-info">
                     <span class="fa fa-bar-chart"></span>
                     <?php echo __("Video Chart"); ?>
                 </a>
@@ -71,7 +71,7 @@ if (!empty($_GET['video_id'])) {
                 if (empty($advancedCustom->doNotShowEncoderButton)) {
                     if (!empty($config->getEncoderURL())) {
                         ?>
-                        <a href="<?php echo $config->getEncoderURL(), "?webSiteRootURL=", urlencode($global['webSiteRootURL']), "&user=", urlencode(User::getUserName()), "&pass=", urlencode(User::getUserPass()); ?>" class="btn btn-default">
+                        <a href="<?php echo $config->getEncoderURL(), "?webSiteRootURL=", urlencode(), "&user=", urlencode(User::getUserName()), "&pass=", urlencode(User::getUserPass()); ?>" class="btn btn-default">
                             <span class="fa fa-cog"></span>
                             <?php echo __("Encode video and audio"); ?>
                         </a>
@@ -80,7 +80,7 @@ if (!empty($_GET['video_id'])) {
                 }
                 if (empty($advancedCustom->doNotShowUploadMP4Button)) {
                     ?>
-                    <a href="<?php echo $global['webSiteRootURL']; ?>upload" class="btn btn-default">
+                    <a href="upload" class="btn btn-default">
                         <span class="fa fa-upload"></span>
                         <?php echo __("Upload a MP4 File"); ?>
                     </a>
@@ -101,7 +101,7 @@ if (!empty($_GET['video_id'])) {
                 <?php
                 if (User::isAdmin()) {
                     ?>
-                    <a href="<?php echo $global['webSiteRootURL']; ?>ads" class="btn btn-danger">
+                    <a href="ads" class="btn btn-danger">
                         <span class="far fa-money-bill-alt"></span> <?php echo __("Advertising Manager"); ?>
                     </a>
                     <?php
@@ -338,7 +338,7 @@ if (!empty($_GET['video_id'])) {
                                             minLength: 0,
                                             source: function (req, res) {
                                                 $.ajax({
-                                                    url: '<?php echo $global['webSiteRootURL']; ?>videos.json',
+                                                    url: 'videos.json',
                                                     type: "POST",
                                                     data: {
                                                         searchPhrase: req.term
@@ -354,7 +354,7 @@ if (!empty($_GET['video_id'])) {
                                             },
                                             select: function (event, ui) {
                                                 $("#inputNextVideo").val(ui.item.title);
-                                                $("#inputNextVideoClean").val('<?php echo $global['webSiteRootURL']; ?>video/' + ui.item.clean_title);
+                                                $("#inputNextVideoClean").val('video/' + ui.item.clean_title);
                                                 $("#inputNextVideo-id").val(ui.item.id);
                                                 $("#inputNextVideo-poster").attr("src", "videos/" + ui.item.filename + ".jpg");
                                                 return false;
@@ -382,14 +382,14 @@ if (!empty($_GET['video_id'])) {
                     <h2>Before you start</h2>
                     <ol>
                         <li>
-                            <a href="<?php echo $global['webSiteRootURL']; ?>siteConfigurations" class="btn btn-info btn-xs">Enable Google Login</a> and get your google ID and Key
+                            <a href="siteConfigurations" class="btn btn-info btn-xs">Enable Google Login</a> and get your google ID and Key
                         </li>
                         <li>
                             Go to https://console.developers.google.com
                             on <a href="https://console.developers.google.com/apis/dashboard" class="btn btn-info btn-xs" target="_blank">dashboard</a> Enable <strong>YouTube Data API v3</strong>
                         </li>
                         <li>
-                            In credentials authorized this redirect URIs <code><?php echo $global['webSiteRootURL']; ?>objects/youtubeUpload.json.php</code>
+                            In credentials authorized this redirect URIs <code>objects/youtubeUpload.json.php</code>
                         </li>
                         <li>
                             You can find more help on <a href="https://developers.google.com/youtube/v3/getting-started" class="btn btn-info btn-xs"  target="_blank">https://developers.google.com/youtube/v3/getting-started </a>
@@ -405,7 +405,7 @@ if (!empty($_GET['video_id'])) {
         <?php
         include $global['systemRootPath'] . 'view/include/footer.php';
         ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
 
         <script>
                                     var timeOut;
@@ -475,14 +475,14 @@ if (!empty($_GET['video_id'])) {
                                             success: function (response) {
                                                 if (response.queue_list.length) {
                                                     for (i = 0; i < response.queue_list.length; i++) {
-                                                        if ('<?php echo $global['webSiteRootURL']; ?>' !== response.queue_list[i].streamer_site) {
+                                                        if ('' !== response.queue_list[i].streamer_site) {
                                                             continue;
                                                         }
                                                         createQueueItem(response.queue_list[i], i);
                                                     }
 
                                                 }
-                                                if (response.encoding && '<?php echo $global['webSiteRootURL']; ?>' === response.encoding.streamer_site) {
+                                                if (response.encoding && '' === response.encoding.streamer_site) {
                                                     var id = response.encoding.id;
                                                     // if start encode next before get 100%
                                                     if (id !== encodingNowId) {
@@ -549,9 +549,9 @@ if (!empty($_GET['video_id'])) {
                                         $('#inputDescription').val(row.description);
                                         $('#inputCategory').val(row.categories_id);
                                         if (row.next_video && row.next_video.id) {
-                                            $('#inputNextVideo-poster').attr('src', "<?php echo $global['webSiteRootURL']; ?>videos/" + row.next_video.filename + ".jpg");
+                                            $('#inputNextVideo-poster').attr('src', "videos/" + row.next_video.filename + ".jpg");
                                             $('#inputNextVideo').val(row.next_video.title);
-                                            $('#inputNextVideoClean').val("<?php echo $global['webSiteRootURL']; ?>video/" + row.next_video.clean_title);
+                                            $('#inputNextVideoClean').val("video/" + row.next_video.clean_title);
                                             $('#inputNextVideo-id').val(row.next_video.id);
                                         } else {
                                             $('#removeAutoplay').trigger('click');
@@ -577,7 +577,7 @@ if (!empty($_GET['video_id'])) {
                                             showUploadedThumbs: false,
                                             maxFileCount: 1,
                                             initialPreview: [
-                                                "<img style='height:160px' src='<?php echo $global['webSiteRootURL']; ?>videos/" + row.filename + ".jpg'>",
+                                                "<img style='height:160px' src='videos/" + row.filename + ".jpg'>",
                                             ],
                                             initialCaption: row.clean_title + '.jpg',
                                             initialPreviewShowDelete: false,
@@ -593,7 +593,7 @@ if (!empty($_GET['video_id'])) {
                                             showUploadedThumbs: false,
                                             maxFileCount: 1,
                                             initialPreview: [
-                                                "<img style='height:160px' src='<?php echo $global['webSiteRootURL']; ?>videos/" + row.filename + ".gif'>",
+                                                "<img style='height:160px' src='videos/" + row.filename + ".gif'>",
                                             ],
                                             initialCaption: row.clean_title + '.gif',
                                             initialPreviewShowDelete: false,
@@ -775,7 +775,7 @@ if (!empty($row)) {
                                                 search: "<?php echo __("Search"); ?>",
                                             },
                                             ajax: true,
-                                            url: "<?php echo $global['webSiteRootURL'] . "videos.json"; ?>",
+                                            url: "<?php echo  "videos.json"; ?>",
                                             formatters: {
                                                 "commands": function (column, row)
                                                 {
@@ -881,13 +881,13 @@ if (!empty($row)) {
                                                     var type, img, is_portrait;
                                                     if (row.type === "audio") {
                                                         type = "<span class='fa fa-headphones' style='font-size:14px;'></span> ";
-                                                        img = "<img class='img img-responsive img-thumbnail pull-left rotate" + row.rotation + "' src='<?php echo $global['webSiteRootURL']; ?>videos/"+row.filename+".jpg?"+Math.random()+"' style='max-height:80px; margin-right: 5px;'> ";
+                                                        img = "<img class='img img-responsive img-thumbnail pull-left rotate" + row.rotation + "' src='videos/"+row.filename+".jpg?"+Math.random()+"' style='max-height:80px; margin-right: 5px;'> ";
                                                     } else {
                                                         type = "<span class='fa fa-film' style='font-size:14px;'></span> ";
                                                         is_portrait = (row.rotation === "90" || row.rotation === "270") ? "img-portrait" : "";
-                                                        img = "<img class='img img-responsive " + is_portrait + " img-thumbnail pull-left rotate" + row.rotation + "' src='<?php echo $global['webSiteRootURL']; ?>videos/" + row.filename + ".jpg?"+Math.random()+"'  style='max-height:80px; margin-right: 5px;'> ";
+                                                        img = "<img class='img img-responsive " + is_portrait + " img-thumbnail pull-left rotate" + row.rotation + "' src='videos/" + row.filename + ".jpg?"+Math.random()+"'  style='max-height:80px; margin-right: 5px;'> ";
                                                     }
-                                                    return img + '<a href="<?php echo $global['webSiteRootURL']; ?>video/' + row.clean_title + '" class="btn btn-default btn-xs">' + type + row.title + "</a>" + tags + "" + yt;
+                                                    return img + '<a href="video/' + row.clean_title + '" class="btn btn-default btn-xs">' + type + row.title + "</a>" + tags + "" + yt;
                                                 }
 
 
@@ -1066,7 +1066,7 @@ if (!empty($row)) {
                                                 var isSuggested = $(this).hasClass('unsuggest');
                                                 modal.showPleaseWait();
                                                 $.ajax({
-                                                    url: '<?php echo $global['webSiteRootURL']; ?>objects/videoSuggest.php',
+                                                    url: 'objects/videoSuggest.php',
                                                     data: {"id": row.id, "isSuggested": isSuggested},
                                                     type: 'post',
                                                     success: function (response) {

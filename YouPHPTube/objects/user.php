@@ -229,13 +229,13 @@ class User {
         }
         if (!empty($photo) && preg_match("/videos\/userPhoto\/.*/", $photo)) {
             if (file_exists($global['systemRootPath'] . $photo)) {
-                $photo = $global['webSiteRootURL'] . $photo;
+                $photo = $photo;
             } else {
                 $photo = "";
             }
         }
         if (empty($photo)) {
-            $photo = $global['webSiteRootURL'] . "img/userSilhouette.jpg";
+            $photo = "img/userSilhouette.jpg";
         }
         return $photo;
     }
@@ -256,13 +256,13 @@ class User {
         }
         if (!empty($photo) && preg_match("/videos\/userPhoto\/.*/", $photo)) {
             if (file_exists($global['systemRootPath'] . $photo)) {
-                $photo = $global['webSiteRootURL'] . $photo;
+                $photo = $photo;
             } else {
                 $photo = "";
             }
         }
         if (empty($photo)) {
-            $photo = $global['webSiteRootURL'] . "img/background.png";
+            $photo = "img/background.png";
         }
         return $photo;
     }
@@ -844,7 +844,7 @@ class User {
         } else {
             $name = $user->getChannelName();
         }
-        $link = "{$global['webSiteRootURL']}channel/" . urlencode($name);
+        $link = "channel/" . urlencode($name);
         return $link;
     }
 
@@ -875,7 +875,7 @@ class User {
 
             $msg .= "<br><br>" . sprintf(__("You are just one click away from starting your journey with %s!"), $webSiteTitle);
             $msg .= "<br><br>" . sprintf(__("All you need to do is to verify your e-mail by clicking the link below"));
-            $msg .= "<br><br>" . " <a href='{$global['webSiteRootURL']}objects/userVerifyEmail.php?code={$code}'>" . __("Verify") . "</a>";
+            $msg .= "<br><br>" . " <a href='objects/userVerifyEmail.php?code={$code}'>" . __("Verify") . "</a>";
 
             $mail->msgHTML($msg);
             $resp = $mail->send();

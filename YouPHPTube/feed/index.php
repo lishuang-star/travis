@@ -23,14 +23,14 @@ echo'<?xml version="1.0" encoding="UTF-8"?>'?>
 <channel>
     <title>RSS YouPHPTube</title>
     <description>Rss Feed</description>
-    <link><?php echo $global['webSiteRootURL'] ;?></link>
+    <link></link>
     <sy:updatePeriod>hourly</sy:updatePeriod>
     <sy:updateFrequency>1</sy:updateFrequency>
  
  <image>
 		<title>RSS Feed</title>
-		<url><?php echo $global['webSiteRootURL'] ;?>/videos/userPhoto/logo.png</url>
-		<link><?php echo $global['webSiteRootURL'] ;?></link>
+		<url>/videos/userPhoto/logo.png</url>
+		<link></link>
 		 <width>144</width>
 		<height>40</height>
 		<description>YouPHPTube versione rss</description>
@@ -44,8 +44,7 @@ echo'<?xml version="1.0" encoding="UTF-8"?>'?>
        <item>
        <title><?php echo htmlspecialchars ($row['title']); ?></title>
        <description><?php echo htmlspecialchars ($row['description']); ?></description>
-       <link> <?php
-        echo $global['webSiteRootURL'] ;?>/video/<?php echo $row['clean_title']; ?></link>
+       <link> /video/<?php echo $row['clean_title']; ?></link>
        <pubDate><?php echo date('r', strtotime($row['created'])); ?></pubDate>
        </item>
      

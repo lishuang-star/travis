@@ -31,7 +31,7 @@ if (User::isLogged()) {
                         <h2><?php echo __("Your message has been sent!"); ?></h2>
                     </div>
                 </div>
-                <a class="btn btn-success btn-block" href="<?php echo $global['webSiteRootURL']; ?>"><?php echo __("Go back to the main page"); ?></a>
+                <a class="btn btn-success btn-block" href=""><?php echo __("Go back to the main page"); ?></a>
             </div>
             <form class="well form-horizontal" action=" " method="post"  id="contact_form">
                 <fieldset>
@@ -91,7 +91,7 @@ if (User::isLogged()) {
                         <label class="col-md-4 control-label"><?php echo __("Type the code"); ?></label>
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
-                                <span class="input-group-addon"><img src="<?php echo $global['webSiteRootURL']; ?>captcha" id="captcha"></span>
+                                <span class="input-group-addon"><img src="captcha" id="captcha"></span>
                                 <span class="input-group-addon"><span class="btn btn-xs btn-success" id="btnReloadCapcha"><span class="glyphicon glyphicon-refresh"></span></span></span>
                                 <input name="captcha" placeholder="<?php echo __("Type the code"); ?>" class="form-control" type="text" style="height: 60px;" maxlength="5" id="captchaText">
                             </div>
@@ -119,7 +119,7 @@ if (User::isLogged()) {
         $(document).ready(function () {
 
             $('#btnReloadCapcha').click(function () {
-                $('#captcha').attr('src', '<?php echo $global['webSiteRootURL']; ?>captcha?' + Math.random());
+                $('#captcha').attr('src', 'captcha?' + Math.random());
                 $('#captchaText').val('');
             });
 
@@ -127,7 +127,7 @@ if (User::isLogged()) {
                 evt.preventDefault();
                 modal.showPleaseWait();
                 $.ajax({
-                    url: '<?php echo $global['webSiteRootURL']; ?>sendEmail',
+                    url: 'sendEmail',
                     data: $('#contact_form').serializeArray(),
                     type: 'post',
                     success: function (response) {

@@ -10,8 +10,8 @@ class LoginFacebook extends PluginAbstract {
         $name = $obj->type;
         $str = "Login with {$name} OAuth Integration";
         $str .= "<br><a href='{$obj->linkToDevelopersPage}'>Get {$name} ID and Key</a>"
-        . "<br>Valid OAuth redirect URIs: <strong>{$global['webSiteRootURL']}objects/login.json.php?type=$name</strong>"
-        . "<br>For mobile a Valid OAuth redirect URIs: <strong>{$global['webSiteRootURL']}plugin/MobileManager/oauth2.php?type=$name</strong>";
+        . "<br>Valid OAuth redirect URIs: <strong>objects/login.json.php?type=$name</strong>"
+        . "<br>For mobile a Valid OAuth redirect URIs: <strong>plugin/MobileManager/oauth2.php?type=$name</strong>";
         return $str;
     }
 

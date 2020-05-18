@@ -63,9 +63,9 @@ if (strpos($_SERVER['REQUEST_URI'], "?") != false) {
     $args = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "?"), strlen($_SERVER['REQUEST_URI']));
 }
 if (strpos($_SERVER['REQUEST_URI'], "/cat/") === false) {
-    $url = $global['webSiteRootURL'] . "page/";
+    $url =  "page/";
 } else {
-    $url = $global['webSiteRootURL'] . "cat/" . $video['clean_category'] . "/page/";
+    $url =  "cat/" . $video['clean_category'] . "/page/";
 }
 ?>
 <!DOCTYPE html>

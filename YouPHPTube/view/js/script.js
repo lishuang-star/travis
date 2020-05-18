@@ -207,7 +207,7 @@ function validateEmail(email) {
 
 function subscribe(email, user_id) {
     $.ajax({
-        url: webSiteRootURL + 'subscribe.json',
+        url: 'subscribe.json',
         method: 'POST',
         data: {
             'email': email,
@@ -231,7 +231,7 @@ function subscribe(email, user_id) {
 
 function subscribeNotify(email, user_id) {
     $.ajax({
-        url: webSiteRootURL + 'objects/subscribeNotify.json.php',
+        url: 'objects/subscribeNotify.json.php',
         method: 'POST',
         data: {
             'email': email,
@@ -308,7 +308,7 @@ function copyToClipboard(text) {
 
 function addView(videos_id) {
     $.ajax({
-        url: webSiteRootURL + 'addViewCountVideo',
+        url: 'addViewCountVideo',
         method: 'POST',
         data: {
             'id': videos_id

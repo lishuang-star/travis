@@ -24,7 +24,7 @@ class FBTube extends PluginAbstract {
     
     public function getHeadCode(){
         global $global;
-        return '<link href="'.$global['webSiteRootURL'].'plugin/FBTube/view/style.css" rel="stylesheet" type="text/css"/>';
+        return '<link href="plugin/FBTube/view/style.css" rel="stylesheet" type="text/css"/>';
     }
     
     public function getTags() {

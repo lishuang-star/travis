@@ -2,7 +2,7 @@
 require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::isAdmin()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not manage categories"));
+    header("Location: ?error=" . __("You can not manage categories"));
     exit;
 }
 require_once $global['systemRootPath'] . 'objects/userGroups.php';
@@ -27,10 +27,10 @@ require_once $global['systemRootPath'] . 'objects/userGroups.php';
                 <button type="button" class="btn btn-default" id="addUserGroupsBtn">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?php echo __("New User Groups"); ?>
                 </button>
-                <a href="<?php echo $global['webSiteRootURL']; ?>mvideos" class="btn btn-success">
+                <a href="mvideos" class="btn btn-success">
                     <span class="fa fa-film" aria-hidden="true"></span> <?php echo __("Videos"); ?>
                 </a>
-                <a href="<?php echo $global['webSiteRootURL']; ?>users" class="btn btn-primary">
+                <a href="users" class="btn btn-primary">
                     <span class="fa fa-user" aria-hidden="true"></span> <?php echo __("Users"); ?>
                 </a>
                 <a href="#" class="btn btn-info pull-right" data-toggle="popover" title="<?php echo __("What is User Groups"); ?>" data-placement="bottom"  data-content="<?php echo __("This is where you can create groups and associate them with your videos and users.
@@ -84,7 +84,7 @@ This will make your videos private. Only users who are in the same group as the 
                         search: "<?php echo __("Search"); ?>",
                     },
                     ajax: true,
-                    url: "<?php echo $global['webSiteRootURL'] . "usersGroups.json"; ?>",
+                    url: "<?php echo  "usersGroups.json"; ?>",
                     formatters: {
                         "commands": function (column, row)
                         {

@@ -30,7 +30,7 @@ class LiveChat extends PluginAbstract{
     
     public function getEmptyDataObject() {
         global $global;
-        $server = parse_url($global['webSiteRootURL']);
+        $server = parse_url();
         $obj = new stdClass();
         $obj->port = "8888";
         $obj->websocket = "ws://{$server['host']}:{$obj->port}";

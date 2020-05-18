@@ -24,7 +24,7 @@ class VideoStatistic {
         $result = sqlDal::num_rows($res);
         sqlDAL::close($res);
         if (empty($result)) {
-            echo "<div class='alert alert-danger'>You need to <a href='{$global['webSiteRootURL']}update'>update your system</a></div>";
+            echo "<div class='alert alert-danger'>You need to <a href='update'>update your system</a></div>";
             return false;
         }
 

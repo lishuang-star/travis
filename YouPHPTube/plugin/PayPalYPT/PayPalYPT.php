@@ -40,7 +40,7 @@ class PayPalYPT extends PluginAbstract {
 
         require_once $global['systemRootPath'] . 'plugin/PayPalYPT/bootstrap.php';
 
-        $notify_url = "{$global['webSiteRootURL']}plugin/PayPalYPT/ipn.php";
+        $notify_url = "plugin/PayPalYPT/ipn.php";
 
         // After Step 2
         $payer = new \PayPal\Api\Payer();

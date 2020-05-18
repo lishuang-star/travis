@@ -56,9 +56,9 @@ if (!empty($videos)) {
             $logId = Video_ad::log($ad['id']);
         }
         if (($video['type'] !== "audio")&&($video['type'] !== "linkAudio")) {
-            $poster = "{$global['webSiteRootURL']}videos/{$video['filename']}.jpg";
+            $poster = "videos/{$video['filename']}.jpg";
         } else {
-            $poster = "{$global['webSiteRootURL']}view/img/audio_wave.jpg";
+            $poster = "view/img/audio_wave.jpg";
         }
         ?>
         <div class="row fbRow">
@@ -95,7 +95,7 @@ if (!empty($videos)) {
                         </video>
                         <?php if (!empty($logId)) { ?>
                             <div id="adUrl<?php echo $video['id']; ?>" class="adControl" ><?php echo __("Ad"); ?> <span class="time">0:00</span> <i class="fa fa-info-circle"></i>
-                                <a href="<?php echo $global['webSiteRootURL']; ?>adClickLog?video_ads_logs_id=<?php echo $logId; ?>&adId=<?php echo $ad['id']; ?>" target="_blank" ><?php
+                                <a href="adClickLog?video_ads_logs_id=<?php echo $logId; ?>&adId=<?php echo $ad['id']; ?>" target="_blank" ><?php
                                     $url = parse_url($ad['redirect']);
                                     echo $url['host'];
                                     ?> <i class="fas fa-external-link-alt"></i>
@@ -168,7 +168,7 @@ if (!empty($videos)) {
 
                                 Sign in to add this video to a playlist.
 
-                                <a href="<?php echo $global['webSiteRootURL']; ?>user" class="btn btn-primary">
+                                <a href="user" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-log-in"></span>
                                     <?php echo __("Login"); ?>
                                 </a>
@@ -179,7 +179,7 @@ if (!empty($videos)) {
                         <script>
                             function loadPlayLists<?php echo $video['id']; ?>() {
                                 $.ajax({
-                                    url: '<?php echo $global['webSiteRootURL']; ?>playLists.json',
+                                    url: 'playLists.json',
                                     success: function (response) {
                                         $('#searchlist<?php echo $video['id']; ?>').html('');
                                         for (var i in response) {
@@ -205,7 +205,7 @@ if (!empty($videos)) {
                                         $('.playListsIds').change(function () {
                                             modal.showPleaseWait();
                                             $.ajax({
-                                                url: '<?php echo $global['webSiteRootURL']; ?>playListAddVideo.json',
+                                                url: 'playListAddVideo.json',
                                                 method: 'POST',
                                                 data: {
                                                     'videos_id': <?php echo $video['id']; ?>,
@@ -228,7 +228,7 @@ if (!empty($videos)) {
                                 $('#addPlayList<?php echo $video['id']; ?>').click(function () {
                                     modal.showPleaseWait();
                                     $.ajax({
-                                        url: '<?php echo $global['webSiteRootURL']; ?>addNewPlayList',
+                                        url: 'addNewPlayList',
                                         method: 'POST',
                                         data: {
                                             'videos_id': <?php echo $video['id']; ?>,
@@ -281,7 +281,7 @@ if (!empty($videos)) {
             ?>
                                     $("#dislikeBtn<?php echo $video['id']; ?>, #likeBtn<?php echo $video['id']; ?>").click(function () {
                                         $.ajax({
-                                            url: '<?php echo $global['webSiteRootURL']; ?>' + ($(this).attr("id") == "dislikeBtn<?php echo $video['id']; ?>" ? "dislike" : "like"),
+                                            url: '' + ($(this).attr("id") == "dislikeBtn<?php echo $video['id']; ?>" ? "dislike" : "like"),
                                             method: 'POST',
                                             data: {'videos_id': <?php echo $video['id']; ?>},
                                             success: function (response) {
@@ -339,7 +339,7 @@ if (!empty($videos)) {
                             <div class="tab-content clearfix">
                                 <div class="tab-pane active" id="tabShare<?php echo $video['id']; ?>">
                                     <?php
-                                    $url = urlencode($global['webSiteRootURL'] . "video/" . $video['clean_title']);
+                                    $url = urlencode( "video/" . $video['clean_title']);
                                     $title = urlencode($video['title']);
                                     $facebookURL = "https://www.facebook.com/sharer.php?u={$url}&title={$title}";
                                     $twitterURL = "http://twitter.com/home?status={$title}+{$url}";
@@ -355,9 +355,9 @@ if (!empty($videos)) {
                                     <h4><span class="glyphicon glyphicon-share"></span> <?php echo __("Share Video"); ?>:</h4>
                                     <textarea class="form-control" style="min-width: 100%" rows="5"><?php
                                         if ($video['type'] == 'video') {
-                                            $code = '<iframe width="640" height="480" style="max-width: 100%;max-height: 100%;" src="' . $global['webSiteRootURL'] . 'videoEmbeded/' . $video['clean_title'] . '" frameborder="0" allowfullscreen="allowfullscreen" class="YouPHPTubeIframe"></iframe>';
+                                            $code = '<iframe width="640" height="480" style="max-width: 100%;max-height: 100%;" src="' .  'videoEmbeded/' . $video['clean_title'] . '" frameborder="0" allowfullscreen="allowfullscreen" class="YouPHPTubeIframe"></iframe>';
                                         } else {
-                                            $code = '<iframe width="350" height="40" style="max-width: 100%;max-height: 100%;" src="' . $global['webSiteRootURL'] . 'videoEmbeded/' . $video['clean_title'] . '" frameborder="0" allowfullscreen="allowfullscreen" class="YouPHPTubeIframe"></iframe>';
+                                            $code = '<iframe width="350" height="40" style="max-width: 100%;max-height: 100%;" src="' .  'videoEmbeded/' . $video['clean_title'] . '" frameborder="0" allowfullscreen="allowfullscreen" class="YouPHPTubeIframe"></iframe>';
                                         }
                                         echo htmlentities($code);
                                         ?></textarea>
@@ -367,12 +367,12 @@ if (!empty($videos)) {
                                     if (!User::isLogged()) {
                                         ?>
                                         <strong>
-                                            <a href="<?php echo $global['webSiteRootURL']; ?>user"><?php echo __("Sign in now!"); ?></a>
+                                            <a href="user"><?php echo __("Sign in now!"); ?></a>
                                         </strong>
                                         <?php
                                     } else {
                                         ?>
-                                        <form class="well form-horizontal" action="<?php echo $global['webSiteRootURL']; ?>sendEmail" method="post"  id="contact_form<?php echo $video['id']; ?>">
+                                        <form class="well form-horizontal" action="sendEmail" method="post"  id="contact_form<?php echo $video['id']; ?>">
                                             <fieldset>
                                                 <!-- Text input-->
                                                 <div class="form-group">
@@ -392,7 +392,7 @@ if (!empty($videos)) {
                                                     <div class="col-md-8 inputGroupContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                                            <textarea class="form-control" name="comment" placeholder="<?php echo __("Message"); ?>"><?php echo _("I would like to share this video with you:"); ?> <?php echo $global['webSiteRootURL']; ?>video/<?php echo $video['clean_title']; ?></textarea>
+                                                            <textarea class="form-control" name="comment" placeholder="<?php echo __("Message"); ?>"><?php echo _("I would like to share this video with you:"); ?> video/<?php echo $video['clean_title']; ?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -402,7 +402,7 @@ if (!empty($videos)) {
                                                     <label class="col-md-4 control-label"><?php echo __("Type the code"); ?></label>
                                                     <div class="col-md-8 inputGroupContainer">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><img src="<?php echo $global['webSiteRootURL']; ?>captcha" id="captcha<?php echo $video['id']; ?>"></span>
+                                                            <span class="input-group-addon"><img src="captcha" id="captcha<?php echo $video['id']; ?>"></span>
                                                             <span class="input-group-addon"><span class="btn btn-xs btn-success" id="btnReloadCapcha<?php echo $video['id']; ?>"><span class="glyphicon glyphicon-refresh"></span></span></span>
                                                             <input name="captcha" placeholder="<?php echo __("Type the code"); ?>" class="form-control" type="text" style="height: 60px;" maxlength="5" id="captchaText<?php echo $video['id']; ?>">
                                                         </div>
@@ -422,14 +422,14 @@ if (!empty($videos)) {
                                             $(document).ready(function () {
 
                                                 $('#btnReloadCapcha<?php echo $video['id']; ?>').click(function () {
-                                                    $('#captcha<?php echo $video['id']; ?>').attr('src', '<?php echo $global['webSiteRootURL']; ?>captcha?' + Math.random());
+                                                    $('#captcha<?php echo $video['id']; ?>').attr('src', 'captcha?' + Math.random());
                                                     $('#captchaText<?php echo $video['id']; ?>').val('');
                                                 });
                                                 $('#contact_form<?php echo $video['id']; ?>').submit(function (evt) {
                                                     evt.preventDefault();
                                                     modal.showPleaseWait();
                                                     $.ajax({
-                                                        url: '<?php echo $global['webSiteRootURL']; ?>sendEmail',
+                                                        url: 'sendEmail',
                                                         data: $('#contact_form<?php echo $video['id']; ?>').serializeArray(),
                                                         type: 'post',
                                                         success: function (response) {
@@ -473,7 +473,7 @@ if (!empty($videos)) {
                             }
                             ?>><span class="glyphicon glyphicon-comment"></span> <?php echo __("Comment"); ?></span>
                               <?php } else { ?>
-                            <a class="input-group-addon btn btn-success" href="<?php echo $global['webSiteRootURL']; ?>user"><span class="glyphicon glyphicon-log-in"></span> <?php echo __("You must login to be able to comment on videos"); ?></a>
+                            <a class="input-group-addon btn btn-success" href="user"><span class="glyphicon glyphicon-log-in"></span> <?php echo __("You must login to be able to comment on videos"); ?></a>
                         <?php } ?>
                     </div>
                     <div class="pull-right" id="count_message<?php echo $video['id']; ?>"></div>
@@ -509,7 +509,7 @@ if (!empty($videos)) {
                                     search: "<?php echo __("Search"); ?>",
                                 },
                                 ajax: true,
-                                url: "<?php echo $global['webSiteRootURL'] . "comments.json/" . $video['id']; ?>",
+                                url: "<?php echo  "comments.json/" . $video['id']; ?>",
                                 sorting: false,
                                 templates: {
                                     header: ""
@@ -522,7 +522,7 @@ if (!empty($videos)) {
                                 if ($('#comment<?php echo $video['id']; ?>').val().length > 5) {
                                     modal.showPleaseWait();
                                     $.ajax({
-                                        url: '<?php echo $global['webSiteRootURL']; ?>saveComment',
+                                        url: 'saveComment',
                                         method: 'POST',
                                         data: {'comment': $('#comment<?php echo $video['id']; ?>').val(), 'video': "<?php echo $video['id']; ?>"},
                                         success: function (response) {
@@ -624,7 +624,7 @@ if (!empty($videos)) {
                                 $('#adButton<?php echo $video['id']; ?>').click(function () {
                                     console.log("Change Video");
                                     fullDuration<?php echo $video['id']; ?> = strToSeconds('<?php echo $video['duration']; ?>');
-                                    changeVideoSrc(player<?php echo $video['id']; ?>, "<?php echo $global['webSiteRootURL']; ?>videos/<?php echo $video['filename']; ?>");
+                                    changeVideoSrc(player<?php echo $video['id']; ?>, "videos/<?php echo $video['filename']; ?>");
                                                 $('#mainVideo<?php echo $video['id']; ?>').parent().removeClass("ad");
                                                 return false;
                                             });

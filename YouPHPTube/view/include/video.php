@@ -50,11 +50,11 @@ if (YouPHPTubePlugin::isEnabled("0e225f8e-15e2-43d4-8ff7-0cb07c2a2b3b")) {
 	$style = VideoLogoOverlay::getStyle();
 	$url = VideoLogoOverlay::getLink(); ?>
                     <div style="<?php echo $style; ?>">
-                        <a href="<?php echo $url; ?>"> <img src="<?php echo $global['webSiteRootURL']; ?>videos/logoOverlay.png"></a>
+                        <a href="<?php echo $url; ?>"> <img src="videos/logoOverlay.png"></a>
 				    </div>
                     <?php } if (!empty($logId)) { ?>
                 <div id="adUrl" class="adControl"><?php echo __("Ad"); ?> <span class="time">0:00</span> <i class="fa fa-info-circle"></i>
-                    <a href="<?php echo $global['webSiteRootURL']; ?>adClickLog?video_ads_logs_id=<?php echo $logId; ?>&adId=<?php echo $ad['id']; ?>" target="_blank"><?php $url = parse_url($ad['redirect']); echo $url['host'];?> 
+                    <a href="adClickLog?video_ads_logs_id=<?php echo $logId; ?>&adId=<?php echo $ad['id']; ?>" target="_blank"><?php $url = parse_url($ad['redirect']); echo $url['host'];?> 
                         <i class="fas fa-external-link-alt"></i>
                     </a>
 				</div>
@@ -65,7 +65,7 @@ if (YouPHPTubePlugin::isEnabled("0e225f8e-15e2-43d4-8ff7-0cb07c2a2b3b")) {
 		</div>
             <?php if ($config->getAllow_download()) { ?>
                 <?php if ($playNowVideo['type']=="video") { ?>
-                <a class="btn btn-xs btn-default pull-right " role="button" href="<?php echo $global['webSiteRootURL']."videos/".$playNowVideo['filename']; ?>.mp4" download="<?php echo $playNowVideo['title'].".mp4"; ?>" >
+                <a class="btn btn-xs btn-default pull-right " role="button" href="<?php "videos/".$playNowVideo['filename']; ?>.mp4" download="<?php echo $playNowVideo['title'].".mp4"; ?>" >
                     <i class="fa fa-download"></i>
                     <?php echo __("Download video"); ?>
                 </a>

@@ -13,28 +13,28 @@ $theme = $config->getTheme();
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="<?php echo $custom; ?>">
-<link rel="icon" href="<?php echo $global['webSiteRootURL']; ?>img/favicon.png">
-<link href="<?php echo $global['webSiteRootURL']; ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo $global['webSiteRootURL']; ?>css/font-awesome-5.0.10/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo $global['webSiteRootURL']; ?>css/flagstrap/css/flags.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" href="img/favicon.png">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="css/font-awesome-5.0.10/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" type="text/css"/>
+<link href="css/flagstrap/css/flags.css" rel="stylesheet" type="text/css"/>
 <?php
     $cssFiles = array();
-    //$cssFiles[] = "{$global['webSiteRootURL']}bootstrap/css/bootstrap.css";
+    //$cssFiles[] = "bootstrap/css/bootstrap.css";
     $cssFiles[] = "view/js/seetalert/sweetalert.css";
     $cssFiles[] = "view/bootstrap/bootstrapSelectPicker/css/bootstrap-select.min.css";
-    //$cssFiles[] = "{$global['webSiteRootURL']}css/flagstrap/css/flags.css";
+    //$cssFiles[] = "css/flagstrap/css/flags.css";
     $cssFiles[] = "view/js/bootgrid/jquery.bootgrid.css";
     $cssFiles[] = "view/css/custom/{$theme}.css";
     $cssFiles[] = "view/css/main.css";
-    //$cssFiles[] = "{$global['webSiteRootURL']}css/font-awesome-4.7.0/css/font-awesome.min.css";
+    //$cssFiles[] = "css/font-awesome-4.7.0/css/font-awesome.min.css";
     $cssFiles[] = "view/js/bootstrap-toggle/bootstrap-toggle.min.css";
     $cssFiles = array_merge($cssFiles,YouPHPTubePlugin::getCSSFiles());
     $cssURL =  combineFiles($cssFiles, "css");
 ?>
 <link href="<?php echo $cssURL; ?>" rel="stylesheet" type="text/css"/>
-<script src="<?php echo $global['webSiteRootURL']; ?>js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 <script>
-    var webSiteRootURL = '<?php echo $global['webSiteRootURL']; ?>';
+    var webSiteRootURL = '';
 </script>
 <?php
 if (!$config->getDisable_analytics()) {

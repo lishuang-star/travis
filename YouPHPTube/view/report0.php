@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?php echo $global['webSiteRootURL']; ?>mvideos">
+            <a href="mvideos">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo __("View Details"); ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?php echo $global['webSiteRootURL']; ?>mvideos">
+            <a href="mvideos">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo __("View Details"); ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?php echo $global['webSiteRootURL']; ?>users">
+            <a href="users">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo __("View Details"); ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?php echo $global['webSiteRootURL']; ?>subscribes">
+            <a href="subscribes">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo __("View Details"); ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?php echo $global['webSiteRootURL']; ?>comments">
+            <a href="comments">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo __("View Details"); ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -125,7 +125,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?php echo $global['webSiteRootURL']; ?>mvideos">
+            <a href="mvideos">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo __("View Details"); ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -147,7 +147,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?php echo $global['webSiteRootURL']; ?>mvideos">
+            <a href="mvideos">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo __("View Details"); ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -169,7 +169,7 @@
                     </div>
                 </div>
             </div>
-            <a href="<?php echo $global['webSiteRootURL']; ?>mvideos">
+            <a href="mvideos">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo __("View Details"); ?></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

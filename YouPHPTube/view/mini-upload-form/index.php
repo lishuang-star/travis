@@ -4,7 +4,7 @@ require_once '../../objects/functions.php';
 
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::canUpload()) {
-    header("location: {$global['webSiteRootURL']}user");
+    header("location: user");
     exit;
 }
 ?>

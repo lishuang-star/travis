@@ -18,7 +18,7 @@ $balance = $plugin->getBalance(User::getId());
             if($obj->enableAutomaticAddFundsPage){
             ?>
             <li class="dropdown-submenu">
-                <a tabindex="-1" href="<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/addFunds.php">
+                <a tabindex="-1" href="plugin/YPTWallet/view/addFunds.php">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     <?php echo __("Add Funds"); ?>
                 </a>
@@ -28,7 +28,7 @@ $balance = $plugin->getBalance(User::getId());
             if($obj->enableManualAddFundsPage){
             ?>
             <li class="dropdown-submenu">
-                <a tabindex="-1" href="<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/manualAddFunds.php">
+                <a tabindex="-1" href="plugin/YPTWallet/view/manualAddFunds.php">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     <?php echo $obj->manualAddFundsMenuTitle; ?>
                 </a>
@@ -38,7 +38,7 @@ $balance = $plugin->getBalance(User::getId());
             if($obj->enableManualWithdrawFundsPage){
             ?>
             <li class="dropdown-submenu">
-                <a tabindex="-1" href="<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/manualWithdrawFunds.php">
+                <a tabindex="-1" href="plugin/YPTWallet/view/manualWithdrawFunds.php">
                     <i class="far fa-money-bill-alt" aria-hidden="true"></i>
                     <?php echo $obj->manualWithdrawFundsMenuTitle; ?>
                 </a>
@@ -47,19 +47,19 @@ $balance = $plugin->getBalance(User::getId());
             }
             ?>
             <li class="dropdown-submenu">
-                <a tabindex="-1" href="<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/transferFunds.php">
+                <a tabindex="-1" href="plugin/YPTWallet/view/transferFunds.php">
                     <i class="fas fa-exchange-alt" aria-hidden="true"></i>
                     <?php echo __("Transfer Funds"); ?>
                 </a>
             </li> 
             <li class="dropdown-submenu">
-                <a tabindex="-1" href="<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/history.php">
+                <a tabindex="-1" href="plugin/YPTWallet/view/history.php">
                     <i class="fa fa-history" aria-hidden="true"></i>
                     <?php echo __("History"); ?>
                 </a>
             </li> 
             <li class="dropdown-submenu">
-                <a tabindex="-1" href="<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/configuration.php">
+                <a tabindex="-1" href="plugin/YPTWallet/view/configuration.php">
                     <i class="fas fa-cog" aria-hidden="true"></i>
                     <?php echo __("Configuration"); ?>
                 </a>
@@ -70,13 +70,13 @@ $balance = $plugin->getBalance(User::getId());
                 ?>
                 <li class="dropdown-header">Admin Menu</li>
                 <li class="dropdown-submenu">
-                    <a tabindex="-1" href="<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/adminManageWallets.php">
+                    <a tabindex="-1" href="plugin/YPTWallet/view/adminManageWallets.php">
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <?php echo __("Manage Wallets"); ?>
                     </a>
                 </li> 
                 <li class="dropdown-submenu">
-                    <a tabindex="-1" href="<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/pendingRequests.php">
+                    <a tabindex="-1" href="plugin/YPTWallet/view/pendingRequests.php">
                         <i class="far fa-clock" aria-hidden="true"></i>
                         <?php echo __("Pending Requests"); ?> <span class="badge"><?php echo $total; ?></span>
                     </a>

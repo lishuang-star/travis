@@ -1,4 +1,4 @@
-<link href="<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/live.css" rel="stylesheet" type="text/css"/>
+<link href="plugin/Live/view/live.css" rel="stylesheet" type="text/css"/>
 <div class="row main-video">
     <div class="col-xs-12 col-sm-12 col-lg-2"></div>
     <div class="col-xs-12 col-sm-12 col-lg-8">
@@ -12,7 +12,7 @@
                 </button>
             </div>
             <div id="main-video" class="embed-responsive embed-responsive-16by9">
-                <video poster="<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/OnAir.jpg" controls 
+                <video poster="plugin/Live/view/OnAir.jpg" controls 
                        class="embed-responsive-item video-js vjs-default-skin vjs-big-play-centered" 
                        id="mainVideo" data-setup='{ "aspectRatio": "16:9",  "techorder" : ["flash", "html5"] }'>
                     <source src="<?php echo $p->getPlayerServer(); ?>/<?php echo $uuid; ?>/index.m3u8" type='application/x-mpegURL'>
@@ -50,7 +50,7 @@
             var err = this.error();
             if (err && err.code) {
                 $('.vjs-error-display').hide();
-                $('#mainVideo').find('.vjs-poster').css({'background-image': 'url(<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/Offline.jpg)'});
+                $('#mainVideo').find('.vjs-poster').css({'background-image': 'url(plugin/Live/view/Offline.jpg)'});
 <?php
 if (!empty($html)) {
     echo "showCountDown();";

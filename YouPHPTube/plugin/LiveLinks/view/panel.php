@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<?php echo $global['webSiteRootURL']; ?>view/css/DataTables/datatables.min.css"/> 
-<link href="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="view/css/DataTables/datatables.min.css"/> 
+<link href="js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
 <div class="panel panel-default">
     <div class="panel-heading"><i class="fas fa-link"></i> <?php echo __("Add an external Live Link"); ?></div>
     <div class="panel-body"> 
@@ -94,14 +94,14 @@
         </button>
     </div>    
 </div>
-<script type="text/javascript" src="<?php echo $global['webSiteRootURL']; ?>view/css/DataTables/datatables.min.js"></script>
-<script src="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="view/css/DataTables/datatables.min.js"></script>
+<script src="js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
 
         var tableLinks = $('#exampleLinks').DataTable({
-            "ajax": "<?php echo $global['webSiteRootURL']; ?>plugin/LiveLinks/view/liveLinks.json.php",
+            "ajax": "plugin/LiveLinks/view/liveLinks.json.php",
             "columns": [
                 {"data": "title"},
                 {"data": "start_date"},
@@ -131,7 +131,7 @@
             e.preventDefault();
             modal.showPleaseWait();
             $.ajax({
-                url: '<?php echo $global['webSiteRootURL']; ?>plugin/LiveLinks/view/addLiveLink.php',
+                url: 'plugin/LiveLinks/view/addLiveLink.php',
                 data: $('#liveLinksForm').serialize(),
                 type: 'post',
                 success: function (response) {
@@ -164,7 +164,7 @@
                         modal.showPleaseWait();
                         $.ajax({
                             type: "POST",
-                            url: "<?php echo $global['webSiteRootURL']; ?>plugin/LiveLinks/view/delete_liveLink.json.php",
+                            url: "plugin/LiveLinks/view/delete_liveLink.json.php",
                             data: data
 
                         }).done(function (resposta) {

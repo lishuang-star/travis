@@ -45,15 +45,15 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>        
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <link href="js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
         <script>
             /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
             $.widget.bridge('uibutton', $.ui.button);
             $.widget.bridge('uitooltip', $.ui.tooltip);
         </script>
         <!-- users_id = <?php echo $user_id; ?> -->
-        <link href="<?php echo $global['webSiteRootURL']; ?>/plugin/Gallery/style.css" rel="stylesheet" type="text/css"/>
+        <link href="/plugin/Gallery/style.css" rel="stylesheet" type="text/css"/>
         <style>
             .galleryVideo {
                 padding-bottom: 10px;
@@ -68,7 +68,7 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
 
         <div class="container">
             <div class="bgWhite list-group-item gallery clear clearfix" >
-                <div class="row bg-info profileBg" style="background-image: url('<?php echo $global['webSiteRootURL'], $user->getBackgroundURL(); ?>')">
+                <div class="row bg-info profileBg" style="background-image: url('<?php  $user->getBackgroundURL(); ?>')">
                     <img src="<?php echo User::getPhoto($user_id); ?>" alt="<?php echo $user->_getName(); ?>" class="img img-responsive img-thumbnail" style="max-width: 100px;"/>
                 </div>
                 <div class="col-md-12">
@@ -91,7 +91,7 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
                             <?php
                             if ($isMyChannel) {
                                 ?>
-                                <a href="<?php echo $global['webSiteRootURL']; ?>mvideos" class="btn btn-success ">
+                                <a href="mvideos" class="btn btn-success ">
                                     <span class="glyphicon glyphicon-film"></span>
                                     <span class="glyphicon glyphicon-headphones"></span>
                                     <?php echo __("My videos"); ?>
@@ -138,7 +138,7 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
                             <div class="panel-heading">
 
                                 <strong style="font-size: 1em;" class="playlistName"><?php echo $playlist['name']; ?> </strong>
-                                <a href="<?php echo $global['webSiteRootURL']; ?>playlist/<?php echo $playlist['id']; ?>" class="btn btn-xs btn-default playAll"><span class="fa fa-play"></span> <?php echo __("Play All"); ?></a>
+                                <a href="playlist/<?php echo $playlist['id']; ?>" class="btn btn-xs btn-default playAll"><span class="fa fa-play"></span> <?php echo __("Play All"); ?></a>
                                 <?php
                                 if ($isMyChannel) {
                                     ?>     
@@ -149,7 +149,7 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
                                                     modal.showPleaseWait();
                                                     var list = $(this).sortable("toArray");
                                                     $.ajax({
-                                                        url: '<?php echo $global['webSiteRootURL']; ?>sortPlaylist',
+                                                        url: 'sortPlaylist',
                                                         data: {
                                                             "list": list,
                                                             "playlist_id": <?php echo $playlist['id']; ?>
@@ -186,11 +186,11 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
                                         $poster = $images->thumbsJpg;
                                         ?>
                                         <li class="col-lg-2 col-md-4 col-sm-4 col-xs-6 galleryVideo " id="<?php echo $value['id']; ?>">
-                                            <a class="aspectRatio16_9" href="<?php echo $global['webSiteRootURL']; ?>video/<?php echo $value['clean_title']; ?>" title="<?php echo $value['title']; ?>" style="margin: 0;" >
+                                            <a class="aspectRatio16_9" href="video/<?php echo $value['clean_title']; ?>" title="<?php echo $value['title']; ?>" style="margin: 0;" >
                                                 <img src="<?php echo $poster; ?>" alt="<?php echo $value['title']; ?>" class="img img-responsive <?php echo $img_portrait; ?>  rotate<?php echo $value['rotation']; ?>" />
                                                 <span class="duration"><?php echo Video::getCleanDuration($value['duration']); ?></span>
                                             </a>
-                                            <a href="<?php echo $global['webSiteRootURL']; ?>video/<?php echo $value['clean_title']; ?>" title="<?php echo $value['title']; ?>">
+                                            <a href="video/<?php echo $value['clean_title']; ?>" title="<?php echo $value['title']; ?>">
                                                 <h2><?php echo $value['title']; ?></h2>
                                             </a>
                                             <?php
@@ -237,7 +237,7 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
                                                 if (Video::canEdit($value['id'])) {
                                                     ?>
                                                     <div>
-                                                        <a href="<?php echo $global['webSiteRootURL']; ?>mvideos?video_id=<?php echo $value['id']; ?>" class="text-primary"><i class="fa fa-edit"></i> <?php echo __("Edit Video"); ?></a>
+                                                        <a href="mvideos?video_id=<?php echo $value['id']; ?>" class="text-primary"><i class="fa fa-edit"></i> <?php echo __("Edit Video"); ?></a>
                                                     </div>
                                                     <?php
                                                 }
@@ -279,7 +279,7 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
                                 var playlist_id = $(currentObject).attr('playlist_id');
                                 var video_id = $(currentObject).attr('video_id');
                                 $.ajax({
-                                    url: '<?php echo $global['webSiteRootURL']; ?>removeVideoFromPlaylist',
+                                    url: 'removeVideoFromPlaylist',
                                     data: {
                                         "playlist_id": playlist_id,
                                         "video_id": video_id
@@ -309,7 +309,7 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
                                 var playlist_id = $(currentObject).attr('playlist_id');
                                 console.log(playlist_id);
                                 $.ajax({
-                                    url: '<?php echo $global['webSiteRootURL']; ?>removePlaylist',
+                                    url: 'removePlaylist',
                                     data: {
                                         "playlist_id": playlist_id
                                     },
@@ -346,7 +346,7 @@ $playlists = PlayList::getAllFromUser($user_id, $publicOnly);
                                 var playlist_id = $(currentObject).attr('playlist_id');
                                 console.log(playlist_id);
                                 $.ajax({
-                                    url: '<?php echo $global['webSiteRootURL']; ?>renamePlaylist',
+                                    url: 'renamePlaylist',
                                     data: {
                                         "playlist_id": playlist_id,
                                         "name": inputValue

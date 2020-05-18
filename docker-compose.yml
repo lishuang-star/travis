@@ -28,7 +28,7 @@ services:
      volumes:
        - /etc/localtime:/etc/localtime:ro
        - /srv/youphptube-encoder/:/var/www/html/videos
-
+  
   mysql:
      image: mysql:5.7
      restart: always

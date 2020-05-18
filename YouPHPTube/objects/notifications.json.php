@@ -24,7 +24,7 @@ if(!empty($_POST['user']) && !empty($_POST['pass'])){
 
 $obj = new stdClass();
 if(YouPHPTubePlugin::loadPluginIfEnabled("Live")){
-    $liveStats = url_get_contents("{$global['webSiteRootURL']}plugin/Live/stats.json.php");
+    $liveStats = url_get_contents("plugin/Live/stats.json.php");
     $obj->live = json_decode($liveStats);
 }
 

@@ -16,8 +16,8 @@ require_once $global['systemRootPath'] . 'objects/category.php';
 require_once $global['systemRootPath'] . 'objects/subscribe.php';
 require_once $global['systemRootPath'] . 'objects/functions.php';
 
-$img = "{$global['webSiteRootURL']}img/notfound.jpg";
-$poster = "{$global['webSiteRootURL']}img/notfound.jpg";
+$img = "img/notfound.jpg";
+$poster = "img/notfound.jpg";
 $imgw = 1280;
 $imgh = 720;
 
@@ -82,7 +82,7 @@ if (!empty($_GET['playlist_id'])) {
     $video = Video::getVideo($videosPlayList[$playlist_index]['id']);
     if (!empty($videosPlayList[$playlist_index + 1])) {
         $autoPlayVideo = Video::getVideo($videosPlayList[$playlist_index + 1]['id']);
-        $autoPlayVideo['url'] = $global['webSiteRootURL'] . "playlist/{$playlist_id}/" . ($playlist_index + 1);
+        $autoPlayVideo['url'] = "playlist/{$playlist_id}/" . ($playlist_index + 1);
     }
 
     unset($_GET['playlist_id']);
@@ -119,7 +119,7 @@ if (!empty($_GET['playlist_id'])) {
         $name2 = User::getNameIdentificationById($autoPlayVideo['users_id']);
         $autoPlayVideo['creator'] = '<div class="pull-left"><img src="' . User::getPhoto($autoPlayVideo['users_id']) . '" alt="" class="img img-responsive img-circle zoom" style="max-width: 40px;"/></div><div class="commentDetails" style="margin-left:45px;"><div class="commenterName"><strong>' . $name2 . '</strong> <small>' . humanTiming(strtotime($autoPlayVideo['videoCreation'])) . '</small></div></div>';
         $autoPlayVideo['tags'] = Video::getTags($autoPlayVideo['id']);
-        $autoPlayVideo['url'] = $global['webSiteRootURL'] . $catLink . "video/" . $autoPlayVideo['clean_title'];
+        $autoPlayVideo['url'] = $catLink . "video/" . $autoPlayVideo['clean_title'];
     }
 }
 
@@ -136,9 +136,9 @@ if (!empty($video)) {
 }
 
 if ($video['type'] == "video") {
-    $poster = "{$global['webSiteRootURL']}videos/{$video['filename']}.jpg";
+    $poster = "videos/{$video['filename']}.jpg";
 } else {
-    $poster = "{$global['webSiteRootURL']}view/img/audio_wave.jpg";
+    $poster = "view/img/audio_wave.jpg";
 }
 
 if (!empty($video)) {
@@ -149,7 +149,7 @@ if (!empty($video)) {
         $imgw = $data[0];
         $imgh = $data[1];
     } else {
-        $img = "{$global['webSiteRootURL']}view/img/audio_wave.jpg";
+        $img = "view/img/audio_wave.jpg";
     }
 }
 
@@ -162,14 +162,14 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
         <title><?php echo $video['title']; ?> - <?php echo $config->getWebSiteTitle(); ?></title>
         <?php include $global['systemRootPath'] . 'view/include/head.php'; ?>
         <link rel="image_src" href="<?php echo $img; ?>" />
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/videojs-contrib-ads/videojs.ads.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>css/player.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>css/social.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/videojs-contrib-ads/videojs.ads.css" rel="stylesheet" type="text/css"/>
+        <link href="css/player.css" rel="stylesheet" type="text/css"/>
+        <link href="css/social.css" rel="stylesheet" type="text/css"/>
+        <link href="js/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
         <meta property="fb:app_id"             content="774958212660408" />
-        <meta property="og:url"                content="<?php echo $global['webSiteRootURL'], $catLink, "video/", $video['clean_title']; ?>" />
+        <meta property="og:url"                content="<?php echo $catLink, "video/", $video['clean_title']; ?>" />
         <meta property="og:type"               content="video.other" />
         <meta property="og:title"              content="<?php echo str_replace('"', '', $video['title']); ?> - <?php echo $config->getWebSiteTitle(); ?>" />
         <meta property="og:description"        content="<?php echo str_replace('"', '', $video['title']); ?>" />
@@ -235,7 +235,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                                         echo $video['title'];
                                         if (Video::canEdit($video['id'])) {
                                             ?>
-                                            <a href="<?php echo $global['webSiteRootURL']; ?>mvideos?video_id=<?php echo $video['id']; ?>" class="btn btn-primary btn-xs" data-toggle="tooltip" title="<?php echo __("Edit Video"); ?>"><i class="fa fa-edit"></i> <?php echo __("Edit Video"); ?></a>
+                                            <a href="mvideos?video_id=<?php echo $video['id']; ?>" class="btn btn-primary btn-xs" data-toggle="tooltip" title="<?php echo __("Edit Video"); ?>"><i class="fa fa-edit"></i> <?php echo __("Edit Video"); ?></a>
                                         <?php } ?>
                                         <small>
                                             <?php
@@ -297,7 +297,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
 
                                                 Sign in to add this video to a playlist.
 
-                                                <a href="<?php echo $global['webSiteRootURL']; ?>user" class="btn btn-primary">
+                                                <a href="user" class="btn btn-primary">
                                                     <span class="glyphicon glyphicon-log-in"></span>
                                                     <?php echo __("Login"); ?>
                                                 </a>
@@ -306,7 +306,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                                         <script>
                                             function loadPlayLists() {
                                                 $.ajax({
-                                                    url: '<?php echo $global['webSiteRootURL']; ?>playLists.json',
+                                                    url: 'playLists.json',
                                                     success: function (response) {
                                                         $('#searchlist').html('');
                                                         for (var i in response) {
@@ -337,7 +337,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                                                         $('.playListsIds').change(function () {
                                                             modal.showPleaseWait();
                                                             $.ajax({
-                                                                url: '<?php echo $global['webSiteRootURL']; ?>playListAddVideo.json',
+                                                                url: 'playListAddVideo.json',
                                                                 method: 'POST',
                                                                 data: {
                                                                     'videos_id': <?php echo $video['id']; ?>,
@@ -359,7 +359,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                                                 $('#addPlayList').click(function () {
                                                     modal.showPleaseWait();
                                                     $.ajax({
-                                                        url: '<?php echo $global['webSiteRootURL']; ?>addNewPlayList',
+                                                        url: 'addNewPlayList',
                                                         method: 'POST',
                                                         data: {
                                                             'videos_id': <?php echo $video['id']; ?>,
@@ -398,7 +398,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
     <?php if (User::isLogged()) { ?>
                                                 $("#dislikeBtn, #likeBtn").click(function () {
                                                     $.ajax({
-                                                        url: '<?php echo $global['webSiteRootURL']; ?>' + ($(this).attr("id") == "dislikeBtn" ? "dislike" : "like"),
+                                                        url: '' + ($(this).attr("id") == "dislikeBtn" ? "dislike" : "like"),
                                                         method: 'POST',
                                                         data: {'videos_id': <?php echo $video['id']; ?>},
                                                         success: function (response) {
@@ -466,7 +466,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                                         <div class="tab-content clearfix">
                                             <div class="tab-pane active" id="tabShare">
                                                 <?php
-                                                $url = urlencode($global['webSiteRootURL'] . "{$catLink}video/" . $video['clean_title']);
+                                                $url = urlencode("{$catLink}video/" . $video['clean_title']);
                                                 $title = urlencode($video['title']);
                                                 include $global['systemRootPath'] . 'view/include/social.php';
                                                 ?>
@@ -486,10 +486,10 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                                             <div class="tab-pane" id="tabEmail">
                                                 <?php if (!User::isLogged()) { ?>
                                                     <strong>
-                                                        <a href="<?php echo $global['webSiteRootURL']; ?>user"><?php echo __("Sign in now!"); ?></a>
+                                                        <a href="user"><?php echo __("Sign in now!"); ?></a>
                                                     </strong>
                                                 <?php } else { ?>
-                                                    <form class="well form-horizontal" action="<?php echo $global['webSiteRootURL']; ?>sendEmail" method="post"  id="contact_form">
+                                                    <form class="well form-horizontal" action="sendEmail" method="post"  id="contact_form">
                                                         <fieldset>
                                                             <!-- Text input-->
                                                             <div class="form-group">
@@ -517,7 +517,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                                                                 <label class="col-md-4 control-label"><?php echo __("Type the code"); ?></label>
                                                                 <div class="col-md-8 inputGroupContainer">
                                                                     <div class="input-group">
-                                                                        <span class="input-group-addon"><img src="<?php echo $global['webSiteRootURL']; ?>captcha" id="captcha"></span>
+                                                                        <span class="input-group-addon"><img src="captcha" id="captcha"></span>
                                                                         <span class="input-group-addon"><span class="btn btn-xs btn-success" id="btnReloadCapcha"><span class="glyphicon glyphicon-refresh"></span></span></span>
                                                                         <input name="captcha" placeholder="<?php echo __("Type the code"); ?>" class="form-control" type="text" style="height: 60px;" maxlength="5" id="captchaText">
                                                                     </div>
@@ -536,14 +536,14 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                                                     <script>
                                                         $(document).ready(function () {
                                                             $('#btnReloadCapcha').click(function () {
-                                                                $('#captcha').attr('src', '<?php echo $global['webSiteRootURL']; ?>captcha?' + Math.random());
+                                                                $('#captcha').attr('src', 'captcha?' + Math.random());
                                                                 $('#captchaText').val('');
                                                             });
                                                             $('#contact_form').submit(function (evt) {
                                                                 evt.preventDefault();
                                                                 modal.showPleaseWait();
                                                                 $.ajax({
-                                                                    url: '<?php echo $global['webSiteRootURL']; ?>sendEmail',
+                                                                    url: 'sendEmail',
                                                                     data: $('#contact_form').serializeArray(),
                                                                     type: 'post',
                                                                     success: function (response) {
@@ -586,7 +586,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-lg-12">
                                     <div class="col-xs-4 col-sm-2 col-lg-2 text-right"><strong><?php echo __("Category"); ?>:</strong></div>
-                                    <div class="col-xs-8 col-sm-10 col-lg-10"><a class="btn btn-xs btn-default"  href="<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $video['clean_category']; ?>"><span class="<?php echo $video['iconClass']; ?>"></span> <?php echo $video['category']; ?></a></div>
+                                    <div class="col-xs-8 col-sm-10 col-lg-10"><a class="btn btn-xs btn-default"  href="cat/<?php echo $video['clean_category']; ?>"><span class="<?php echo $video['iconClass']; ?>"></span> <?php echo $video['category']; ?></a></div>
                                     <div class="col-xs-4 col-sm-2 col-lg-2 text-right"><strong><?php echo __("Description"); ?>:</strong></div>
                                     <div class="col-xs-8 col-sm-10 col-lg-10" itemprop="description"><?php echo nl2br(textToLink(htmlentities($video['description']))); ?></div>
                                 </div>
@@ -643,18 +643,18 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                                 </span>
                             </div>
                             <div class="col-lg-12 col-sm-12 col-xs-12 bottom-border autoPlayVideo" itemscope itemtype="http://schema.org/VideoObject" style="display: none;" >
-                                <a href="<?php echo $global['webSiteRootURL'], $catLink; ?>video/<?php echo $autoPlayVideo['clean_title']; ?>" title="<?php echo str_replace('"', '', $autoPlayVideo['title']); ?>" class="videoLink h6">
+                                <a href="<?php echo $catLink; ?>video/<?php echo $autoPlayVideo['clean_title']; ?>" title="<?php echo str_replace('"', '', $autoPlayVideo['title']); ?>" class="videoLink h6">
                                     <div class="col-lg-5 col-sm-5 col-xs-5 nopadding thumbsImage">
                                         <?php
                                         $imgGif = "";
                                         if (file_exists("{$global['systemRootPath']}videos/{$autoPlayVideo['filename']}.gif")) {
-                                            $imgGif = "{$global['webSiteRootURL']}videos/{$autoPlayVideo['filename']}.gif";
+                                            $imgGif = "videos/{$autoPlayVideo['filename']}.gif";
                                         }
                                         if (($autoPlayVideo['type'] !== "audio")&&($autoPlayVideo['type'] !== "linkAudio")) {
-                                            $img = "{$global['webSiteRootURL']}videos/{$autoPlayVideo['filename']}.jpg";
+                                            $img = "videos/{$autoPlayVideo['filename']}.jpg";
                                             $img_portrait = ($autoPlayVideo['rotation'] === "90" || $autoPlayVideo['rotation'] === "270") ? "img-portrait" : "";
                                         } else {
-                                            $img = "{$global['webSiteRootURL']}view/img/audio_wave.jpg";
+                                            $img = "view/img/audio_wave.jpg";
                                             $img_portrait = "";
                                         }
                                         ?>
@@ -747,7 +747,7 @@ $advancedCustom = YouPHPTubePlugin::getObjectDataIfEnabled("CustomizeAdvanced");
                 </div>
             <?php } ?>
         </div>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
         <script>
                         /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
                         $.widget.bridge('uibutton', $.ui.button);

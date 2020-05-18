@@ -5,7 +5,7 @@ if (empty($global['systemRootPath'])) {
 require_once $global['systemRootPath'] . 'videos/configuration.php';
 require_once $global['systemRootPath'] . 'plugin/YPTWallet/Objects/Wallet_log.php';
 if (!User::isLogged()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not do this"));
+    header("Location: ?error=" . __("You can not do this"));
     exit;
 }
 

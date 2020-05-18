@@ -5,7 +5,6 @@ require_once $global['systemRootPath'] . 'objects/video.php';
 $obj = new stdClass();
 
 $obj->title = $config->getWebSiteTitle();
-$obj->url = $global['webSiteRootURL'];
 $obj->language = $config->getLanguage();
 $obj->version = $config->getVersion();
 $obj->videos = array();

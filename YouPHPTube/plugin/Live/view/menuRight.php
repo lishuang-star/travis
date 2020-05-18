@@ -1,4 +1,4 @@
-<link href="<?php echo $global['webSiteRootURL']; ?>css/font-awesome-animation.min.css" rel="stylesheet" type="text/css"/>
+<link href="css/font-awesome-animation.min.css" rel="stylesheet" type="text/css"/>
 <style>
     .liveVideo{
         position: relative;
@@ -14,7 +14,7 @@
 if (User::canStream()) {
     ?>
     <li>
-        <a href="<?php echo $global['webSiteRootURL']; ?>plugin/Live"  class="btn btn-danger navbar-btn" data-toggle="tooltip" title="<?php echo __("Broadcast a Live Streaming"); ?>" data-placement="bottom" >
+        <a href="plugin/Live"  class="btn btn-danger navbar-btn" data-toggle="tooltip" title="<?php echo __("Broadcast a Live Streaming"); ?>" data-placement="bottom" >
             <span class="fa fa-circle"></span> <?php echo $buttonTitle; ?>
         </a>
     </li>
@@ -30,7 +30,7 @@ if (User::canStream()) {
     <ul class="dropdown-menu dropdown-menu-right notify-drop" id="availableLiveStream"></ul>
 </li>
 <li class="hidden liveModel"  style="margin-right: 0;">
-    <a href="<?php echo $global['webSiteRootURL']; ?>plugin/Live/" class='liveLink '>
+    <a href="plugin/Live/" class='liveLink '>
         <div class="pull-left">
             <img src="" class="img img-circle img-responsive" style="max-width: 38px;">
         </div>
@@ -115,9 +115,9 @@ if (User::canStream()) {
             $liveLi.find('.liveUsersViews').text(views);
             $liveLi.find('.liveUsersOnline').addClass("liveUsersOnline_" + key);
             $liveLi.find('.liveUsersViews').addClass("liveUsersViews_" + key);
-            $liveLi.find('.thumbsJPG').attr("src", "<?php echo $global['webSiteRootURL']; ?>plugin/Live/getImage.php?u=" + user + "&format=jpg");
+            $liveLi.find('.thumbsJPG').attr("src", "plugin/Live/getImage.php?u=" + user + "&format=jpg");
             if (!disableGif) {
-                $liveLi.find('.thumbsGIF').attr("src", "<?php echo $global['webSiteRootURL']; ?>plugin/Live/getImage.php?u=" + user + "&format=gif");
+                $liveLi.find('.thumbsGIF').attr("src", "plugin/Live/getImage.php?u=" + user + "&format=gif");
             } else {
                 $liveLi.find('.thumbsGIF').remove();
             }
@@ -129,7 +129,7 @@ if (User::canStream()) {
 
     function getStatsMenu(recurrentCall) {
         $.ajax({
-            url: '<?php echo $global['webSiteRootURL']; ?>plugin/Live/stats.json.php?Menu<?php echo (!empty($_GET['videoName']) ? "&requestComesFromVideoPage=1" : "") ?>',
+            url: 'plugin/Live/stats.json.php?Menu<?php echo (!empty($_GET['videoName']) ? "&requestComesFromVideoPage=1" : "") ?>',
                         success: function (response) {
                             if (typeof response.applications !== 'undefined') {
                                 $('.onlineApplications').text(response.applications.length);
@@ -148,7 +148,7 @@ if (User::canStream()) {
                                             }
                                             $('#liveVideos').slideDown();
                                         } else {
-                                            href = "<?php echo $global['webSiteRootURL']; ?>plugin/Live/?c=" + response.applications[i].channelName;
+                                            href = "plugin/Live/?c=" + response.applications[i].channelName;
                                             title = response.applications[i].title;
                                             name = response.applications[i].name;
                                             user = response.applications[i].user;

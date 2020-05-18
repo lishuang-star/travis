@@ -90,7 +90,7 @@ class LiveLinks extends PluginAbstract {
         $contentExtra = file_get_contents($filenameExtra);
         
         if(empty($_GET['requestComesFromVideoPage'])){
-            $regex = "/".addcslashes($global['webSiteRootURL'],"/")."video\/.*/";
+            $regex = "/".addcslashes("/")."video\/.*/";
             $requestComesFromVideoPage = preg_match($regex, @$_SERVER["HTTP_REFERER"]);
         }else{
             $requestComesFromVideoPage = 1;
@@ -113,9 +113,9 @@ class LiveLinks extends PluginAbstract {
                 $value['title'],
                 $name,
                 str_replace('"', "", $value['description']),
-                "{$global['webSiteRootURL']}plugin/LiveLinks/view/Live.php?link={$value['id']}",
-                '<img src="'."{$global['webSiteRootURL']}plugin/LiveLinks/getImage.php?id={$value['id']}&format=jpg".'" class="thumbsJPG img-responsive" height="130">',
-                empty($obj->disableGifThumbs)?('<img src="'."{$global['webSiteRootURL']}plugin/LiveLinks/getImage.php?id={$value['id']}&format=gif".'" style="position: absolute; top: 0px; height: 0px; width: 0px; display: none;" class="thumbsGIF img-responsive" height="130">'):"",
+                "plugin/LiveLinks/view/Live.php?link={$value['id']}",
+                '<img src="'."plugin/LiveLinks/getImage.php?id={$value['id']}&format=jpg".'" class="thumbsJPG img-responsive" height="130">',
+                empty($obj->disableGifThumbs)?('<img src="'."plugin/LiveLinks/getImage.php?id={$value['id']}&format=gif".'" style="position: absolute; top: 0px; height: 0px; width: 0px; display: none;" class="thumbsGIF img-responsive" height="130">'):"",
                 ($requestComesFromVideoPage)?"col-xs-6":"col-lg-2 col-md-4 col-sm-4 col-xs-6"
             );
 
@@ -127,8 +127,8 @@ class LiveLinks extends PluginAbstract {
                 "UserPhoto" => $UserPhoto,
                 "title" => $value['title'],
                 "name" => $name,
-                "poster" => "{$global['webSiteRootURL']}plugin/LiveLinks/getImage.php?id={$value['id']}&format=jpg",
-                "link" => "{$global['webSiteRootURL']}plugin/LiveLinks/view/Live.php?link={$value['id']}&embed=1"
+                "poster" => "plugin/LiveLinks/getImage.php?id={$value['id']}&format=jpg",
+                "link" => "plugin/LiveLinks/view/Live.php?link={$value['id']}&embed=1"
             );
         }
 

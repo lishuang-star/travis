@@ -4,7 +4,7 @@ require_once $global['systemRootPath'] . 'objects/user.php';
 require_once $global['systemRootPath'] . 'objects/functions.php';
 
 if (!User::isLogged()) {
-    header("Location: {$global['webSiteRootURL']}");
+    header("Location: ");
 }
 
 $obj = YouPHPTubePlugin::getObjectDataIfEnabled("YPTWallet");
@@ -16,7 +16,7 @@ $obj = YouPHPTubePlugin::getObjectDataIfEnabled("YPTWallet");
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
         <style>
             .ui-menu .ui-menu-item {
                 list-style-image: none !important;
@@ -86,7 +86,7 @@ $obj = YouPHPTubePlugin::getObjectDataIfEnabled("YPTWallet");
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><img src="<?php echo $global['webSiteRootURL']; ?>captcha" id="captcha"></span>
+                                            <span class="input-group-addon"><img src="captcha" id="captcha"></span>
                                             <span class="input-group-addon"><span class="btn btn-xs btn-success" id="btnReloadCapcha"><span class="glyphicon glyphicon-refresh"></span></span></span>
                                             <input name="captcha" placeholder="<?php echo __("Type the code"); ?>" class="form-control" type="text" style="height: 60px;" maxlength="5" id="captchaText">
                                         </div>
@@ -119,11 +119,11 @@ $obj = YouPHPTubePlugin::getObjectDataIfEnabled("YPTWallet");
         <?php
         include $global['systemRootPath'] . 'view/include/footer.php';
         ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
                 $('#btnReloadCapcha').click(function () {
-                    $('#captcha').attr('src', '<?php echo $global['webSiteRootURL']; ?>captcha?' + Math.random());
+                    $('#captcha').attr('src', 'captcha?' + Math.random());
                     $('#captchaText').val('');
                 });
 
@@ -140,7 +140,7 @@ $obj = YouPHPTubePlugin::getObjectDataIfEnabled("YPTWallet");
                             function () {
                                 modal.showPleaseWait();
                                 $.ajax({
-                                    url: '<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/transferFunds.json.php',
+                                    url: 'plugin/YPTWallet/view/transferFunds.json.php',
                                     data: {
                                         "value": $('#value').val(),
                                         "users_id": $('#users_id').val(),
@@ -168,7 +168,7 @@ $obj = YouPHPTubePlugin::getObjectDataIfEnabled("YPTWallet");
                     minLength: 0,
                     source: function (req, res) {
                         $.ajax({
-                            url: '<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/users.json.php',
+                            url: 'plugin/YPTWallet/view/users.json.php',
                             type: "POST",
                             data: {
                                 searchPhrase: req.term

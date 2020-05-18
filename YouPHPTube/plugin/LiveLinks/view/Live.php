@@ -32,7 +32,7 @@ $subscribe = Subscribe::getButton($user_id);
 $name = $u->getNameIdentificationBd();
 $video['creator'] = '<div class="pull-left"><img src="' . User::getPhoto($user_id) . '" alt="" class="img img-responsive img-circle" style="max-width: 40px;"/></div><div class="commentDetails" style="margin-left:45px;"><div class="commenterName text-muted"><strong>' . $name . '</strong><br>' . $subscribe . '</div></div>';
 
-$img = "{$global['webSiteRootURL']}plugin/LiveLinks/getImage.php?link={$_GET['link']}&format=jpg";
+$img = "plugin/LiveLinks/getImage.php?link={$_GET['link']}&format=jpg";
 $imgw = 640;
 $imgh = 360;
 
@@ -49,14 +49,14 @@ if(!empty($_GET['embed'])){
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/videojs-contrib-ads/videojs.ads.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>css/player.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/video.js/video-js.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/videojs-contrib-ads/videojs.ads.css" rel="stylesheet" type="text/css"/>
+        <link href="css/player.css" rel="stylesheet" type="text/css"/>
+        <link href="js/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
         
         <meta property="fb:app_id"             content="774958212660408" />
-        <meta property="og:url"                content="<?php echo $global['webSiteRootURL']; ?>plugin/LiveLinks/view/Live.php?link=<?php echo $_GET['link']; ?>" />
+        <meta property="og:url"                content="plugin/LiveLinks/view/Live.php?link=<?php echo $_GET['link']; ?>" />
         <meta property="og:type"               content="video.other" />
         <meta property="og:title"              content="<?php echo str_replace('"', '', $t['title']); ?> - <?php echo $config->getWebSiteTitle(); ?>" />
         <meta property="og:description"        content="<?php echo str_replace('"', '', $t['title']); ?>" />
@@ -91,16 +91,16 @@ if(!empty($_GET['embed'])){
             </div>
         </div>
         
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
         <script>
                         /*** Handle jQuery plugin naming conflict between jQuery UI and Bootstrap ***/
                         $.widget.bridge('uibutton', $.ui.button);
                         $.widget.bridge('uitooltip', $.ui.tooltip);
         </script>  
         
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/video.js/video.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/videojs-contrib-ads/videojs.ads.min.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>plugin/Live/view/videojs-contrib-hls.min.js" type="text/javascript"></script>
+        <script src="js/video.js/video.js" type="text/javascript"></script>
+        <script src="js/videojs-contrib-ads/videojs.ads.min.js" type="text/javascript"></script>
+        <script src="plugin/Live/view/videojs-contrib-hls.min.js" type="text/javascript"></script>
         <?php        
         include $global['systemRootPath'] . 'view/include/footer.php';
         ?>
@@ -110,9 +110,9 @@ if(!empty($_GET['embed'])){
                     $p->getChat($uuid);
                 }
                 ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/videojs-persistvolume/videojs.persistvolume.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/webui-popover/jquery.webui-popover.min.js" type="text/javascript"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/bootstrap-list-filter/bootstrap-list-filter.min.js" type="text/javascript"></script>
+        <script src="js/videojs-persistvolume/videojs.persistvolume.js" type="text/javascript"></script>
+        <script src="js/webui-popover/jquery.webui-popover.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-list-filter/bootstrap-list-filter.min.js" type="text/javascript"></script>
         
     </body>
 </html>

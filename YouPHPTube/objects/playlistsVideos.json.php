@@ -35,12 +35,12 @@ $videos = PlayList::getVideosFromPlaylist($_POST['playlists_id']);
 foreach ($videos as $key => $value) {
     unset($videos[$key]['password']);
     unset($videos[$key]['recoverPass']);
-    $videos[$key]['Poster'] = "{$global['webSiteRootURL']}videos/".$videos[$key]['filename'].".jpg";
-    $videos[$key]['Thumbnail'] = "{$global['webSiteRootURL']}videos/".$videos[$key]['filename']."_thumbs.jpg";
+    $videos[$key]['Poster'] = "videos/".$videos[$key]['filename'].".jpg";
+    $videos[$key]['Thumbnail'] = "videos/".$videos[$key]['filename']."_thumbs.jpg";
     $videos[$key]['VideoUrl'] = getVideosURL($videos[$key]['filename']);
     $videos[$key]['createdHumanTiming'] = humanTiming(strtotime($videos[$key]['created']));
-    $videos[$key]['pageUrl'] = "{$global['webSiteRootURL']}video/".$videos[$key]['clean_title'];
-    $videos[$key]['embedUrl'] = "{$global['webSiteRootURL']}videoEmbeded/".$videos[$key]['clean_title'];
+    $videos[$key]['pageUrl'] = "video/".$videos[$key]['clean_title'];
+    $videos[$key]['embedUrl'] = "videoEmbeded/".$videos[$key]['clean_title'];
     unset($_POST['sort']);
     unset($_POST['current']);
     unset($_POST['searchPhrase']);
@@ -63,7 +63,7 @@ foreach ($videos as $key => $value) {
         }        
     }
     if(preg_match("/^videos/", $videos[$key]['photoURL'])){
-        $videos[$key]['UserPhoto'] = "{$global['webSiteRootURL']}".$videos[$key]['photoURL'];
+        $videos[$key]['UserPhoto'] = "".$videos[$key]['photoURL'];
     }else{
         $videos[$key]['UserPhoto'] = $videos[$key]['photoURL'];
     }

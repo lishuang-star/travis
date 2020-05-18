@@ -16,7 +16,7 @@ if ((!empty($videos)) || ($obj->SubCategorys)) {
                 if (!empty($_GET['catName'])) {
                     ?>
                     <div>
-                        <a class="btn btn-default btn-sm pull-right"  href="<?php echo $global['webSiteRootURL']; ?>">
+                        <a class="btn btn-default btn-sm pull-right"  href="">
                             <i class="fa fa-backward"></i>
                             <?php echo __("Back to startpage"); ?> 
                         </a>
@@ -27,7 +27,7 @@ if ((!empty($videos)) || ($obj->SubCategorys)) {
             } else if (!empty($parentCat)) {
                 ?>
                 <div>
-                    <a class="btn btn-default btn-sm pull-right" href="<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $parentCat['clean_name']; ?>">
+                    <a class="btn btn-default btn-sm pull-right" href="cat/<?php echo $parentCat['clean_name']; ?>">
                         <i class="fa fa-backward"></i>
                         <?php echo __("Back to") . " " . $parentCat['name']; ?> 
                     </a>
@@ -71,7 +71,7 @@ if ((!empty($videos)) || ($obj->SubCategorys)) {
                         unset($_GET['catName']);
                         ?>
                         <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 galleryVideo thumbsImage fixPadding">
-                            <a href="<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $cat['clean_name']; ?>" title="<?php $cat['name']; ?>">
+                            <a href="cat/<?php echo $cat['clean_name']; ?>" title="<?php $cat['name']; ?>">
                                 <div class="aspectRatio16_9">
                                     <?php
                                     if (!empty($videos)) {
@@ -92,7 +92,7 @@ if ((!empty($videos)) || ($obj->SubCategorys)) {
                                             break;
                                         }
                                     } else {
-                                        $poster = $global['webSiteRootURL'] . "view/img/notfound.jpg";
+                                        $poster = "view/img/notfound.jpg";
                                         ?>
                                         <img src="<?php echo $poster; ?>" alt="" data-toggle="tooltip" title="<?php echo $description; ?>" class="thumbsJPG img img-responsive" id="thumbsJPG<?php echo $cat['id']; ?>" />
                                         <?php

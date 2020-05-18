@@ -245,7 +245,7 @@ class YPTWallet extends PluginAbstract {
         
         $wallet->setBalance($newBalance);
         $wallet_id = $wallet->save();   
-        $description = "Transfer Balance {$value} from <strong>YOU</strong> to user <a href='{$global['webSiteRootURL']}channel/{$users_id_to}'>{$identificationTo}</a>";
+        $description = "Transfer Balance {$value} from <strong>YOU</strong> to user <a href='channel/{$users_id_to}'>{$identificationTo}</a>";
         WalletLog::addLog($wallet_id, $value, $description, "{}", "success", "transferBalance to");
         
         
@@ -254,7 +254,7 @@ class YPTWallet extends PluginAbstract {
         $newBalance = $balance+$value;
         $wallet->setBalance($newBalance);
         $wallet_id = $wallet->save();   
-        $description = "Transfer Balance {$value} from user <a href='{$global['webSiteRootURL']}channel/{$users_id_from}'>{$identificationFrom}</a> to <strong>YOU</strong>";
+        $description = "Transfer Balance {$value} from user <a href='channel/{$users_id_from}'>{$identificationFrom}</a> to <strong>YOU</strong>";
         WalletLog::addLog($wallet_id, $value, $description, "{}", "success", "transferBalance from");
         return true;
     }

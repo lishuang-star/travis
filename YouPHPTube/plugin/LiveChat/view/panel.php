@@ -2,10 +2,10 @@
 $p = YouPHPTubePlugin::loadPlugin("LiveChat");
 $canSendMessage = $p->canSendMessage();
 ?>
-<link href="<?php echo $global['webSiteRootURL']; ?>plugin/LiveChat/view/style.css" rel="stylesheet" type="text/css"/>
-<script src="<?php echo $global['webSiteRootURL']; ?>plugin/LiveChat/view/script.js" type="text/javascript"></script>
-<link href="<?php echo $global['webSiteRootURL']; ?>css/font-awesome-animation.min.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+<link href="plugin/LiveChat/view/style.css" rel="stylesheet" type="text/css"/>
+<script src="plugin/LiveChat/view/script.js" type="text/javascript"></script>
+<link href="css/font-awesome-animation.min.css" rel="stylesheet" type="text/css"/>
+<link href="js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
 <div class="alert alert-warning" id="chatOffline">
     <?php echo __("Trying to establish a chat server connection"); ?>
 </div>
@@ -30,7 +30,7 @@ $canSendMessage = $p->canSendMessage();
                     <?php
                 }else{
                 ?>
-                <a href="<?php echo $global['webSiteRootURL']; ?>user" class="btn btn-default"> <?php echo __('Login'); ?></a>
+                <a href="user" class="btn btn-default"> <?php echo __('Login'); ?></a>
                 <?php
                 }
                 ?>
@@ -48,7 +48,7 @@ $canSendMessage = $p->canSendMessage();
         </li>
     </div>
 </div>
-<script src="<?php echo $global['webSiteRootURL']; ?>js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="js/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
 <script>
     var attempChatConnections = 3;
     var conn;
@@ -67,7 +67,7 @@ $canSendMessage = $p->canSendMessage();
             
             modal.showPleaseWait();
             $.ajax({
-                url: '<?php echo $global['webSiteRootURL']; ?>plugin/LiveChat/getChat.json.php',
+                url: 'plugin/LiveChat/getChat.json.php',
                 data: {
                     "live_stream_code": "<?php echo $chatId; ?>"
                 },
@@ -117,7 +117,7 @@ $canSendMessage = $p->canSendMessage();
     }
 
     function alertChat() {
-        //var snd = new Audio("<?php echo $global['webSiteRootURL']; ?>plugin/LiveChat/view/notification.wav");
+        //var snd = new Audio("plugin/LiveChat/view/notification.wav");
         //snd.play();
         $("#chatOnline .fa-comments-o").addClass('faa-ring');
         $("#chatOnline .fa-comments-o").addClass('animated');

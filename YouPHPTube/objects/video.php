@@ -465,16 +465,16 @@ if (!class_exists('Video')) {
             sqlDAL::close($res);
             
             if (empty($result)) {
-                $_GET['error'] = "You need to <a href='{$global['webSiteRootURL']}update'>update your system to ver 2.0</a>";
-                header("Location: {$global['webSiteRootURL']}user?error={$_GET['error']}");
+                $_GET['error'] = "You need to <a href='update'>update your system to ver 2.0</a>";
+                header("Location: user?error={$_GET['error']}");
                 return false;
             }
             $res = sqlDAL::readSql("SHOW TABLES LIKE 'likes'");
             $result = sqlDal::num_rows($res);
             sqlDAL::close($res);
             if (empty($result)) {
-                $_GET['error'] = "You need to <a href='{$global['webSiteRootURL']}update'>update your system to ver 2.7</a>";
-                header("Location: {$global['webSiteRootURL']}user?error={$_GET['error']}");
+                $_GET['error'] = "You need to <a href='update'>update your system to ver 2.7</a>";
+                header("Location: user?error={$_GET['error']}");
                 return false;
             }
 
@@ -1473,10 +1473,10 @@ if (!class_exists('Video')) {
             $postFields = array(
                 'user' => User::getUserName(),
                 'pass' => User::getUserPass(),
-                'fileURI' => $global['webSiteRootURL'] . "videos/original_{$this->getFilename()}",
+                'fileURI' => "videos/original_{$this->getFilename()}",
                 'filename' => $this->getFilename(),
                 'videos_id' => $this->getId(),
-                "notifyURL" => "{$global['webSiteRootURL']}"
+                "notifyURL" => ""
             );
             error_log("SEND To QUEUE: " . print_r($postFields, true));
             $curl = curl_init();
@@ -1539,7 +1539,7 @@ if (!class_exists('Video')) {
             }
             $source = array();
             $source['path'] = "{$global['systemRootPath']}videos/{$filename}{$type}";
-            $source['url'] = "{$global['webSiteRootURL']}videos/{$filename}{$type}{$token}";
+            $source['url'] = "videos/{$filename}{$type}{$token}";
             /* need it because getDurationFromFile */
             if ($includeS3 && ($type == ".mp4" || $type == ".webm")) {
                 if (!file_exists($source['path']) || filesize($source['path']) < 1024) {
@@ -1574,7 +1574,7 @@ if (!class_exists('Video')) {
 
             foreach ($source as $fileName) {
                 $captions[$fileName] = str_replace("{$global['systemRootPath']}",
-                                                   "{$global['webSiteRootURL']}",
+                                                   "",
                                                    $fileName );
             }
 
@@ -1625,13 +1625,13 @@ if (!class_exists('Video')) {
                 }
             } else {
                 if (($type !== "audio")&&($type !== "linkAudio")) {
-                    $obj->poster = "{$global['webSiteRootURL']}view/img/notfound.jpg";
-                    $obj->thumbsJpg = "{$global['webSiteRootURL']}view/img/notfoundThumbs.jpg";
-                    $obj->thumbsJpgSmall = "{$global['webSiteRootURL']}view/img/notfoundThumbsSmall.jpg";
+                    $obj->poster = "view/img/notfound.jpg";
+                    $obj->thumbsJpg = "view/img/notfoundThumbs.jpg";
+                    $obj->thumbsJpgSmall = "view/img/notfoundThumbsSmall.jpg";
                 } else {
-                    $obj->poster = "{$global['webSiteRootURL']}view/img/audio_wave.jpg";
-                    $obj->thumbsJpg = "{$global['webSiteRootURL']}view/img/audio_waveThumbs.jpg";
-                    $obj->thumbsJpgSmall = "{$global['webSiteRootURL']}view/img/audio_waveThumbsSmall.jpg";
+                    $obj->poster = "view/img/audio_wave.jpg";
+                    $obj->thumbsJpg = "view/img/audio_waveThumbs.jpg";
+                    $obj->thumbsJpgSmall = "view/img/audio_waveThumbsSmall.jpg";
                 }
             }
 
@@ -1706,18 +1706,18 @@ if (!class_exists('Video')) {
                     $clean_title = self::get_clean_title($videos_id);
                 }
                 if ($embed) {
-                    return "{$global['webSiteRootURL']}videoEmbed/{$clean_title}";
+                    return "videoEmbed/{$clean_title}";
                 } else {
-                    return "{$global['webSiteRootURL']}video/{$clean_title}";
+                    return "video/{$clean_title}";
                 }
             } else {
                 if (empty($videos_id) && !empty($clean_title)) {
                     $videos_id = self::get_id_from_clean_title($clean_title);
                 }
                 if ($embed) {
-                    return "{$global['webSiteRootURL']}vEmbed/{$videos_id}";
+                    return "vEmbed/{$videos_id}";
                 } else {
-                    return "{$global['webSiteRootURL']}v/{$videos_id}";
+                    return "v/{$videos_id}";
                 }
             }
         }

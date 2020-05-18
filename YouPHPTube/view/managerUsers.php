@@ -2,7 +2,7 @@
 require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::isAdmin()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not manage users"));
+    header("Location: ?error=" . __("You can not manage users"));
     exit;
 }
 require_once $global['systemRootPath'] . 'objects/userGroups.php';
@@ -30,10 +30,10 @@ $userGroups = UserGroups::getAllUsersGroups();
                 <button type="button" class="btn btn-default" id="addUserBtn">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?php echo __("New User"); ?>
                 </button>
-                <a href="<?php echo $global['webSiteRootURL']; ?>usersGroups" class="btn btn-warning">
+                <a href="usersGroups" class="btn btn-warning">
                     <span class="fa fa-users"></span> <?php echo __("User Groups"); ?>
                 </a>
-                <a href="<?php echo $global['webSiteRootURL']; ?>mvideos" class="btn btn-success">
+                <a href="mvideos" class="btn btn-success">
                     <span class="fa fa-film"></span> <?php echo __("Videos"); ?>
                 </a>
             </div>
@@ -153,7 +153,7 @@ $userGroups = UserGroups::getAllUsersGroups();
                         search: "<?php echo __("Search"); ?>",
                     },
                     ajax: true,
-                    url: "<?php echo $global['webSiteRootURL'] . "users.json"; ?>",
+                    url: "<?php echo  "users.json"; ?>",
                     formatters: {
                         "commands": function (column, row) {
                             var editBtn = '<button type="button" class="btn btn-xs btn-default command-edit" data-row-id="' + row.id + '" data-toggle="tooltip" data-placement="left" title="Edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>'

@@ -2,7 +2,7 @@
 require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::canUpload()) {
-    header("location: {$global['webSiteRootURL']}user");
+    header("location: user");
     exit;
 }
 
@@ -126,7 +126,7 @@ function isYoutubeDl() {
                                             closeOnConfirm: false
                                         },
                                                 function () {
-                                                    window.location.href = '<?php echo $global['webSiteRootURL']; ?>mvideos';
+                                                    window.location.href = 'mvideos';
                                                 });
                                         if (response.filename) {
                                             checkProgress(response.filename);
@@ -157,7 +157,7 @@ function isYoutubeDl() {
                                         type: "success"
                                     },
                                             function () {
-                                                window.location.href = '<?php echo $global['webSiteRootURL']; ?>mvideos';
+                                                window.location.href = 'mvideos';
                                             });
                                 }
                             }

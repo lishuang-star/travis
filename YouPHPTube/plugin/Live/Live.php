@@ -25,7 +25,7 @@ class Live extends PluginAbstract {
 
     public function getEmptyDataObject() {
         global $global;
-        $server = parse_url($global['webSiteRootURL']);
+        $server = parse_url();
         $obj = new stdClass();
         $obj->button_title = "LIVE";
         $obj->server = "rtmp://{$server['host']}/live";

@@ -7,7 +7,7 @@ $tagsStr = "";
 foreach ($tags as $value) {
     $tagsStr .= "<span class=\"label label-{$value->type} fix-width\">{$value->text}</span>";
 }
-$json_file = url_get_contents("{$global['webSiteRootURL']}plugin/CustomizeAdvanced/advancedCustom.json.php");
+$json_file = url_get_contents("plugin/CustomizeAdvanced/advancedCustom.json.php");
 // convert the string to a json object
 $advancedCustom = json_decode($json_file);
 ?>
@@ -18,8 +18,8 @@ $advancedCustom = json_decode($json_file);
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/Croppie/croppie.css" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/Croppie/croppie.min.js" type="text/javascript"></script>
+        <link href="js/Croppie/croppie.css" rel="stylesheet" type="text/css"/>
+        <script src="js/Croppie/croppie.min.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -86,7 +86,7 @@ $advancedCustom = json_decode($json_file);
                                                         modal.showPleaseWait();
                                                         $.ajax({
                                                             type: "POST",
-                                                            url: "<?php echo $global['webSiteRootURL'] ?>objects/userVerifyEmail.php?users_id=<?php echo $user->getBdId(); ?>"
+                                                            url: "objects/userVerifyEmail.php?users_id=<?php echo $user->getBdId(); ?>"
                                                         }).done(function (response) {
                                                             if(response.error){
                                                                 swal("<?php echo __("Sorry!"); ?>", response.msg, "error");
@@ -427,7 +427,7 @@ $advancedCustom = json_decode($json_file);
                                             swal("<?php echo __("Sorry!"); ?>", "<?php echo __("Your user or password is wrong!"); ?>", "error");
                                         }
                                     } else {
-                                        document.location = '<?php echo $global['webSiteRootURL']; ?>'
+                                        document.location = ''
                                     }
                                 }
                             });
@@ -438,7 +438,7 @@ $advancedCustom = json_decode($json_file);
                                 swal("<?php echo __("Sorry!"); ?>", "<?php echo __("You need to inform what is your user!"); ?>", "error");
                                 return false;
                             }
-                            var capcha = '<span class="input-group-addon"><img src="<?php echo $global['webSiteRootURL']; ?>captcha" id="captcha"></span><span class="input-group-addon"><span class="btn btn-xs btn-success" id="btnReloadCapcha"><span class="glyphicon glyphicon-refresh"></span></span></span><input name="captcha" placeholder="<?php echo __("Type the code"); ?>" class="form-control" type="text" style="height: 60px;" maxlength="5" id="captchaText">';
+                            var capcha = '<span class="input-group-addon"><img src="captcha" id="captcha"></span><span class="input-group-addon"><span class="btn btn-xs btn-success" id="btnReloadCapcha"><span class="glyphicon glyphicon-refresh"></span></span></span><input name="captcha" placeholder="<?php echo __("Type the code"); ?>" class="form-control" type="text" style="height: 60px;" maxlength="5" id="captchaText">';
                             swal({
                                 title: user + ", <?php echo __("Are you sure?"); ?>",
                                 text: "<?php echo __("We will send you a link, to your e-mail, to recover your password!"); ?>" + capcha,
@@ -468,7 +468,7 @@ $advancedCustom = json_decode($json_file);
                                     });
 
                             $('#btnReloadCapcha').click(function () {
-                                $('#captcha').attr('src', '<?php echo $global['webSiteRootURL']; ?>captcha?' + Math.random());
+                                $('#captcha').attr('src', 'captcha?' + Math.random());
                                 $('#captchaText').val('');
                             });
                         });

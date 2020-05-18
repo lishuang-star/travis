@@ -31,7 +31,7 @@
             url="embed in html";
         }
         $.ajax({
-            url: webSiteRootURL+"objects/ajaxErrorCatcher.php?error="+encodeURI("JS-Err: "+errorMsg+" @ line "+lineNumber+" in file "+url+" at visit on <?php echo $_SERVER['REQUEST_URI']; ?>"),
+            url: "objects/ajaxErrorCatcher.php?error="+encodeURI("JS-Err: "+errorMsg+" @ line "+lineNumber+" in file "+url+" at visit on <?php echo $_SERVER['REQUEST_URI']; ?>"),
             context: document.body
         }).done(function() {
             console.log("<?php echo 'A Javascript-error happend. Please tell your admin to clear the folder videos/cache. \r\n If this doesn\'t help, attach these infos to a github-pull-request:'; ?> \r\n Msg:" + errorMsg+" \r\n Url: "+url+ ", line: "+lineNumber+", Address: <?php echo $_SERVER['REQUEST_URI'] ?>");
@@ -58,7 +58,7 @@ if (!empty($_GET['msg'])) {
 ?>
     });
 </script>
-<!-- <script src="<?php echo $global['webSiteRootURL']; ?>bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
+<!-- <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
 <?php
     $jsFiles = array();
     $jsFiles[] = "view/bootstrap/js/bootstrap.min.js";

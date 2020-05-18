@@ -15,7 +15,7 @@ require_once $global['systemRootPath'] . 'objects/functions.php';
 require_once $global['systemRootPath'] . 'objects/video.php';
 
 if(!User::isLogged()){
-    header("Location: ".$global['webSiteRootURL']);
+    header("Location: ".);
 }
 
 if(empty($_POST['rowCount'])){
@@ -81,9 +81,9 @@ foreach ($videos as $value) {
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>view/js/Chart.bundle.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo $global['webSiteRootURL']; ?>view/css/DataTables/datatables.min.css"/>
-        <link href="<?php echo $global['webSiteRootURL']; ?>view/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <script src="view/js/Chart.bundle.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="view/css/DataTables/datatables.min.css"/>
+        <link href="view/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
         <style>
             /* Custom Colored Panels */
             .dashboard .panel-heading {
@@ -165,8 +165,8 @@ foreach ($videos as $value) {
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="<?php echo $global['webSiteRootURL']; ?>view/css/DataTables/datatables.min.js"></script>
-        <script src="<?php echo $global['webSiteRootURL']; ?>view/js/jquery-ui/jquery-ui.js" type="text/javascript"></script>
+        <script type="text/javascript" src="view/css/DataTables/datatables.min.js"></script>
+        <script src="view/js/jquery-ui/jquery-ui.js" type="text/javascript"></script>
         <?php
         include $global['systemRootPath'] . 'view/include/footer.php';
         ?>

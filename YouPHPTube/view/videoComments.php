@@ -19,7 +19,7 @@ if (User::canSeeCommentTextarea()) {
                 }
                 ?>><span class="glyphicon glyphicon-comment"></span> <?php echo __("Comment"); ?></span>
                   <?php } else { ?>
-                <a class="input-group-addon btn btn-success" href="<?php echo $global['webSiteRootURL']; ?>user"><span class="glyphicon glyphicon-log-in"></span> <?php echo __("You must login to be able to comment on videos"); ?></a>
+                <a class="input-group-addon btn btn-success" href="user"><span class="glyphicon glyphicon-log-in"></span> <?php echo __("You must login to be able to comment on videos"); ?></a>
             <?php } ?>
         </div>
         <div class="pull-right" id="count_message"></div>
@@ -132,7 +132,7 @@ if (User::canSeeCommentTextarea()) {
                     search: "<?php echo __("Search"); ?>",
                 },
                 ajax: true,
-                url: "<?php echo $global['webSiteRootURL']; ?>comments.json/<?php echo empty($video['id']) ? "0" : $video['id']; ?>",
+                url: "comments.json/<?php echo empty($video['id']) ? "0" : $video['id']; ?>",
                             sorting: false,
                             templates: {
                                 header: ""
@@ -148,7 +148,7 @@ if (User::canSeeCommentTextarea()) {
                                 "video": function (column, row) {
                                     var image;
                                     if (row.video) {
-                                        image = '<img src="' + row.poster.thumbsJpg + '" class="img img-thumbnail img-responsive"><br><a href="<?php echo $global['webSiteRootURL']; ?>video/' + row.video.clean_title + '" class="btn btn-default btn-xs">' + row.video.title + '</a>';
+                                        image = '<img src="' + row.poster.thumbsJpg + '" class="img img-thumbnail img-responsive"><br><a href="video/' + row.video.clean_title + '" class="btn btn-default btn-xs">' + row.video.title + '</a>';
                                     } else {
                                         image = 'Not found';
                                     }
@@ -211,7 +211,7 @@ if (User::canSeeCommentTextarea()) {
                         if (comment.length > 5) {
                             modal.showPleaseWait();
                             $.ajax({
-                                url: '<?php echo $global['webSiteRootURL']; ?>saveComment',
+                                url: 'saveComment',
                                 method: 'POST',
                                 data: {'comment': comment, 'video': video, 'comments_id': comments_id, 'id': id},
                                 success: function (response) {
@@ -247,7 +247,7 @@ if (User::canSeeCommentTextarea()) {
                             comments_id = $(this).closest('.replySet').attr("comments_id");
                             console.log(comment);
                             $.ajax({
-                                url: '<?php echo $global['webSiteRootURL']; ?>objects/comments_like.json.php?like=' + ($(this).hasClass('replyDislikeBtn') ? "-1" : "1"),
+                                url: 'objects/comments_like.json.php?like=' + ($(this).hasClass('replyDislikeBtn') ? "-1" : "1"),
                                 method: 'POST',
                                 data: {'comments_id': comments_id},
                                 success: function (response) {
@@ -292,7 +292,7 @@ if (User::canSeeCommentTextarea()) {
                             }, function () {
                                 modal.showPleaseWait();
                                 $.ajax({
-                                    url: '<?php echo $global['webSiteRootURL']; ?>objects/commentDelete.json.php',
+                                    url: 'objects/commentDelete.json.php',
                                     method: 'POST',
                                     data: {'id': comments_id},
                                     success: function (response) {
@@ -322,7 +322,7 @@ if (User::canSeeCommentTextarea()) {
                                     search: "<?php echo __("Search"); ?>",
                                 },
                                 ajax: true,
-                                url: "<?php echo $global['webSiteRootURL']; ?>comments.json/<?php echo empty($video['id']) ? "0" : $video['id']; ?>",
+                                url: "comments.json/<?php echo empty($video['id']) ? "0" : $video['id']; ?>",
                                 sorting: false,
                                 templates: {
                                     header: ""

@@ -2,7 +2,7 @@
 require_once '../videos/configuration.php';
 require_once $global['systemRootPath'] . 'objects/user.php';
 if (!User::canUpload()) {
-    header("Location: {$global['webSiteRootURL']}?error=" . __("You can not manage subscribes"));
+    header("Location: ?error=" . __("You can not manage subscribes"));
     exit;
 }
 ?>
@@ -13,7 +13,7 @@ if (!User::canUpload()) {
         <?php
         include $global['systemRootPath'] . 'view/include/head.php';
         ?>
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/bootstrap3-wysiwyg/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/bootstrap3-wysiwyg/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -45,13 +45,13 @@ if (!User::canUpload()) {
         <?php
         include $global['systemRootPath'] . 'view/include/footer.php';
         ?>
-        <script src="<?php echo $global['webSiteRootURL']; ?>js/bootstrap3-wysiwyg/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap3-wysiwyg/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
         <script>
             function _subscribe(email,user_id, id) {
                 $('#subscribe' + id + ' span').addClass("fa-spinner");
                 $('#subscribe' + id + ' span').addClass("fa-spin");
                 $.ajax({
-                    url: '<?php echo $global['webSiteRootURL']; ?>subscribe.json',
+                    url: 'subscribe.json',
                     method: 'POST',
                     data: {'email': email, 'user_id':user_id},
                     success: function (response) {
@@ -76,7 +76,7 @@ if (!User::canUpload()) {
             function notify(){
                 modal.showPleaseWait();
                 $.ajax({
-                    url: '<?php echo $global['webSiteRootURL']; ?>notifySubscribers.json',
+                    url: 'notifySubscribers.json',
                     method: 'POST',
                     data: {'message': $('#emailMessage').val()},
                     success: function (response) {
@@ -102,7 +102,7 @@ if (!User::canUpload()) {
                         search: "<?php echo __("Search"); ?>",
                     },
                     ajax: true,
-                    url: "<?php echo $global['webSiteRootURL'] . "subscribes.json"; ?>",
+                    url: "<?php echo  "subscribes.json"; ?>",
                     formatters: {
                         "status": function (column, row) {
                             var subscribe = '<button type="button" class="btn btn-xs btn-success command-status" id="subscribe' + row.id + '" data-toggle="tooltip" data-placement="left" title="Unsubscribe"><span class="fa fa-check" aria-hidden="true"></span></button>'

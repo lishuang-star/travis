@@ -148,8 +148,8 @@ The other way is to add the sources and tracks like default, as child elements.
   <data-src src="file.ogv" type="video/ogv"></data-src>
   <data-src src="file.mp4" type="video/mp4"></data-src>
   <data-src src="file.webm" type="video/webm"></data-src>
-  <data-track kind="captions" src="captions.vtt" srclang="en"></data-track>
-  <data-track kind="descriptions" src="descriptions.vtt" srclang="en"></data-track>
+  <data-track kind="captions" src="captions.vtt" srclang="zh-CN"></data-track>
+  <data-track kind="descriptions" src="descriptions.vtt" srclang="zh-CN"></data-track>
   <data-track kind="subtitles" src="subtitles.vtt" srclang="de"></data-track>
 </video>
 ```

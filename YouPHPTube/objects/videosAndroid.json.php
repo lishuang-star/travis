@@ -29,8 +29,8 @@ foreach ($videos as $key => $value) {
     $videos[$key]['Thumbnail'] = $images->thumbsJpg;
     $videos[$key]['VideoUrl'] = getVideosURL($videos[$key]['filename']);
     $videos[$key]['createdHumanTiming'] = humanTiming(strtotime($videos[$key]['created']));
-    $videos[$key]['pageUrl'] = "{$global['webSiteRootURL']}video/".$videos[$key]['clean_title'];
-    $videos[$key]['embedUrl'] = "{$global['webSiteRootURL']}videoEmbeded/".$videos[$key]['clean_title'];
+    $videos[$key]['pageUrl'] = "video/".$videos[$key]['clean_title'];
+    $videos[$key]['embedUrl'] = "videoEmbeded/".$videos[$key]['clean_title'];
     unset($_POST['sort']);
     unset($_POST['current']);
     unset($_POST['searchPhrase']);

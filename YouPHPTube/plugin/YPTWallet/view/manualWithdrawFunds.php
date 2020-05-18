@@ -4,7 +4,7 @@ require_once $global['systemRootPath'] . 'objects/user.php';
 require_once $global['systemRootPath'] . 'objects/functions.php';
 
 if (!User::isLogged()) {
-    header("Location: {$global['webSiteRootURL']}");
+    header("Location: ");
 }
 
 $plugin = YouPHPTubePlugin::loadPluginIfEnabled("YPTWallet");
@@ -91,7 +91,7 @@ $options = json_decode($obj->withdrawFundsOptions);
                 $('#manualWithdrawFundsPageButton').click(function(){
                     modal.showPleaseWait();
                     $.ajax({
-                        url: '<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/manualWithdrawFunds.json.php',
+                        url: 'plugin/YPTWallet/view/manualWithdrawFunds.json.php',
                         type: "POST",
                         data: {
                             value: $('#value').val(),

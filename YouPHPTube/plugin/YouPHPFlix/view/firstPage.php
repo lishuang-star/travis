@@ -11,11 +11,11 @@ require_once $global['systemRootPath'] . 'objects/category.php';
 
 $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $isAudioOnly = false;
-if (("http://" . $url === $global['webSiteRootURL'] . "audioOnly") || ("https://" . $url === $global['webSiteRootURL'] . "audioOnly")) {
+if (("http://" . $url ===  "audioOnly") || ("https://" . $url ===  "audioOnly")) {
     $isAudioOnly = true;
 }
 $isVideoOnly = false;
-if (("http://" . $url === $global['webSiteRootURL'] . "videoOnly") || ("https://" . $url === $global['webSiteRootURL'] . "videoOnly")) {
+if (("http://" . $url ===  "videoOnly") || ("https://" . $url ===  "videoOnly")) {
     $isVideoOnly = true;
 }
 $o = YouPHPTubePlugin::getObjectData("YouPHPFlix");
@@ -29,13 +29,13 @@ unset($_SESSION['type']);
 <html>
     <head>
         <script>
-            var webSiteRootURL = '<?php echo $global['webSiteRootURL']; ?>';
+            var webSiteRootURL = '';
             var pageDots = <?php echo empty($o->pageDots) ? "false" : "true"; ?>;
             var forceCatLinks = <?php if($o->ForceCategoryLinks){ echo "true"; } else { echo "false"; } ?>;
         </script>
 
-        <link href="<?php echo $global['webSiteRootURL']; ?>js/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo $global['webSiteRootURL']; ?>plugin/YouPHPFlix/view/js/flickty/flickity.min.css" rel="stylesheet" type="text/css" />
+        <link href="js/webui-popover/jquery.webui-popover.min.css" rel="stylesheet" type="text/css" />
+        <link href="plugin/YouPHPFlix/view/js/flickty/flickity.min.css" rel="stylesheet" type="text/css" />
         <?php include $global['systemRootPath'] . 'view/include/head.php'; ?>
         <title><?php echo $config->getWebSiteTitle(); ?></title>
     </head>
@@ -66,14 +66,14 @@ unset($_SESSION['type']);
             if((($currentCat['parentId'] == "0") || ($currentCat['parentId'] == "-1"))) {
                 if(!empty($_GET['catName'])){ ?>
                     <div>
-                        <a class="btn btn-primary"  href="<?php echo $global['webSiteRootURL']; ?>"><?php echo __("Back to startpage"); ?> </a>
+                        <a class="btn btn-primary"  href=""><?php echo __("Back to startpage"); ?> </a>
                     </div>
                 <?php }
             }
             if (($currentCat['parentId'] != "0") && ($currentCat['parentId'] != "-1")) {
                 $parentCat = Category::getCategory($currentCat['parentId']); ?>
                 <div>
-                    <a class="btn btn-primary" href="<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $parentCat['clean_name']; ?>"><?php echo __("Back to") . " " . $parentCat['name']; ?> </a>
+                    <a class="btn btn-primary" href="cat/<?php echo $parentCat['clean_name']; ?>"><?php echo __("Back to") . " " . $parentCat['name']; ?> </a>
                 </div>
             <?php
             }
@@ -104,7 +104,7 @@ unset($_SESSION['type']);
   
                 unset($_GET['catName']); ?>
                     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 galleryVideo thumbsImage fixPadding">
-					   <a href="<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $cat['clean_name']; ?>" title="<?php $cat['name']; ?>"> 
+					   <a href="cat/<?php echo $cat['clean_name']; ?>" title="<?php $cat['name']; ?>"> 
                            <div class="aspectRatio16_9">
                 <?php
                 if (! empty($videos)) {
@@ -124,7 +124,7 @@ unset($_SESSION['type']);
                         break;
                     }
                 } else {
-                    $poster = $global['webSiteRootURL'] . "view/img/notfound.jpg";
+                    $poster =  "view/img/notfound.jpg";
                     ?>
 				    <img src="<?php echo $poster; ?>" alt="" data-toggle="tooltip" title="<?php echo $description; ?>" class="thumbsJPG img img-responsive" id="thumbsJPG<?php echo $cat['id']; ?>" />
                     <?php
@@ -188,7 +188,7 @@ unset($_SESSION['type']);
                     $poster = $images->poster;
                     ?>
                 <div class="carousel-cell tile ">
-					<div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" video="<?php echo $value['clean_title']; ?>" iframe="<?php echo $global['webSiteRootURL']; ?>videoEmbeded/<?php echo $value['clean_title']; ?>">
+					<div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" video="<?php echo $value['clean_title']; ?>" iframe="videoEmbeded/<?php echo $value['clean_title']; ?>">
 				        <div class="tile__media ">
 				            <img alt="<?php echo $value['title']; ?>" class="tile__img thumbsJPG ing img-responsive carousel-cell-image" data-flickity-lazyload="<?php echo $img; ?>" />
                                     <?php if (! empty($imgGif)) { ?>
@@ -199,7 +199,7 @@ unset($_SESSION['type']);
 							<div class="videoInfo">
 								<span class="label label-default"><i class="fa fa-eye"></i> <?php echo $value['views_count']; ?></span>
                                 <span class="label label-success"><i class="fa fa-thumbs-up"></i> <?php echo $value['likes']; ?></span>
-                                <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo $global['webSiteRootURL'] . "cat/" . $value['clean_category']; ?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
+                                <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo  "cat/" . $value['clean_category']; ?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
                             <?php if ($config->getAllow_download()) { 
                                             $ext = ".mp4";
                                             if($value['type']=="audio"){
@@ -209,7 +209,7 @@ unset($_SESSION['type']);
                                                         $ext = ".mp3";
                                                     }
                                         } ?>
-                            <span><a class="label label-default " href="<?php echo $global['webSiteRootURL'] . "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
+                            <span><a class="label label-default " href="<?php echo  "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
 							</div>
 							<div class="tile__title">
                                 <?php echo $value['title']; ?>
@@ -276,11 +276,11 @@ unset($_SESSION['type']);
                     $img = $images->thumbsJpg;
                     $poster = $images->poster;
                     if(file_exists($global['systemRootPath']."videos/".$value['filename'].".jpg")){
-                        $img = $global['webSiteRootURL']."videos/".$value['filename'].".jpg";
+                        $img = "videos/".$value['filename'].".jpg";
                     }
                     ?>
                     <div class="carousel-cell tile ">
-					   <div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" video="<?php echo $value['clean_title']; ?>" iframe="<?php echo $global['webSiteRootURL']; ?>videoEmbeded/<?php echo $value['clean_title']; ?>">
+					   <div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" video="<?php echo $value['clean_title']; ?>" iframe="videoEmbeded/<?php echo $value['clean_title']; ?>">
 				        <div class="tile__media ">
 							<img alt="<?php echo $value['title']; ?>" class="tile__img thumbsJPG ing img-responsive carousel-cell-image" data-flickity-lazyload="<?php echo $img; ?>" />
                             <?php if (! empty($imgGif)) { ?>
@@ -291,7 +291,7 @@ unset($_SESSION['type']);
 							<div class="videoInfo">
 								<span class="label label-default"><i class="fa fa-eye"></i> <?php echo $value['views_count']; ?></span>
                                 <span class="label label-success"><i class="fa fa-thumbs-up"></i> <?php echo $value['likes']; ?></span>
-                                <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo $global['webSiteRootURL'] . "cat/" . $value['clean_category'];?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
+                                <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo  "cat/" . $value['clean_category'];?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
                             <?php if ($config->getAllow_download()) { 
                                             $ext = ".mp4";
                                             if($value['type']=="audio"){
@@ -301,7 +301,7 @@ unset($_SESSION['type']);
                                                         $ext = ".mp3";
                                                     }
                                         } ?>
-                            <span><a class="label label-default " href="<?php echo $global['webSiteRootURL'] . "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
+                            <span><a class="label label-default " href="<?php echo  "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
 							</div>
 							<div class="tile__title">
                                         <?php echo $value['title'];?>
@@ -357,7 +357,7 @@ unset($_SESSION['type']);
                     $poster = $images->poster;
                     ?>
                     <div class="carousel-cell tile ">
-                         <div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" video="<?php echo $value['clean_title']; ?>" iframe="<?php echo $global['webSiteRootURL']; ?>videoEmbeded/<?php echo $value['clean_title']; ?>">
+                         <div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" video="<?php echo $value['clean_title']; ?>" iframe="videoEmbeded/<?php echo $value['clean_title']; ?>">
                                 <div class="tile__media ">
                                     <img alt="<?php echo $value['title']; ?>" class="tile__img thumbsJPG ing img-responsive carousel-cell-image" data-flickity-lazyload="<?php echo $img; ?>" />
                                     <?php if (! empty($imgGif)) { ?>
@@ -368,7 +368,7 @@ unset($_SESSION['type']);
                                     <div class="videoInfo">
                                         <span class="label label-default"><i class="fa fa-eye"></i> <?php echo $value['views_count']; ?></span>
                                         <span class="label label-success"><i class="fa fa-thumbs-up"></i> <?php echo $value['likes']; ?></span>
-                                        <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo $global['webSiteRootURL'] . "cat/" .$value['clean_category']; ?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
+                                        <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo  "cat/" .$value['clean_category']; ?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
                                     <?php if ($config->getAllow_download()) { 
                                             $ext = ".mp4";
                                             if($value['type']=="audio"){
@@ -378,7 +378,7 @@ unset($_SESSION['type']);
                                                         $ext = ".mp3";
                                                     }
                                         } ?>
-                            <span><a class="label label-default " href="<?php echo $global['webSiteRootURL'] . "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
+                            <span><a class="label label-default " href="<?php echo  "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
                                     </div>
                                     <div class="tile__title">
                                         <?php echo $value['title']; ?>
@@ -439,7 +439,7 @@ unset($_SESSION['type']);
                     $poster = $images->poster;
                     ?>
                 <div class="carousel-cell tile ">
-					<div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" video="<?php echo $value['clean_title']; ?>" iframe="<?php echo $global['webSiteRootURL']; ?>videoEmbeded/<?php echo $value['clean_title']; ?>">
+					<div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" video="<?php echo $value['clean_title']; ?>" iframe="videoEmbeded/<?php echo $value['clean_title']; ?>">
                         <div class="tile__media ">
                             <img alt="<?php echo $value['title']; ?>" class="tile__img thumbsJPG ing img-responsive carousel-cell-image" data-flickity-lazyload="<?php echo $img; ?>" />
                             <?php if (! empty($imgGif)) { ?>
@@ -450,7 +450,7 @@ unset($_SESSION['type']);
 							<div class="videoInfo">
 								<span class="label label-default"><i class="fa fa-eye"></i> <?php echo $value['views_count']; ?></span>
                                 <span class="label label-success"><i class="fa fa-thumbs-up"></i> <?php echo $value['likes']; ?></span>
-                                <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo $global['webSiteRootURL'] . "cat/" . $value['clean_category']; ?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
+                                <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo  "cat/" . $value['clean_category']; ?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
                             <?php if ($config->getAllow_download()) { 
                                             $ext = ".mp4";
                                             if($value['type']=="audio"){
@@ -460,7 +460,7 @@ unset($_SESSION['type']);
                                                         $ext = ".mp3";
                                                     }
                                         } ?>
-                            <span><a class="label label-default " href="<?php echo $global['webSiteRootURL'] . "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
+                            <span><a class="label label-default " href="<?php echo  "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
 							</div>
 							<div class="tile__title">
                                 <?php echo $value['title']; ?>
@@ -535,7 +535,7 @@ unset($_SESSION['type']);
                     
                     ?>
                 <div class="row">
-			<a style="z-index: 9999;" href='<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $cat['clean_name']; ?>'>
+			<a style="z-index: 9999;" href='cat/<?php echo $cat['clean_name']; ?>'>
 				<h2 style="margin-top: 30px;">
 					<i class="<?php echo $cat['iconClass']; ?>"></i><?php echo $cat['name']; ?>
                     <span class="badge"><?php echo count($videos); ?></span>
@@ -550,7 +550,7 @@ unset($_SESSION['type']);
                         $poster = $images->poster;
                         ?>
             <div class="carousel-cell tile ">
-					<div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" cat="<?php echo $cat['clean_name']; ?>" video="<?php echo $value['clean_title']; ?>" iframe="<?php echo $global['webSiteRootURL']; ?>videoEmbeded/<?php echo $value['clean_title']; ?>">
+					<div class="slide thumbsImage" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" cat="<?php echo $cat['clean_name']; ?>" video="<?php echo $value['clean_title']; ?>" iframe="videoEmbeded/<?php echo $value['clean_title']; ?>">
 				<div class="tile__media ">
 							<img alt="<?php echo $value['title']; ?>" class="tile__img thumbsJPG ing img-responsive carousel-cell-image" data-flickity-lazyload="<?php echo $img; ?>" />
                         <?php if (! empty($imgGif)) { ?>
@@ -561,7 +561,7 @@ unset($_SESSION['type']);
 							<div class="videoInfo">
 								<span class="label label-default"><i class="fa fa-eye"></i> <?php echo $value['views_count']; ?></span> 
                                 <span class="label label-success"><i class="fa fa-thumbs-up"></i> <?php echo $value['likes']; ?></span>
-                                <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo $global['webSiteRootURL'] . "cat/" . $value['clean_category']; ?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
+                                <span class="label label-success"><a style="color: inherit;" class="tile__cat" cat="<?php echo $value['clean_category']; ?>" href="<?php echo  "cat/" . $value['clean_category']; ?>"><i class="fa"></i> <?php echo $value['category']; ?></a></span>
                                                             <?php if ($config->getAllow_download()) { 
                                             $ext = ".mp4";
                                             if($value['type']=="audio"){
@@ -571,7 +571,7 @@ unset($_SESSION['type']);
                                                         $ext = ".mp3";
                                                     }
                                         } ?>
-                            <span><a class="label label-default " href="<?php echo $global['webSiteRootURL'] . "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
+                            <span><a class="label label-default " href="<?php echo  "videos/" . $value['filename'].$ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></span><?php } ?>
 							</div>
 							<div class="tile__title">
                                         <?php echo $value['title']; ?>
@@ -702,9 +702,9 @@ unset($_SESSION['type']);
                         $countCols ++;
                         ?>
                         <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 galleryVideo thumbsImage fixPadding">
-					       <a href="<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $cat['clean_name']; ?>" title="<?php $cat['name']; ?>">
+					       <a href="cat/<?php echo $cat['clean_name']; ?>" title="<?php $cat['name']; ?>">
                                 <div class="aspectRatio16_9">
-                                    <img src="<?php echo $global['webSiteRootURL'].$audioReplacePicture; ?>" alt="" data-toggle="tooltip" title="<?php echo $description; ?>" class="thumbsJPG img img-responsive" />
+                                    <img src="<?php $audioReplacePicture; ?>" alt="" data-toggle="tooltip" title="<?php echo $description; ?>" class="thumbsJPG img img-responsive" />
                                 </div>
                             <div class="videoInfo">
                             <?php if (!empty($videoCount)) { ?>
@@ -738,7 +738,7 @@ unset($_SESSION['type']);
                         $countCols ++;
                         ?>
                 <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 galleryVideo thumbsImage fixPadding">
-					<a href="<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $cat['clean_name']; ?>" title="<?php $cat['name']; ?>">
+					<a href="cat/<?php echo $cat['clean_name']; ?>" title="<?php $cat['name']; ?>">
                     <?php
                         $images = Video::getImageFromFilename($value['filename'], $value['type']);
                         if (! $o->LiteGalleryNoGifs) {
@@ -823,8 +823,8 @@ unset($_SESSION['type']);
                             $poster = $images->poster;
                     ?>
                     <div class="carousel-cell tile ">
-                        <a href="<?php echo $global['webSiteRootURL'] . "cat/" . $cat['clean_name']; ?>">
-                            <div class="slide" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" cat="<?php echo $cat['clean_name']; ?>" video="<?php echo $value['clean_title']; ?>" iframe="<?php echo $global['webSiteRootURL']; ?>videoEmbeded/<?php echo $value['clean_title']; ?>">
+                        <a href="<?php echo  "cat/" . $cat['clean_name']; ?>">
+                            <div class="slide" videos_id="<?php echo $value['id']; ?>" poster="<?php echo $poster; ?>" cat="<?php echo $cat['clean_name']; ?>" video="<?php echo $value['clean_title']; ?>" iframe="videoEmbeded/<?php echo $value['clean_title']; ?>">
                                 <div class="tile__media ">
                                     <img alt="<?php echo $value['title']; ?>" class="tile__img thumbsJPG ing img-responsive carousel-cell-image" data-flickity-lazyload="<?php echo $img; ?>" />
                                     <?php if ((! empty($imgGif)) && (! $o->LiteDesignNoGifs)) { ?>
@@ -890,7 +890,7 @@ unset($_SESSION['type']);
             <?php } else { ?>
             <h5><?php echo __("Want to watch this again later?"); ?></h5>
 		      <?php echo __("Sign in to add this video to a playlist."); ?>
-            <a href="<?php echo $global['webSiteRootURL']; ?>user" class="btn btn-primary">
+            <a href="user" class="btn btn-primary">
                 <span class="glyphicon glyphicon-log-in"></span>
                 <?php echo __("Login"); ?>
             </a>

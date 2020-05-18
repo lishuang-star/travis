@@ -22,7 +22,7 @@ function createGallery($title, $sort, $rowCount, $getName, $mostWord, $lessWord,
     ?>
     <div class="clear clearfix">
         <h3 class="galleryTitle">
-            <a class="btn-default" href="<?php echo $global['webSiteRootURL']; ?>?showOnly=<?php echo $getName; ?>">
+            <a class="btn-default" href="?showOnly=<?php echo $getName; ?>">
                 <i class="glyphicon glyphicon-list-alt"></i>
                 <?php
                 if (empty($_GET[$getName])) {
@@ -120,7 +120,7 @@ function createGallerySection($videos) {
         $countCols ++;
         ?>
         <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 galleryVideo thumbsImage fixPadding" style="z-index: 2;">
-            <a href="<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $value['clean_category']; ?>/video/<?php echo $value['clean_title']; ?>" title="<?php echo $value['title']; ?>">
+            <a href="cat/<?php echo $value['clean_category']; ?>/video/<?php echo $value['clean_title']; ?>" title="<?php echo $value['title']; ?>">
                 <?php
                 $images = Video::getImageFromFilename($value['filename'], $value['type']);
                 $imgGif = $images->thumbsGif;
@@ -129,19 +129,19 @@ function createGallerySection($videos) {
                 <div class="aspectRatio16_9">
                     <img src="<?php echo $images->thumbsJpgSmall; ?>" data-src="<?php echo $poster; ?>" alt="<?php echo $value['title']; ?>" class="thumbsJPG img img-responsive <?php echo $img_portrait; ?>  rotate<?php echo $value['rotation']; ?>  <?php echo ($poster!=$images->thumbsJpgSmall)?"blur":""; ?>" id="thumbsJPG<?php echo $value['id']; ?>" />
                     <?php if (!empty($imgGif)) { ?>
-                        <img src="<?php echo $global['webSiteRootURL']; ?>img/loading-gif.png" data-src="<?php echo $imgGif; ?>" style="position: absolute; top: 0; display: none;" alt="<?php echo $value['title']; ?>" id="thumbsGIF<?php echo $value['id']; ?>" class="thumbsGIF img-responsive <?php echo $img_portrait; ?>  rotate<?php echo $value['rotation']; ?>" height="130" />
+                        <img src="view/img/loading-gif.png" data-src="<?php echo $imgGif; ?>" style="position: absolute; top: 0; display: none;" alt="<?php echo $value['title']; ?>" id="thumbsGIF<?php echo $value['id']; ?>" class="thumbsGIF img-responsive <?php echo $img_portrait; ?>  rotate<?php echo $value['rotation']; ?>" height="130" />
                     <?php } ?>
                 </div>
                 <span class="duration"><?php echo Video::getCleanDuration($value['duration']); ?></span>
             </a> 
-            <a class="h6" href="<?php echo $global['webSiteRootURL']; ?>video/<?php echo $value['clean_title']; ?>" title="<?php echo $value['title']; ?>">
+            <a class="h6" href="video/<?php echo $value['clean_title']; ?>" title="<?php echo $value['title']; ?>">
                 <h2><?php echo $value['title']; ?></h2>
             </a>
 
             <div class="text-muted galeryDetails">
                 <div>
                     <?php if (empty($_GET['catName'])) { ?>
-                        <a class="label label-default" href="<?php echo $global['webSiteRootURL']; ?>cat/<?php echo $value['clean_category']; ?>/">
+                        <a class="label label-default" href="cat/<?php echo $value['clean_category']; ?>/">
                             <?php
                             if (!empty($value['iconClass'])) {
                                 ?>
@@ -186,7 +186,7 @@ function createGallerySection($videos) {
                 </div>
                 <?php if (Video::canEdit($value['id'])) { ?>
                     <div>
-                        <a href="<?php echo $global['webSiteRootURL']; ?>mvideos?video_id=<?php echo $value['id']; ?>" class="text-primary">
+                        <a href="mvideos?video_id=<?php echo $value['id']; ?>" class="text-primary">
                             <i class="fa fa-edit"></i> <?php echo __("Edit Video"); ?>
                         </a>
                     </div>
@@ -203,7 +203,7 @@ function createGallerySection($videos) {
                         }
                     }
                     ?>
-                    <div><a class="label label-default " role="button" href="<?php echo $global['webSiteRootURL'] . "videos/" . $value['filename'] . $ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></div>
+                    <div><a class="label label-default " role="button" href="<?php echo  "videos/" . $value['filename'] . $ext; ?>" download="<?php echo $value['title'] . $ext; ?>"><?php echo __("Download"); ?></a></div>
                     <?php } ?>
 
             </div>

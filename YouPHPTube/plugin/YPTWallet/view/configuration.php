@@ -4,7 +4,7 @@ require_once $global['systemRootPath'] . 'objects/user.php';
 require_once $global['systemRootPath'] . 'objects/functions.php';
 
 if(!User::isLogged()){
-    header("Location: {$global['webSiteRootURL']}");
+    header("Location: ");
 }
 
 $plugin = YouPHPTubePlugin::loadPluginIfEnabled("YPTWallet");
@@ -53,7 +53,7 @@ $wallet->setUsers_id(User::getId());
                     event.preventDefault();
                     modal.showPleaseWait();
                     $.ajax({
-                        url: '<?php echo $global['webSiteRootURL']; ?>plugin/YPTWallet/view/saveConfiguration.php',
+                        url: 'plugin/YPTWallet/view/saveConfiguration.php',
                         data: $("#form").serialize(),
                         type: 'post',
                         success: function (response) {

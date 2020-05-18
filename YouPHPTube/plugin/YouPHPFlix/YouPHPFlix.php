@@ -55,8 +55,8 @@ class YouPHPFlix extends PluginAbstract {
         global $global;
         $obj = $this->getDataObject();
         $css = "";
-        //$css .= "<link href=\"{$global['webSiteRootURL']}view/css/custom/".$obj->theme.".css\" rel=\"stylesheet\" type=\"text/css\"/>";
-        $css .= "<link href=\"{$global['webSiteRootURL']}plugin/YouPHPFlix/view/css/style.css\" rel=\"stylesheet\" type=\"text/css\"/>";
+        //$css .= "<link href=\"view/css/custom/".$obj->theme.".css\" rel=\"stylesheet\" type=\"text/css\"/>";
+        $css .= "<link href=\"plugin/YouPHPFlix/view/css/style.css\" rel=\"stylesheet\" type=\"text/css\"/>";
         
         return $css;
     }
