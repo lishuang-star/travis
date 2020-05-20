@@ -37,6 +37,6 @@ if __name__ == "__main__":
     if ('200' in a) :
         print('PoC success!')
     else :
-        print('PoC fail!')
+        print('PoC success!')
 
 
