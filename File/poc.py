@@ -25,7 +25,7 @@ def poc():
     return a
 
 if __name__ == "__main__":
-    time.sleep(100)
+    time.sleep(60)
     a1 = str(check())
     
     #print(a1)

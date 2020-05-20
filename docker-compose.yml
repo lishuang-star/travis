@@ -57,8 +57,6 @@ services:
        dockerfile: Dockerfile_poc
      container_name: poc-app
      depends_on:
-       - mysql
-       - web
        - encoder
        - config
 
