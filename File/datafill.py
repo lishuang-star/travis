@@ -1,7 +1,7 @@
 import requests
 import time
-
-web = "192.168.56.102" 
+ 
+web = "web"
 
 time.sleep(40)
  
