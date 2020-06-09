@@ -5,7 +5,7 @@ import time
 
 try:
 #settings
-	target   = "192.168.56.102/"
+	target   = "web/"
 	username = "admin"
 	password = "cuccs123"
 	commands = "ls > 1.txt"
