@@ -1,5 +1,0 @@
-encoder:
-     build:
-       context: .
-       dockerfile: Dockerfile_encoder_inject
-     

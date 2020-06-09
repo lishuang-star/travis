@@ -1,40 +1,57 @@
-# Based on the work of @hannah98, thanks for that!
-# https://github.com/hannah98/youphptube-docker
-# Licensed under the terms of the CC-0 license, see
-# https://creativecommons.org/publicdomain/zero/1.0/deed
+# To create the image
+#
+#    docker image build -t atutor .
+#
+# To run atutor
+#
+#    docker run -e MYSQL_ROOT_PASSWORD=rootpwd --name mysql -d mysql:5.6
+#    docker run -p80:80 --name atutor -d atutor
 
-FROM php:7.3-apache
+FROM php:5.6.30-apache
 
-ADD File/sources.list /etc/apt/
+LABEL "maintainer"="Daniele Demichelis <demichelis@danidemi.com>" \
+      "version.php"="5.6.30" \
+      "version.Atutor"="2.2.2"
 
-MAINTAINER TheAssassin <theassassin@assassinate-you.net>
+EXPOSE 80 
 
-RUN apt-get update && \
-    apt-get install -y wget git zip curl default-libmysqlclient-dev libbz2-dev libmemcached-dev libsasl2-dev libfreetype6-dev libicu-dev libjpeg-dev libmemcachedutil2 libpng-dev libzip-dev libxml2-dev mariadb-client ffmpeg libimage-exiftool-perl python curl python3-pip && \
-    docker-php-ext-configure gd --with-freetype-dir=/usr/include --with-jpeg-dir=/usr/include && \
-    docker-php-ext-install -j$(nproc) bcmath bz2 calendar exif gd gettext iconv intl mbstring mysqli opcache pdo_mysql zip && \
-    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* /root/.cache && \
-    a2enmod rewrite
+RUN rm /etc/apt/sources.list 
+ADD sources.list /etc/apt/
 
-# patch to use non-root port
-RUN sed -i "s|Listen 80|Listen 8000|g" /etc/apache2/ports.conf && \
-    sed -i "s|:80|:8000|g" /etc/apache2/sites-available/* && \
-    echo "max_execution_time = 7200\npost_max_size = 10240M\nupload_max_filesize = 10240M\nmemory_limit = 512M" >> /usr/local/etc/php/php.ini
+# Install the needed PHP libraries
+# ================================
+RUN apt-get update; \
+    apt-get install -y wget unzip; \
+    docker-php-ext-install mysql; \
+    apt-get install -y libfreetype6-dev libjpeg62-turbo-dev wget unzip; \
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/lib; \
+    docker-php-ext-install gd
 
-RUN pip3 install youtube-dl -i https://pypi.tuna.tsinghua.edu.cn/simple/
+# Configure PHP writing a custom php .ini
+# ================================
+RUN touch /var/log/php-errors.log; \
+    echo "date.timezone=Europe/Rome" >> /usr/local/etc/php/conf.d/docker-php.ini; \
+    echo "display_errors = Off" >> /usr/local/etc/php/conf.d/docker-php.ini; \
+    echo "log_errors = On" >> /usr/local/etc/php/conf.d/docker-php.ini; \
+    echo "error_log = /dev/stdout" >> /usr/local/etc/php/conf.d/docker-php.ini;
+    
+# Download and install ATutor
+# ATutor-atutor_2_2_2 
+# ===========================
 
-RUN rm -rf /var/www/html/*
-COPY YouPHPTube/.  /var/www/html
+COPY ATutor-atutor_2_2_2.zip /tmp
+RUN unzip /tmp/ATutor-atutor_2_2_2.zip -d /tmp; \
+    rm -rf /var/www/html; \
+    mv /tmp/ATutor-atutor_2_2_2 /var/www/html/; \
+    touch /var/www/html/include/config.inc.php; \
+    chmod a+rw -R /var/www/html/; \
+    echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php; \
+    rm /tmp/ATutor-atutor_2_2_2.zip 
 
-# fix permissions
-RUN chown -R www-data. /var/www/html
+RUN mkdir /var/www/html/content; \
+    chmod a+rw -R /var/www/html/content;
 
-# create volume
-RUN install -d -m 0755 -o www-data -g www-data /var/www/html/videos
 
-# set non-root user
-USER www-data
+# https://github.com/atutor/ATutor/archive/atutor_2_2_2.zip
 
-VOLUME ["/var/www/html/videos"]
-
-EXPOSE 8000
+# RUN mkdir -p /var/content; \chmod 2777 /var/content

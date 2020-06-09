@@ -2,9 +2,6 @@ FROM python:3.8-buster
 
 ADD File/requirements_config.txt /requirements_config.txt
 ADD File/datafill.py /datafill.py
-RUN mkdir /video
-RUN chmod +rwx /video
-COPY File/video/.  /video
 
 RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -r /requirements_config.txt
 RUN chmod +x /datafill.py
