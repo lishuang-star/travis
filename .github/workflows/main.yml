@@ -6,9 +6,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Shell Check
-      run: docker run --rm -v "$PWD:/mnt" koalaman/shellcheck:stable ci/*.sh
-
     - name: Deploy DVE
       run: docker-compose up -d
 
