@@ -1,78 +1,36 @@
 import requests
 import time
  
-web = "web"
+web = "192.168.56.102"
 
-time.sleep(40)
- 
-# install
-burp0_url = "http://"+web+"/install/index.php"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Connection": "close", "Referer": "http://"+web+"/install/not_installed.php", "Upgrade-Insecure-Requests": "1"}
+time.sleep(30)
+
+burp0_url = "http://" +web+ ":80/install.php?m=Home&c=Index&a=step1"
+burp0_cookies = {"_ga": "GA1.1.115988577.1589305154", "think_template": "default", "think_language": "zh-CN", "PHPSESSID": "4t8jvhepr7dk3oeoedbfm2q5n6"}
+burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/web+p,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Connection": "close", "Referer": "http://" +web+ "/install.php", "Upgrade-Insecure-Requests": "1"}
 requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)
-time.sleep(5)
 
-burp0_url = "http://"+web+"/install/install.php"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded", "Origin": "http://"+web, "Connection": "close", "Referer": "http://"+web+"/install/index.php", "Upgrade-Insecure-Requests": "1"}
-burp0_data = {"new_version": "2.2.2", "next": "  Install  "}
-requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
-time.sleep(3)
-
-burp0_url = "http://"+web+"/install/install.php"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded", "Origin": "http://"+web, "Connection": "close", "Referer": "http://"+web+"/install/install.php", "Upgrade-Insecure-Requests": "1"}
-burp0_data = {"action": "process", "step": "1", "new_version": "2.2.2", "submit": "I Agree"}
-requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
-time.sleep(3)
-
-
-burp0_url = "http://"+web+"/install/install.php"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded", "Origin": "http://"+web, "Connection": "close", "Referer": "http://"+web+"/install/install.php", "Upgrade-Insecure-Requests": "1"}
-burp0_data = {"action": "process", "step": "2", "new_version": "2.2.2", "db_host": "mysql", "db_port": "3306", "db_login": "root", "db_password": "rootpwd", "db_name": "atutor", "tb_prefix": "AT_", "submit": "Next \xc2\xbb "}
-requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
-time.sleep(3)
-
-burp0_url = "http://"+web+"/install/install.php"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded", "Origin": "http://"+web, "Connection": "close", "Referer": "http://"+web+"/install/install.php", "Upgrade-Insecure-Requests": "1"}
-burp0_data = {"step": "3", "step2[new_version]": "2.2.2", "step2[db_host]": "mysql", "step2[db_port]": "3306", "step2[db_login]": "root", "step2[db_password]": "rootpwd", "step2[db_name]": "atutor", "step2[tb_prefix]": "AT_", "submit": "Next \xc2\xbb "}
-requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
-time.sleep(3)
-
-burp0_url = "http://"+web+"/install/install.php"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded", "Origin": "http://"+web, "Connection": "close", "Referer": "http://"+web+"/install/install.php", "Upgrade-Insecure-Requests": "1"}
-burp0_data = {"action": "process", "form_admin_password_hidden": "07bb1830e46cd22ff5c19e14b6c2acef77e47b40", "form_account_password_hidden": "7c4a8d09ca3762af61e59520943dc26494f8941b", "step": "3", "step2[new_version]": "2.2.2", "step2[db_host]": "mysql", "step2[db_port]": "3306", "step2[db_login]": "root", "step2[db_password]": "rootpwd", "step2[db_name]": "atutor", "step2[tb_prefix]": "AT_", "smtp": "false", "admin_username": "admin", "admin_password": '', "admin_email": "894597649@qq.com", "site_name": "Course Server", "email": "2237744542@qq.com", "just_social": "0", "home_url": '', "account_username": "liming", "account_password": '', "account_email": "894597649@qq.com", "account_fname": "Li", "account_lname": "ming", "submit": " Next \xc2\xbb"}
-requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
-time.sleep(3)
-
-burp0_url = "http://"+web+"/install/install.php"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded", "Origin": "http://"+web, "Connection": "close", "Referer": "http://"+web+"/install/install.php", "Upgrade-Insecure-Requests": "1"}
-burp0_data = {"step": "4", "copy_from": '', "get_file": "TRUE", "step2[new_version]": "2.2.2", "step2[db_host]": "mysql", "step2[db_port]": "3306", "step2[db_login]": "root", "step2[db_password]": "rootpwd", "step2[db_name]": "atutor", "step2[tb_prefix]": "AT_", "step3[smtp]": "false", "step3[admin_password]": '', "step3[account_password]": '', "step3[account_fname]": "Li", "step3[account_lname]": "ming", "content_dir": "/var/www/html/content", "submit": " Next \xc2\xbb"}
-requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
-time.sleep(3)
-
-burp0_url = "http://"+web+"/install/install.php"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded", "Origin": "http://"+web, "Connection": "close", "Referer": "http://"+web+"/install/install.php", "Upgrade-Insecure-Requests": "1"}
-burp0_data = {"step": "5", "step2[new_version]": "2.2.2", "step2[db_host]": "mysql", "step2[db_port]": "3306", "step2[db_login]": "root", "step2[db_password]": "rootpwd", "step2[db_name]": "atutor", "step2[tb_prefix]": "AT_", "step3[smtp]": "false", "step3[admin_password]": '', "step3[account_password]": '', "step3[account_fname]": "Li", "step3[account_lname]": "ming", "step4[copy_from]": '', "step4[get_file]": "TRUE", "step4[content_dir]": "%2Fvar%2Fwww%2Fhtml%2Fcontent%2F", "submit": " Next \xc2\xbb "}
-requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
-time.sleep(3)
-
-burp0_url = "http://"+web+"/install/install.php"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded", "Origin": "http://"+web, "Connection": "close", "Referer": "http://"+web+"/install/install.php", "Upgrade-Insecure-Requests": "1"}
-burp0_data = {"step": "6", "log_upgrade": "0", "step2[new_version]": "2.2.2", "step2[db_host]": "mysql", "step2[db_port]": "3306", "step2[db_login]": "root", "step2[db_password]": "rootpwd", "step2[db_name]": "atutor", "step2[tb_prefix]": "AT_", "step3[smtp]": "false", "step3[admin_password]": '', "step3[account_password]": '', "step3[account_fname]": "Li", "step3[account_lname]": "ming", "step4[copy_from]": '', "step4[get_file]": "TRUE", "step4[content_dir]": "%2Fvar%2Fwww%2Fhtml%2Fcontent%2F", "log_os": "Linux 4.15.0-99-generic #100-Ubuntu SMP Wed Apr 22 20:32:56 UTC 2020 x86_64", "log_server": "Apache/2.4.10 (Debian)", "log_php": "5.6.30", "log_mysql": "5.6.48", "log_url": "http://"+web+"/", "log_url_yes": "1", "log_yes": "1", "submit": " Next \xc2\xbb "}
-requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
-time.sleep(3)
-
-burp0_url = "http://"+web+"/login.php?submit=%C2%BB+Log-in%21"
-burp0_cookies = {"PHPSESSID": "d5c264210ea3d8d98bb53cab26864ef5", "ATutorID": "99a8ec7f488074be2c18ad19390be848"}
-burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Connection": "close", "Referer": "http://"+web+"/install/install.php", "Upgrade-Insecure-Requests": "1"}
+burp0_url = "http://" +web+ ":80/install.php?m=Home&c=Index&a=step2"
+burp0_cookies = {"_ga": "GA1.1.115988577.1589305154", "think_template": "default", "think_language": "zh-CN", "PHPSESSID": "4t8jvhepr7dk3oeoedbfm2q5n6"}
+burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; aWin64; x64; rv:77.0) Gecko/20100101 Firefox/77.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/web+p,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Connection": "close", "Referer": "http://" +web+ "/install.php?m=Home&c=Index&a=step1", "Upgrade-Insecure-Requests": "1"}
 requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)
-time.sleep(3)
 
- print("Config success!")
+
+burp0_url = "http://" +web+ ":80/install.php?m=Home&c=index&a=detection_db"
+burp0_cookies = {"_ga": "GA1.1.115988577.1589305154", "think_template": "default", "think_language": "zh-CN", "PHPSESSID": "4t8jvhepr7dk3oeoedbfm2q5n6"}
+burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0", "Accept": "application/json, text/javascript, */*; q=0.01", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", "X-Requested-With": "XMLHttpRequest", "Origin": "http://" +web+ "", "Connection": "close", "Referer": "http://" +web+ "/install.php?m=Home&c=Index&a=step2"}
+burp0_data = {"dbhost": "127.0.0.1", "dbuser": "root", "dbpass": "root", "dbname": "mysql", "pre": "qs_", "dbport": "3306", "dbport": "\xe5\x8c\x97\xe4\xba\xac\xe5\xb8\x82", "default_district": "35", "admin_name": "admin", "admin_pwd": "admin123", "admin_pwd1": "admin123", "admin_email": "admin@qq.com", "detection": "0"}
+requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
+
+burp0_url = "http://" +web+ ":80/install.php?m=Home&c=Index&a=step3"
+burp0_cookies = {"_ga": "GA1.1.115988577.1589305154", "think_template": "default", "think_language": "zh-CN", "PHPSESSID": "4t8jvhepr7dk3oeoedbfm2q5n6"}
+burp0_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/web+p,*/*;q=0.8", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Content-Type": "application/x-www-form-urlencoded", "Origin": "http://" +web+ "", "Connection": "close", "Referer": "http://" +web+ "/install.php?m=Home&c=Index&a=step2", "Upgrade-Insecure-Requests": "1"}
+burp0_data = {"dbhost": "127.0.0.1", "dbuser": "root", "dbpass": "root", "dbname": "mysql", "pre": "qs_", "dbport": "3306", "dbport": "\xe5\x8c\x97\xe4\xba\xac\xe5\xb8\x82", "default_district": "35", "admin_name": "admin", "admin_pwd": "admin123", "admin_pwd1": "admin123", "admin_email": "admin@qq.com", "detection": "0"}
+requests.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
+
+burp0_url = "http://www.74cms.com:80/plus/getinstall.php?domaindir=http://" +web+ "/&domain=http://" +web+ "&email=admin@qq.com&v=5.0.1&t52&i=376"
+burp0_cookies = {"UM_distinctid": "173004cbc9b397-075994bb66b47f8-4c302c7d-fa000-173004cbc9c445", "CNZZDATA2338778": "cnzz_eid%3D2000169776-1593436516-http%253A%252F%252F" +web+ "%252F%26ntime%3D1593569246", "__root_domain_v": ".74cms.com", "_qddaz": "QD.71tgnb.k8a4tu.kc0js5k9"}
+burp0_headers = {"GET /plus/getinstall.php?domaindir=http": "/" +web+ "/&domain=http://" +web+ "&email=admin@qq.com&v=5.0.1&t52&i=376 HTTP/1.1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0", "Accept": "*/*", "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2", "Accept-Encoding": "gzip, deflate", "Connection": "close", "Referer": "http://" +web+ "/install.php?m=Home&c=Index&a=step3"}
+requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)
+
+print("Config success!")

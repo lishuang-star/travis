@@ -6,4 +6,4 @@ ADD File/requirements_poc.txt /requirements_poc.txt
 
 RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -r /requirements_poc.txt
 RUN chmod +x poc.py
-CMD python poc.py
+CMD python ./poc.py

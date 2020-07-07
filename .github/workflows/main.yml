@@ -1,0 +1,40 @@
+name: DVE Test
+on: [push, pull_request]
+jobs: 
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Shell Check
+      run: docker run --rm -v "$PWD:/mnt" koalaman/shellcheck:stable ci/*.sh
+
+    - name: Deploy DVE
+      run: docker-compose up -d
+
+    - uses: actions/setup-node@v2-beta
+      with:
+        node-version: '12'
+
+    - name: Check Service Availability
+      run: |
+        sleep 60
+        npm i puppeteer
+        node ci/check_availability.js
+        git config --local user.email "894597649@qq.com"
+        git config --local user.name "lishuang"
+        git add ci/screenshots/
+        git commit -m "CI push sreenshots back"
+        
+    - name: Check PoC Result
+      run: bash ci/check_poc.sh
+  
+    - name: Components Security Scan - anchore inline scan JSON results
+      run: for j in `ls ./anchore-reports/*.json`; do echo "---- ${j} ----"; cat ${j}; echo; done
+    - name: Components Security Scan - show vulnerabilities log in human readable format
+      run: jq -r '.vulnerabilities[] | "\(.vuln)\t\(.severity)\t\(.package)\t\(.package_name)\t\(.package_version)"' ./anchore-reports/vulnerabilities.json | sort -k2 | grep -v Negligible
+
+    - name: Push Screenshots And Traffic Back To Master
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
