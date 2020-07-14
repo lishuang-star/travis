@@ -6,6 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+#镜像备份
     - name: Deploy DVE
       run: docker-compose up -d
 
@@ -20,12 +21,20 @@ jobs:
         node ci/check_availability.js
         git config --local user.email "894597649@qq.com"
         git config --local user.name "lishuang"
+        git status
         git add ci/screenshots/
         git commit -m "CI push sreenshots back"
         
     - name: Check PoC Result
-      run: bash ci/check_poc.sh
-  
+      run: bash check_poc.sh
+   
+    - name: Components Security Scan - container scan
+      uses: anchore/scan-action@master
+      with:
+        dockerfile-path: "./Dockerfile_web"
+        include-app-packages: true
+        debug: true
+
     - name: Components Security Scan - anchore inline scan JSON results
       run: for j in `ls ./anchore-reports/*.json`; do echo "---- ${j} ----"; cat ${j}; echo; done
     - name: Components Security Scan - show vulnerabilities log in human readable format
