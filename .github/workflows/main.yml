@@ -26,7 +26,7 @@ jobs:
         git commit -m "CI push sreenshots back"
         
     - name: Check poC message
-        docker-compose logs poc
+      run: docker-compose logs poc
 
     - name: Check PoC Result
       run: bash check_poc.sh
