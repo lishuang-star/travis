@@ -17,8 +17,8 @@ if (!fs.existsSync(dir)) {
   try {
     await page.goto(url);
     await page.screenshot({ path: dir + "/login.png" });
-    await page.type("#username", "admin");
-    await page.type("#password", "admin123");
+   // await page.type("#username", "admin");
+   // await page.type("#password", "admin123");
     await page.keyboard.press("Enter", { delay: 3000 });
     await page.screenshot({ path: dir + "/index.png" });
   } catch (e) {
