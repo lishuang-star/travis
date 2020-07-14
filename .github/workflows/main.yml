@@ -42,7 +42,7 @@ jobs:
     - name: Components Security Scan - container scan
       uses: anchore/scan-action@master
       with:
-        image-reference: "ropecorgi/web:1.0"
+        image-reference: "ropecorgi/web:1"
         dockerfile-path: "./web"
         include-app-packages: true
         debug: true
