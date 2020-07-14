@@ -26,7 +26,9 @@ jobs:
         git commit -m "CI push sreenshots back"
         
     - name: Check PoC Result
-      run: bash check_poc.sh
+      run: |
+      sleep 30 
+      bash check_poc.sh
    
     - name: Components Security Scan - container scan
       uses: anchore/scan-action@master
