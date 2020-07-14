@@ -16,22 +16,22 @@ jobs:
         tags: 1.0
 
     - name: Deploy DVE
-       run: docker-compose up -d
+      run: docker-compose up -d
 
     - uses: actions/setup-node@v2-beta
-       with:
+      with:
          node-version: '12'
 
     - name: Check Service Availability
-       run: |
-         sleep 60
-         npm i puppeteer
-         node ci/check_availability.js
-         git config --local user.email "894597649@qq.com"
-         git config --local user.name "lishuang"
-         git status
-         git add ci/screenshots/
-         git commit -m "CI push sreenshots back"
+      run: |
+        sleep 60
+        npm i puppeteer
+        node ci/check_availability.js
+        git config --local user.email "894597649@qq.com"
+        git config --local user.name "lishuang"
+        git status
+        git add ci/screenshots/
+        git commit -m "CI push sreenshots back"
         
     - name: Check poC message
       run: docker-compose logs poc
