@@ -34,7 +34,7 @@ jobs:
     - name: Components Security Scan - container scan
       uses: anchore/scan-action@master
       with:
-        dockerfile-path: "./Dockerfile_web"
+        dockerfile-path: "Dockerfile_web"
         include-app-packages: true
         debug: true
 
