@@ -12,7 +12,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: lishuang-star/web
-        path: ./Dockerfile_web
+        path: ./web
         tags: 1.0
 
     - name: Deploy DVE
@@ -43,7 +43,7 @@ jobs:
       uses: anchore/scan-action@master
       with:
         image-reference: "lishuang-star/web:1.0"
-        dockerfile-path: "Dockerfile_web"
+        dockerfile-path: "./web"
         include-app-packages: true
         debug: true
 
