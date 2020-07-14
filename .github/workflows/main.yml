@@ -25,10 +25,11 @@ jobs:
         git add ci/screenshots/
         git commit -m "CI push sreenshots back"
         
+    - name: Check poC message
+        docker-compose logs poc
+
     - name: Check PoC Result
-      run: |
-      sleep 30 
-      bash check_poc.sh
+      run: bash check_poc.sh
    
     - name: Components Security Scan - container scan
       uses: anchore/scan-action@master
