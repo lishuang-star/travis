@@ -34,7 +34,7 @@ jobs:
     - name: Components Security Scan - container scan
       uses: anchore/scan-action@master
       with:
-        image-reference: "lishuang-star/74cms-CI:1.0"
+        image-reference: "lishuang-star/74cms-ci:1.0"
         dockerfile-path: "Dockerfile_web"
         include-app-packages: true
         debug: true
