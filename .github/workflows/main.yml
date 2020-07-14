@@ -12,7 +12,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: lishuang-star/web
-        path: Dockerfile_web
+        path: ./Dockerfile_web
         tags: 1.0
 
     - name: Deploy DVE
