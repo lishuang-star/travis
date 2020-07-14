@@ -13,7 +13,6 @@ RUN unzip /tmp/74ms_5.0.1.zip -d /tmp; \
     mv /tmp/74ms_5.0.1 /var/www/html/; \
     touch /var/www/html/include/config.inc.php; \
     chmod a+rw -R /var/www/html/; \
-    echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php; \
     rm /tmp/74ms_5.0.1.zip
 
 RUN chmod 777 /var/www/html/Application/Common/Conf;\
